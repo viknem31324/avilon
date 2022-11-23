@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev -o",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.3.0",
+    "@commitlint/config-conventional": "^17.3.0",
+    "@nuxt/test-utils-edge": "^3.0.1-rc.0-27817270.4f2bfbe",
+    "@nuxtjs/storybook": "^4.3.2",
+    "husky": "^8.0.2",
+    "nuxt": "3.0.0",
+    "vitest": "^0.25.3"
+  }
+}
