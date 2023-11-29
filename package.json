@@ -9,12 +9,12 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.3.0",
-    "@commitlint/config-conventional": "^17.3.0",
-    "@nuxt/test-utils-edge": "^3.0.1-rc.0-27817270.4f2bfbe",
-    "@nuxtjs/storybook": "^4.3.2",
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "@nuxt/test-utils-edge": "^3.8.0-28284309.b3d3d7f4",
+    "@nuxtjs/storybook": "^7.0.0",
     "husky": "^8.0.2",
-    "nuxt": "3.0.0",
-    "vitest": "^0.25.3"
+    "nuxt": "^3.8.2",
+    "vitest": "^0.34.6"
   }
 }
