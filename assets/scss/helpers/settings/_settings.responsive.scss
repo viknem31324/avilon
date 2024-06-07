@@ -1,0 +1,20 @@
+/* ==========================================================================
+   #RESPONSIVE
+   ========================================================================== */
+
+// Responsivity
+$mq-responsive: true;
+
+$mq-breakpoints: (
+  tablet: 576px,
+  tabletLarge: 784px,
+  wideTablet: 960px,
+  desktop: 1200px,
+  wideDesktop: 1440px,
+);
+
+$mq-show-breakpoints: ();
+
+@if (inuit-config(env) == dev) {
+  $mq-show-breakpoints: (tablet, desktop, wideDesktop);
+}

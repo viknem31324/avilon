@@ -1,0 +1,16 @@
+/* ==========================================================================
+   #COLORS
+   ========================================================================== */
+
+$color-total-white: #fff;
+$color-total-black: #000;
+
+$color-black-1: #f2f2f2;
+$color-black-95: #313131;
+
+$theme-colors: (
+  'total-white': $color-total-white,
+  'total-black': $color-total-black,
+  'black-1': $color-black-1,
+  'black-95': $color-black-95,
+);
