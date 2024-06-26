@@ -10,5 +10,7 @@
 
 <style lang="scss">
 .footer {
+  position: relative;
+  display: flex;
 }
 </style>

@@ -38,5 +38,6 @@ const getStatusCodeText = computed(() => {
 
 <style lang="scss">
 .error-page {
+  display: flex;
 }
 </style>

@@ -10,5 +10,6 @@
 
 <style lang="scss">
 .header {
+  display: flex;
 }
 </style>

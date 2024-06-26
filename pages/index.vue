@@ -5,5 +5,3 @@
     main
   </AppContainer>
 </template>
-
-<style lang="scss"></style>
