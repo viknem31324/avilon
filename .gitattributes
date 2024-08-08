@@ -15,6 +15,7 @@
 #
 
 # (binary is a macro for -text -diff)
+*.webp binary
 *.png binary
 *.jpg binary
 *.jpeg binary
