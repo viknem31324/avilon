@@ -36,5 +36,6 @@ export default withNuxt({
         },
       ],
       'vue/max-attributes-per-line': ['error', { singleline: { max: 3 }, multiline: { max: 1 } }],
+      '@typescript-eslint/no-explicit-any': 'warn',
     },
   });
