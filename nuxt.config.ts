@@ -70,19 +70,7 @@ export default defineNuxtConfig({
   ],
 
   runtimeConfig: {
-    // https://nuxt-graphql-client.web.app/advanced/multiple-clients
-    'graphql-client': {
-      clients: {
-        default: {
-          host: process.env.API_URL,
-          token: {
-            name: 'Bearer',
-            value: process.env.AUTHORIZATION_TOKEN,
-          },
-        },
-      },
-    },
-    'public': {
+    public: {
       isProduction,
       url: process.env.URL || '',
     },
