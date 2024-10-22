@@ -10,7 +10,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint . && npx stylelint './**/*.{css,scss,vue}'",
-    "lint:fix": "eslint . --fix && npx stylelint './**/*.{css,scss,vue}' --fix",
+    "lintfix": "eslint . --fix && npx stylelint './**/*.{css,scss,vue}' --fix",
     "prepare": "husky"
   },
   "dependencies": {

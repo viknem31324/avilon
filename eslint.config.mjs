@@ -27,6 +27,8 @@ export default withNuxt({
         },
         multilineDetection: 'brackets',
       }],
+      'no-multiple-empty-lines': ['error', { max: 1 }],
+      'linebreak-style': ['error', 'unix'],
       'vue/html-self-closing': [
         'error',
         {

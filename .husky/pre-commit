@@ -1,1 +1,5 @@
-yarn lint:fix
+#!/bin/sh
+. "$(dirname "$0")/common.sh"
+
+yarn lintfix
+node .husky/check-branch-name.js
