@@ -1,6 +1,6 @@
-@import 'lib/normalize';
-@import 'helpers/index';
-@import 'fonts';
+@use 'lib/normalize';
+@use 'helpers/index';
+@use 'fonts';
 
 *,
 :after,

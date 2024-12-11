@@ -1,5 +1,4 @@
-@import 'settings/settings.colors';
-@import 'settings/settings.responsive';
-
-@import 'mixins';
-@import 'functions';
+@forward 'colors';
+@forward 'responsive';
+@forward 'mixins';
+@forward 'functions';

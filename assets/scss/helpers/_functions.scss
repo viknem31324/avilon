@@ -1,6 +1,9 @@
+@use "sass:map";
+@use "colors";
+
 @function color($_color) {
-  @if not map-has-key($theme-colors, $_color) {
+  @if not map.has-key(colors.$theme-colors, $_color) {
     @warn 'No color found for `#{$_color}` in $map-core-colors - color returned will be null.';
   }
-  @return map-get($theme-colors, $_color);
+  @return map.get(colors.$theme-colors, $_color);
 }

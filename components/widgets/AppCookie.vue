@@ -9,7 +9,9 @@
 </template>
 
 <script lang="ts" setup>
-const showCookies = useCookie<boolean>('showCookies');
+const showCookies = useCookie<boolean>('showCookies', {
+  maxAge: 31536000,
+});
 
 const onCookieConfirm = () => {
   showCookies.value = true;

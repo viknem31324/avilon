@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: /*?
-Sitemap: https://DOMEN/sitemap.xml
-Clean-param: query

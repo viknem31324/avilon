@@ -1,9 +1,29 @@
+import { createRobots } from './utils/createRobots';
+
 const isProduction = process.env.URL === 'prod URL';
 const isDevelopMode = typeof process !== 'undefined' && process.env.NODE_ENV === 'development';
 // const isGenerateMode = typeof process !== 'undefined' && process?.argv?.includes('generate');
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  modules: [
+    '@nuxtjs/apollo',
+    '@nuxt/eslint',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
+    'nuxt-delay-hydration',
+  ],
+
+  components: [
+    '@/components',
+    '@/components/entities',
+    '@/components/modules',
+    '@/components/ui',
+    '@/components/widgets',
+  ],
+
+  devtools: { enabled: isDevelopMode },
+
   app: {
     head: {
       htmlAttrs: {
@@ -23,34 +43,48 @@ export default defineNuxtConfig({
     },
   },
 
+  css: ['@/assets/scss/index.scss'],
+
+  // vpn https://nuxtseo.com/sitemap/getting-started/installation
+  site: {
+    url: process.env.VITE_URL || '',
+    trailingSlash: true,
+  },
+
+  runtimeConfig: {
+    public: {
+      isProduction,
+      url: process.env.VITE_URL || '',
+    },
+  },
+  compatibilityDate: '2024-12-11',
+
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler',
+          additionalData: '@use "@/assets/scss/helpers/index.scss" as *;',
+        },
+      },
+    },
+  },
+
   apollo: {
     clients: {
       default: {
-        httpEndpoint: process.env.API_URL || '',
+        httpEndpoint: process.env.VITE_API_URL || '',
         httpLinkOptions: {
           headers: {
             authorization: `Bearer ${process.env.AUTHORIZATION_TOKEN}`,
           },
         },
+        // or
+        // tokenName: 'YOUR_TOKEN',
+        // tokenStorage: 'cookie', // localStorage
         authType: 'Bearer',
         authHeader: 'Authorization',
       },
-    },
-  },
-
-  components: [
-    '@/components',
-    '@/components/entities',
-    '@/components/modules',
-    '@/components/ui',
-    '@/components/widgets',
-  ],
-
-  css: ['@/assets/scss/index.scss'],
-
-  eslint: {
-    config: {
-      stylistic: true,
     },
   },
 
@@ -60,35 +94,15 @@ export default defineNuxtConfig({
     debug: isDevelopMode,
   },
 
-  devtools: { enabled: isDevelopMode },
-
-  modules: [
-    '@nuxtjs/apollo',
-    '@nuxt/eslint',
-    '@nuxtjs/sitemap',
-    'nuxt-delay-hydration',
-  ],
-
-  runtimeConfig: {
-    public: {
-      isProduction,
-      url: process.env.URL || '',
+  eslint: {
+    config: {
+      stylistic: true,
     },
   },
 
-  // https://nuxtseo.com/sitemap/getting-started/installation
-  site: {
-    url: process.env.URL || '',
-    trailingSlash: true,
-  },
-
-  vite: {
-    css: {
-      preprocessorOptions: {
-        scss: {
-          additionalData: '@use "@/assets/scss/helpers/index.scss" as *;',
-        },
-      },
-    },
+  robots: {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    rules: createRobots(isProduction),
   },
 });

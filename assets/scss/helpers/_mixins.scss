@@ -1,9 +1,12 @@
+@use "sass:map";
+@use "responsive";
+
 @mixin media-min($media) {
-  @if not map-has-key($mq-breakpoints, $media) {
+  @if not map.has-key(responsive.$mq-breakpoints, $media) {
     @warn 'Media `#{$media}` not found in map $mq-breakpoints. This media now empty';
   }
 
-  @media only screen and (min-width: map-get($mq-breakpoints, $media)) {
+  @media only screen and (min-width: map.get(responsive.$mq-breakpoints, $media)) {
     @content;
   }
 }
