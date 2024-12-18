@@ -39,3 +39,6 @@ yarn-error.log*
 
 # yarn
 .yarn/install-state.gz
+
+auto-imports.d.ts
+components.d.ts

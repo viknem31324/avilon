@@ -1,0 +1,66 @@
+@use '../assets/scss/fonts.scss';
+@use "../assets/scss/helpers/index.scss" as *;
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  background-color: #eaecf0;
+  font-weight: $font-weight-medium;
+  font-family: $font-family-base;
+}
+
+.wrapper {
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.docs-story {
+  padding: 30px 0px;
+  background-color: #eaecf0;
+
+  [class^=css-] {
+    transform: none !important;
+  }
+}
+
+.sb-main-fullscreen {
+  .docs-story {
+    padding: 30px 0;
+    margin: 0;
+  }
+}
+
+.docs-story {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .css-jspizm {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+.sbdocs-content {
+  max-width: 1440px !important;
+}
+
+.alert-warning {
+  padding: 0.75rem 1.25rem !important;
+  margin: 1.25rem 0 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  background-color: #fff3cd !important;
+  border: 1px solid #ffeeba !important;
+  border-radius: 0.25rem !important;
+  color: #856404 !important;
+}

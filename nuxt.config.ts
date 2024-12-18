@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     '@/components',
     '@/components/entities',
     '@/components/modules',
+    '@/components/shared',
     '@/components/ui',
     '@/components/widgets',
   ],

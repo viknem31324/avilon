@@ -1,16 +1,36 @@
-/* ==========================================================================
-   #COLORS
-   ========================================================================== */
-
+$color-smart-green: #4FC7B5;
+$color-active-red: #E50040;
 $color-total-white: #fff;
-$color-total-black: #000;
+$color-total-black: #000000;
 
-$color-black-1: #f2f2f2;
+$color-green-30: #309787;
+$color-green-50: #7BD5C8;
+$color-red-30: #C40032;
+$color-red-50: #FD1651;
+$color-black-5: #F8F8F8;
+$color-black-10: #EDEDED;
+$color-black-20: #D9D9D9;
+$color-black-40: #B0B0B0;
+$color-black-60: #818181;
+$color-black-80: #4E4E4E;
+$color-black-90: #3D3D3D;
 $color-black-95: #313131;
 
 $theme-colors: (
+  'smart-green': $color-smart-green,
+  'active-red': $color-active-red,
   'total-white': $color-total-white,
   'total-black': $color-total-black,
-  'black-1': $color-black-1,
+  'green-30': $color-green-30,
+  'green-50': $color-green-50,
+  'red-30': $color-red-30,
+  'red-50': $color-red-50,
+  'black-5': $color-black-5,
+  'black-10': $color-black-10,
+  'black-20': $color-black-20,
+  'black-40': $color-black-40,
+  'black-60': $color-black-60,
+  'black-80': $color-black-80,
+  'black-90': $color-black-90,
   'black-95': $color-black-95,
 );

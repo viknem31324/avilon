@@ -1,0 +1,26 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as BaseLinkStories from './BaseLink.stories';
+
+<Meta of={BaseLinkStories} />
+
+# Link
+
+Link — ссылка.
+
+<Canvas of={BaseLinkStories.Overview} />
+
+<Controls story="Overview" />
+
+## Варианты использования
+
+### Size
+
+Link может наследовать размер шрифта блока, в котором находится, или иметь один из трех размеров: `s`, `m` и `l`. По умолчанию наследует размер шрифта.
+
+<Canvas of={BaseLinkStories.Sizes} />
+
+### Variant
+
+Устанавливает вариант ссылки. Может иметь один из двух значений: `green`, `black`. По умолчанию `green`
+
+<Canvas of={BaseLinkStories.Variant} />

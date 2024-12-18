@@ -1,0 +1,128 @@
+@use "sass:map";
+
+$font-family-base: Inter, sans-serif;
+
+$font-weight-light: 300;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+$global-text-map: (
+  'h1': (
+    font-size: 28px,
+    line-height: 36px,
+    responsive: (
+      tablet: (
+        font-size: 32px,
+        line-height: 42px,
+      ),
+      desktop: (
+        font-size: 36px,
+        line-height: 48px,
+      )
+    ),
+  ),
+  'h2': (
+    font-size: 22px,
+    line-height: 28px,
+    responsive: (
+      tablet: (
+        font-size: 24px,
+        line-height: 32px,
+      ),
+      desktop: (
+        font-size: 28px,
+        line-height: 36px,
+      )
+    ),
+  ),
+  'h3': (
+    font-size: 16px,
+    line-height: 24px,
+    responsive: (
+      tablet: (
+        font-size: 18px,
+        line-height: 26px,
+      ),
+      desktop: (
+        font-size: 20px,
+        line-height: 28px,
+      )
+    ),
+  ),
+  'h4': (
+    font-size: 16px,
+    line-height: 24px,
+  ),
+  'h5': (
+    font-size: 16px,
+    line-height: 24px,
+  ),
+  'h6': (
+    font-size: 16px,
+    line-height: 24px,
+  ),
+  'xxxl': (
+    font-size: 36px,
+    line-height: 48px,
+  ),
+  'xxl': (
+    font-size: 28px,
+    line-height: 36px,
+  ),
+  'xl': (
+    font-size: 24px,
+    line-height: 32px,
+  ),
+  'l': (
+    font-size: 20px,
+    line-height: 28px,
+  ),
+  'm': (
+    font-size: 16px,
+    line-height: 24px,
+  ),
+  's': (
+    font-size: 14px,
+    line-height: 22px,
+  ),
+  'xs': (
+    font-size: 12px,
+    line-height: 18px,
+  ),
+);
+
+@mixin text-styles($size_name, $take_responsive: true) {
+  $text_map: map.get($global-text-map, $size_name);
+
+  @include text-styles-from-map($text_map, $take_responsive);
+}
+
+@mixin text-styles-from-map($_text-map, $take_responsive) {
+  $_font-size: map.get($_text-map, 'font-size');
+  $_line-height: map.get($_text-map, 'line-height');
+
+  @if $_font-size {
+    font-size: $_font-size;
+  }
+
+  @if $_line-height {
+    line-height: $_line-height;
+  }
+
+  @each $property, $value in $_text-map {
+    @if ($property != 'responsive' and $property != 'font-size' and $property != 'line-height') {
+      #{$property}: $value;
+    }
+  }
+
+  $medias: map.get($_text-map, 'responsive');
+  @if ($medias and $take_responsive) {
+
+    @each $media, $resp_text_map in $medias {
+
+      @include mq($from: $media) {
+        @include text-styles-from-map($resp_text_map, $take_responsive: false);
+      }
+    }
+  }
+}
