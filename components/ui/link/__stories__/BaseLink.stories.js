@@ -2,7 +2,7 @@ import { action } from '@storybook/addon-actions';
 import { vueRouter } from 'storybook-vue3-router';
 
 import BaseLink from '../BaseLink.vue';
-import { BASE_LINK_VARIANTS } from '../BaseLink.ts';
+import { BASE_LINK_VARIANTS_VAL } from '../BaseLink.ts';
 import { DEFAULT_SIZES_WITH_EMPTY as LINK_SIZES } from '/assets/constants/sizes.ts';
 
 const Template = args => ({
@@ -49,7 +49,7 @@ export default {
         type: 'select',
       },
 
-      options: BASE_LINK_VARIANTS,
+      options: BASE_LINK_VARIANTS_VAL,
     },
   },
 
@@ -114,13 +114,13 @@ export const Variant = {
 
       setup() {
         return {
-          BASE_LINK_VARIANTS,
+          BASE_LINK_VARIANTS_VAL,
         };
       },
 
       template: `
           <div style="display: flex; align-items: center; gap: 20px;">
-            <BaseLink v-for="variant in BASE_LINK_VARIANTS" :variant="variant" label="Lorem ipsum" href="#" />
+            <BaseLink v-for="variant in BASE_LINK_VARIANTS_VAL" :variant="variant" label="Lorem ipsum" href="#" />
           </div>
         `,
     };
