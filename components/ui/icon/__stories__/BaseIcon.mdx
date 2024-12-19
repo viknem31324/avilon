@@ -1,0 +1,24 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as BaseIconStories from './BaseIcon.stories';
+
+<Meta of={BaseIconStories} />
+
+# Icon
+
+Icon — это элемент интерфейса для представления иконок.
+
+<Canvas of={BaseIconStories.Overview} />
+
+<Controls story="Overview" />
+
+## Варианты использования
+
+### Тип иконки
+
+Icon может иметь один из приведенных ниже типов иконок.
+
+<Canvas of={BaseIconStories.Icon} />
+
+### Размер иконки
+
+Размер иконки устанавливается с помощью кастомного свойства `--ds-icon-size`. По умолчанию составляет `20px`
