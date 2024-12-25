@@ -1,0 +1,24 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as BaseHeadingStories from './BaseHeading.stories';
+
+<Meta of={BaseHeadingStories} />
+
+# Heading
+
+Heading используется для вывода заголовков.
+
+<Canvas of={BaseHeadingStories.Overview} />
+
+<Controls story="Overview" />
+
+### Level
+
+<Canvas of={BaseHeadingStories.Levels} />
+
+## Usage
+
+```jsx
+<BaseHeading>
+  Заголовок
+</BaseHeading>
+```

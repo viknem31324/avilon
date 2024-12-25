@@ -1,0 +1,26 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as BaseTextStories from './BaseText.stories';
+
+<Meta of={BaseTextStories} />
+
+# Text
+
+Компонент текста
+
+<Canvas of={BaseTextStories.Overview} />
+
+<Controls story="Overview" />
+
+### Size
+
+Text может иметь один из четырех размеров: `xs`, `s`, `m` и `l`. По умолчанию `m`.
+
+<Canvas of={BaseTextStories.Levels} />
+
+## Usage
+
+```jsx
+<BaseText>
+  Текст
+</BaseText>
+```

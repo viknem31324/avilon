@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { IBaseLink } from './BaseLink.ts';
+import type { IBaseLink } from './link';
 
 const props = withDefaults(defineProps<IBaseLink>(), {
   label: '',
@@ -61,15 +61,15 @@ const classes = computed(() => ({
 
   &--size {
     &-s {
-      @include text-styles('s');
+      @include text-styles("s");
     }
 
     &-m {
-      @include text-styles('m');
+      @include text-styles("m");
     }
 
     &-l {
-      @include text-styles('l');
+      @include text-styles("l");
     }
   }
 

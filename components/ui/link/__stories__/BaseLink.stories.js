@@ -2,8 +2,8 @@ import { action } from '@storybook/addon-actions';
 import { vueRouter } from 'storybook-vue3-router';
 
 import BaseLink from '../BaseLink.vue';
-import { BASE_LINK_VARIANTS_VAL } from '../BaseLink.ts';
-import { DEFAULT_SIZES_WITH_EMPTY as LINK_SIZES } from '/assets/constants/sizes.ts';
+import { BASE_LINK_VARIANTS_VAL } from '../link';
+import { DEFAULT_SIZES_WITH_EMPTY as LINK_SIZES } from '/assets/constants/sizes';
 
 const Template = args => ({
   components: { BaseLink },

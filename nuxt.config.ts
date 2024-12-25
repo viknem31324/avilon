@@ -15,12 +15,30 @@ export default defineNuxtConfig({
   ],
 
   components: [
-    '@/components',
-    '@/components/entities',
-    '@/components/modules',
-    '@/components/shared',
-    '@/components/ui',
-    '@/components/widgets',
+    {
+      path: '@/components',
+      pathPrefix: false,
+    },
+    {
+      path: '@/components/entities',
+      pathPrefix: false,
+    },
+    {
+      path: '@/components/modules',
+      pathPrefix: false,
+    },
+    {
+      path: '@/components/shared',
+      pathPrefix: false,
+    },
+    {
+      path: '@/components/ui',
+      pathPrefix: false,
+    },
+    {
+      path: '@/components/widgets',
+      pathPrefix: false,
+    },
   ],
 
   devtools: { enabled: isDevelopMode },

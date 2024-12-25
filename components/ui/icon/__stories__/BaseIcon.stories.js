@@ -1,5 +1,5 @@
 import BaseIcon from '../BaseIcon.vue';
-import { ICONS } from '../BaseIcon.ts';
+import { ICONS } from '../icon';
 
 const Template = args => ({
   components: { BaseIcon },
@@ -34,7 +34,7 @@ export const Overview = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/fcfhfIBNzr2wCkuuAzDC4F/%D0%A0%D0%95%D0%A5%D0%90%D0%A3-%E2%80%94-Design-System-%7C-Approval?type=design&node-id=4152-58188&mode=design&t=nQKSgK8Re9yRQmKi-0',
+      url: '',
     },
   },
 };

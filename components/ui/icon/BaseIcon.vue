@@ -26,7 +26,7 @@
 </template>
 
 <script lang="ts" setup>
-import { PATHS, type IBaseIcon } from './BaseIcon';
+import { PATHS, type IBaseIcon } from './icon';
 
 const props = defineProps<IBaseIcon>();
 
