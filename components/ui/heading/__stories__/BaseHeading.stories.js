@@ -1,4 +1,4 @@
-import BaseHeading from '../RhsHeading.vue';
+import BaseHeading from '../BaseHeading.vue';
 import { HEADING_LEVELS, HEADING_TAGS } from '../heading';
 
 const Template = args => ({

@@ -16,15 +16,15 @@ const props = withDefaults(defineProps<IBaseText>(), {
 });
 
 const classes = computed(() => ({
-  'rhs-text': true,
-  [`rhs-text--weight-${props.weight}`]: props.weight !== 'medium',
-  [`rhs-text--size-${props.size}`]: props.size,
-  'rhs-text--fluid': props.fluid,
+  'ds-text': true,
+  [`ds-text--weight-${props.weight}`]: props.weight !== 'medium',
+  [`ds-text--size-${props.size}`]: props.size,
+  'ds-text--fluid': props.fluid,
 }));
 </script>
 
 <style lang="scss">
-.rhs-text {
+.ds-text {
   $self: &;
   font-weight: $font-weight-medium;
 

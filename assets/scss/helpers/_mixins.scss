@@ -3,6 +3,7 @@
 @use "sass:meta";
 @use "sass:string";
 @use "responsive";
+@use "functions";
 
 @mixin media-min($media) {
   @if not map.has-key(responsive.$mq-breakpoints, $media) {
@@ -33,6 +34,18 @@
 @mixin has-hover() {
   @media (hover: hover) {
     @content;
+  }
+}
+
+@mixin custom-scroll() {
+  &::-webkit-scrollbar {
+    width: 8px;
+    background-color: functions.color('black-5');
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: functions.color('black-40');
+    border-radius: 16px 16px 16px 16px;
   }
 }
 

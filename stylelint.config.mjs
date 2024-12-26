@@ -4,7 +4,7 @@ export default {
   extends: [
     'stylelint-config-standard-scss',
     'stylelint-config-recommended-vue',
-    'stylelint-config-clean-order/error',
+    'stylelint-config-clean-order',
   ],
   rules: {
     'at-rule-no-unknown': [

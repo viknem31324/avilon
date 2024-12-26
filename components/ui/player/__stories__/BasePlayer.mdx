@@ -1,0 +1,14 @@
+import { Meta, Controls, Canvas } from '@storybook/blocks';
+import * as BasePlayerStories from './BasePlayer.stories';
+
+import BasePlayer from '../BasePlayer.vue';
+
+<Meta of={BasePlayerStories} />
+
+# Player
+
+Player - компонент для отображения видео. Через поле `video` можно задавать ссылку для видео. Ссылка может вести как на видео c `YouTube`, `Rutube`, так и на файл поддерживающий видеоформат (к примеру `.mp4`, `.mov` и прочие).
+
+<Canvas of={BasePlayerStories.Overview} />
+
+<Controls story="Overview" />

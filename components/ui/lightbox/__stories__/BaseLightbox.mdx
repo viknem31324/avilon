@@ -1,0 +1,38 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as BaseLightboxStories from './BaseLightbox.stories';
+
+<Meta of={BaseLightboxStories} />
+
+# Lightbox
+
+Lightbox — это элемент интерфейса, представляющий собой всплывающее окно на затемненном фоне, содержащее уникальный контент.
+
+<Canvas of={BaseLightboxStories.Overview} />
+
+<Controls story="Overview" />
+
+## Варианты использования
+
+Lightbox может содержать текст, формы, кнопки, ссылки, изображения и подписи к ним, переданные через `slot`.
+
+### Standard
+
+Lightbox с заголовком и произвольным содержимым внутри
+
+<Canvas of={BaseLightboxStories.Standard} />
+
+### Headline
+
+Lightbox с заголовком и изображением внутри
+
+<Canvas of={BaseLightboxStories.Headline} />
+
+### Closing
+
+Lightbox может опционально иметь кнопку крестика, меняя значение `isClosing`
+
+<Canvas of={BaseLightboxStories.Closing} />
+
+### Size customizing
+
+Lightbox имеет возможность измененять ширину модального окна через кастомное свойство `--ds-lightbox-content-max-width`. По умолчанию максимальная ширина составляет `480px`;

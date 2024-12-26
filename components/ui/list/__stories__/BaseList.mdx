@@ -1,0 +1,42 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as BaseBaseListStories from './BaseList.stories';
+
+<Meta of={BaseBaseListStories} />
+
+# List
+
+Base list — это базовый элемент интерфейса, отображающий элементы в виде ненумерованного списка.
+
+<Canvas of={BaseBaseListStories.Overview} />
+
+<Controls story="Overview" />
+
+## Варианты использования
+
+### Items
+
+Base list формируется на основе атрибута `items`, который представляет собой массив объектов.
+
+### Size
+
+Unordered list может иметь один из четырех размеров: `xs`, `s`, `m` и `l`. По умолчанию `m`.
+
+### Fluid
+
+Unordered list может изменять размер шрифта на адаптиве если указан пропс `fluid=true`. Работает только для размеров `m` и `l`.
+
+## Usage
+
+```jsx
+<template>
+  <BaseBaseList :items="[{ id: 1, data: 'Test' }]">
+    <template #for="item">
+      {{ item.data }}
+    </template>
+
+    <li>
+      test
+    </li>
+  </BaseBaseList>
+</template>
+```

@@ -1,0 +1,21 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as BaseBreadcrumbsStories from './BaseBreadcrumbs.stories';
+
+import BaseBreadcrumbs from "../BaseBreadcrumbs.vue";
+
+<Meta of={BaseBreadcrumbsStories} />
+
+# Breadcrumbs
+
+Breadcrumbs используется для указания пользователю его точного местоположения на сайте с многоуровневой структурой.
+Помогает быстро вернуться на один или несколько уровней вверх по сайту, вплоть до главной страницы.
+
+<Canvas of={BaseBreadcrumbsStories.Overview} />
+
+<Controls story="Overview" />
+
+## Breadcrumbs Wrap
+
+В случае, когда ширины не хватает для всех элементов, остаток переносится на следующую строку:
+
+<Canvas of={BaseBreadcrumbsStories.BreadcrumbsWrap} />
