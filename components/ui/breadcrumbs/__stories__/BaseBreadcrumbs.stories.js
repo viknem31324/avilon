@@ -36,7 +36,7 @@ export const Overview = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/fcfhfIBNzr2wCkuuAzDC4F/%D0%A0%D0%95%D0%A5%D0%90%D0%A3-%E2%80%94-Design-System-%7C-Approval?type=design&node-id=1117-3388&mode=design&t=s7QhEf5kl71pnzMt-0',
+      url: '',
     },
   },
 };

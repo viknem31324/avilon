@@ -1,0 +1,46 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as ModuleMapStories from './ModuleMap.stories';
+
+<Meta of={ModuleMapStories} />
+
+# Map
+
+Map — компонент с помощью которого вы можете посмотреть карту города и найти нужное место. Данный компонент использует API yandex карт.
+
+<Canvas of={ModuleMapStories.Overview} />
+
+<Controls story="Overview" />
+
+## Api key
+
+Пропс `apiKey` является обязательным для работы яндекс карты. Получить API-ключ можно в [Кабинете разработчика](https://developer.tech.yandex.ru/). Нажмите "Получить ключ", затем выберите сервис "JavaScript API и HTTP Геокодер" и заполните анкету — ваш API-ключ будет сразу готов к использованию.
+
+## Addresses
+
+Объект массива `addresses` состоит из следующих полей:
+
+* `coordinates`(*\[number, number]*\[required]): Кортеж состоящий из двух чисел которые обозначают координаты метки. Пример `[37.61296223925207, 55.68253266577515]`.
+* `data`(*object*\[required]): Объект содерщащий информацию о точке.
+  * `id`(*string|number*\[required]): Идентификатор.
+  * `title`(\_string\[required]): Заголовок карточки адреса.
+  * `address`(\_string\[required]): Адрес.
+  * `phone`(*string|number*\[optional]): Телефон для связи.
+  * `workTime`(*string|number*\[optional]): Часы работы.
+
+## Initial settings
+
+Пропс `initialSettings` содержит в себе настройки для Яндекс карты. Подробнее о всех настройках можно почитать в (документации)(https://yandex.ru/dev/jsapi30/doc/ru/ref/#YMapProps) Яндекс Карт.
+
+## Title
+
+Map принимает атрибут `title` для установки заголовка карты. По умолчанию нет заголовка.
+
+<Canvas of={ModuleMapStories.Title} />
+
+## Variant
+
+Map может иметь один из двух вариантов: `small`, и `large`. По умолчанию `small`.
+
+<Canvas of={ModuleMapStories.VariantSmall} />
+
+<Canvas of={ModuleMapStories.VariantLarge} />

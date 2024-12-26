@@ -1,0 +1,26 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as AnchorMenuStories from './ModuleAnchorMenu.stories';
+
+<Meta of={AnchorMenuStories} />
+
+# Anchor Menu
+
+Anchor Menu - якорное меню для навигации по странице. Для того, чтобы Anchor Menu следовало за скроллом на странице, необходимо для родителя задать свойство `position: relative;`. Anchor Menu имеет возможность изменить положение `top` через кастомное свойство `--rhs-anchor-menu-top`.
+
+<Canvas of={AnchorMenuStories.Overview} />
+
+<Controls story="Overview" />
+
+## Items
+
+ModuleAnchorMenu принимает пропс `items`, который является массивом объектов и предназначен для вывода элементов меню.
+
+Объект массива `items` состоит из следующих полей:
+
+* `href`(*string*\[required]): ID элемента, до которого будет идти прокрутка (пример: #характеристики).
+* `tag`(*string*\[optional]): Дополнительная метка справа от элемента меню.
+* `text`(*string*\[required]): Текст элемента меню.
+
+## Пример
+
+<Canvas of={AnchorMenuStories.Example} />

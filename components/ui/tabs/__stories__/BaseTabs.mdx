@@ -1,0 +1,28 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as BaseTabsStories from './BaseTabs.stories';
+
+<Meta of={BaseTabsStories} />
+
+# Tabs
+
+Tabs — это элемент интерфейса предназначенный для навигации по контенту внутри страницы.
+
+<Canvas of={BaseTabsStories.Overview} />
+
+<Controls story="Overview" />
+
+## Применение
+
+`Tabs` используется, когда необходимо разместить на одной странице большое количество контента.
+
+## Варианты использования
+
+### Width
+
+Когда содержимое списка `Tabs` не помещается на дисплее устройства, оно скрывается в контейнер-список с вертикальным скроллом.
+
+<Canvas of={BaseTabsStories.Width} />
+
+### Sizes
+
+`Tabs` может иметь один из трех размеров: `s`, `m` и `l`. По умолчанию адаптивный.

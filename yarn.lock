@@ -3864,6 +3864,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@yandex/ymaps3-types@npm:>=1.0.15542062":
+  version: 1.0.15542062
+  resolution: "@yandex/ymaps3-types@npm:1.0.15542062"
+  peerDependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
+    "@vue/runtime-core": 3
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+    "@vue/runtime-core":
+      optional: true
+  checksum: 10c0/8e52feb839cb17c0815d6ce42339662cb5a39669d7d552905e6d68461e24735459d0bba433c5956da10b51a067ffa448f2a2dd7a7e8d66b1d30f1725c5f99ab4
+  languageName: node
+  linkType: hard
+
 "JSONStream@npm:^1.3.5":
   version: 1.3.5
   resolution: "JSONStream@npm:1.3.5"
@@ -8719,7 +8737,9 @@ __metadata:
     unplugin-vue-components: "npm:^0.28.0"
     vee-validate: "npm:^4.15.0"
     vue: "npm:^3.5.13"
+    vue-multiselect: "npm:^3.1.0"
     vue-router: "npm:^4.5.0"
+    vue-yandex-maps: "npm:^2.1.5"
     yup: "npm:^1.6.1"
   languageName: unknown
   linkType: soft
@@ -12381,6 +12401,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"vue-multiselect@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "vue-multiselect@npm:3.1.0"
+  checksum: 10c0/4f38050e8f8435d41af4cb86561062c4772844bdcb33ac9fed5b52e0c9e6846794c46b407c3716960a9324403400f09fd75fd0bdcdf0c4c91292a102941a4b6d
+  languageName: node
+  linkType: hard
+
 "vue-router@npm:^4.2.5, vue-router@npm:^4.4.5, vue-router@npm:^4.5.0":
   version: 4.5.0
   resolution: "vue-router@npm:4.5.0"
@@ -12389,6 +12416,24 @@ __metadata:
   peerDependencies:
     vue: ^3.2.0
   checksum: 10c0/5521c8d0ab7634ea75118824d4b4cae3748964725b3d3b4064eb3dbd44013381ea3163d4d856af61655936cd897b84f8eeebb312d0668532c3074d53814bd953
+  languageName: node
+  linkType: hard
+
+"vue-yandex-maps@npm:^2.1.5":
+  version: 2.1.5
+  resolution: "vue-yandex-maps@npm:2.1.5"
+  dependencies:
+    "@yandex/ymaps3-types": "npm:>=1.0.15542062"
+  peerDependencies:
+    "@vue/composition-api": ">=1"
+    nuxt: ^2.16 || ^3
+    vue: ^2.7 || ^3.3
+  peerDependenciesMeta:
+    "@vue/composition-api":
+      optional: true
+    nuxt:
+      optional: true
+  checksum: 10c0/f70a333720bfddab486daf7d99767721d5466116148c6953c6d57b2270763256b1529ffd20dc18289e32de860cf95b4a723f54899556405ed59528c3c84d412f
   languageName: node
   linkType: hard
 

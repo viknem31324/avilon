@@ -1,13 +1,13 @@
 import { Meta, Canvas, Controls } from '@storybook/blocks';
-import * as BaseBaseListStories from './BaseList.stories';
+import * as BaseListStories from './BaseList.stories';
 
-<Meta of={BaseBaseListStories} />
+<Meta of={BaseListStories} />
 
 # List
 
 Base list — это базовый элемент интерфейса, отображающий элементы в виде ненумерованного списка.
 
-<Canvas of={BaseBaseListStories.Overview} />
+<Canvas of={BaseListStories.Overview} />
 
 <Controls story="Overview" />
 
@@ -29,7 +29,7 @@ Unordered list может изменять размер шрифта на ада
 
 ```jsx
 <template>
-  <BaseBaseList :items="[{ id: 1, data: 'Test' }]">
+  <BaseList :items="[{ id: 1, data: 'Test' }]">
     <template #for="item">
       {{ item.data }}
     </template>
@@ -37,6 +37,6 @@ Unordered list может изменять размер шрифта на ада
     <li>
       test
     </li>
-  </BaseBaseList>
+  </BaseList>
 </template>
 ```
