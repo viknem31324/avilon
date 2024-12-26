@@ -1,0 +1,53 @@
+import { Controls, Canvas, Meta, } from '@storybook/blocks';
+import * as BaseTooltipStories from './BaseTooltip.stories';
+
+<Meta of={BaseTooltipStories} />
+
+# Tooltip
+
+Tooltip - интерактивный элемент, при наведении на который появляется подсказка с текстом или изображением.
+
+<Canvas of={BaseTooltipStories.Overview} />
+
+<Controls story="Overview" />
+
+## Варианты использования
+
+Tooltip может содержать текст, формы, кнопки, ссылки, изображения и подписи к ним, переданные через `slot`.
+
+### Close icon
+
+Tooltip может иметь иконку в виде крестика. По умолчанию без иконки.
+
+<Canvas of={BaseTooltipStories.CloseIcon} />
+
+### Sizes
+
+Tooltip может иметь один из трех размеров: `s`, `m` и `l`. По умолчанию `m`.
+
+<Canvas of={BaseTooltipStories.Sizes} />
+
+### Position
+
+Tooltip может одно из четырех положений отображения `top`, `right`, `bottom`, `left` и `auto`. По умолчанию `bottom`
+
+<Canvas of={BaseTooltipStories.Position} />
+
+### Slot
+
+Tooltip может иметь слот `content` для передачи уникального содержимого.
+
+<Canvas of={BaseTooltipStories.Slot} />
+
+## Usage
+
+```html
+<template>
+  <BaseTooltip position="auto" show-button>
+    Tooltip
+    <template #content>
+      Custom content
+    </template>
+  </BaseTooltip>
+</template>
+```

@@ -42,14 +42,14 @@ import {
   YandexMapMarker,
   YandexMapDefaultFeaturesLayer,
 } from 'vue-yandex-maps';
-import type { IModuleMapAddressAndCoordinates, IModuleMapYandex, IModuleMapYandexEmits } from '../map';
+import type { IModuleMapAddressAndCoordinates, IModuleMapYandex, ModuleMapYandexEmits } from '../map';
 import { CUSTOMIZATION as customization } from '../map';
 
 const props = withDefaults(defineProps<IModuleMapYandex>(), {
   addresses: () => [],
 });
 
-const emits = defineEmits<IModuleMapYandexEmits>();
+const emits = defineEmits<ModuleMapYandexEmits>();
 
 createYmapsOptions({
   apikey: props.apiKey,

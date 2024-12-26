@@ -4,7 +4,7 @@ export interface IBaseLightbox {
   isClosing?: boolean;
 }
 
-export type IBaseLightboxEmits = {
+export type BaseLightboxEmits = {
   confirm: [];
   close: [];
 };

@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts" setup>
-import { TAB_COUNT_SIZES_PADDING_X, TAB_GAP, TAB_MORE_SIZES_PADDING_X, TAB_SIZES_FONT_SIZE, TAB_SIZES_PADDING_X, type IBaseTabItem, type IBaseTabs, type IBaseTabsEmits } from './tabs';
+import { TAB_COUNT_SIZES_PADDING_X, TAB_GAP, TAB_MORE_SIZES_PADDING_X, TAB_SIZES_FONT_SIZE, TAB_SIZES_PADDING_X, type IBaseTabItem, type IBaseTabs, type BaseTabsEmits } from './tabs';
 import type { SizeDefault } from '~/assets/types/sizes';
 import { Breakpoints } from '~/assets/constants/breakpoints';
 
@@ -47,7 +47,7 @@ const props = withDefaults(defineProps<IBaseTabs>(), {
   moreTabLabel: 'Еще...',
 });
 
-const emits = defineEmits<IBaseTabsEmits>();
+const emits = defineEmits<BaseTabsEmits>();
 
 let canvasElement: HTMLCanvasElement;
 

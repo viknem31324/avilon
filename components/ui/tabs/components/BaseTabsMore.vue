@@ -46,7 +46,7 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue';
-import type { IBaseTabItem, IBaseTabsMore, IBaseTabsMoreEmits } from '../tabs.js';
+import type { IBaseTabItem, IBaseTabsMore, BaseTabsMoreEmits } from '../tabs.js';
 
 const props = withDefaults(defineProps<IBaseTabsMore>(), {
   items: () => [],
@@ -54,7 +54,7 @@ const props = withDefaults(defineProps<IBaseTabsMore>(), {
   size: 'm',
 });
 
-const emits = defineEmits<IBaseTabsMoreEmits>();
+const emits = defineEmits<BaseTabsMoreEmits>();
 
 const value = computed(
   () => (props.activeItem ? props.items.find(item => item.id === props.activeItem?.id) : null),

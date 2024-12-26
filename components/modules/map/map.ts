@@ -116,7 +116,7 @@ export interface IModuleMapYandex {
   settings: YandexMapSettings;
 }
 
-export type IModuleMapYandexEmits = {
+export type ModuleMapYandexEmits = {
   clickMarker: [event: IModuleMapAddressAndCoordinates];
 };
 

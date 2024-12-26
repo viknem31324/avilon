@@ -162,7 +162,7 @@ export const Overview = {
   parameters: {
     design: {
       type: 'figma',
-      url: 'https://www.figma.com/file/fcfhfIBNzr2wCkuuAzDC4F/%D0%A0%D0%95%D0%A5%D0%90%D0%A3-%E2%80%94-Design-System-%7C-Approval?type=design&mode=design&node-id=12431-593&t=8aB0VoqRMjjdKOHr-0',
+      url: '',
     },
   },
 };

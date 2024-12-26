@@ -1,5 +1,5 @@
-import BaseButton from '../../button/BaseButton.vue';
 import BaseLightbox from '../BaseLightbox.vue';
+import BaseButton from '~/components/ui/button/BaseButton.vue';
 
 const Template = args => ({
   components: { BaseLightbox },

@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { IBaseLightbox, IBaseLightboxEmits } from './lightbox';
+import type { IBaseLightbox, BaseLightboxEmits } from './lightbox';
 import useKeydownHandler from '~/hooks/useKeydownHandler';
 import useHiddenDocument from '~/hooks/useHiddenDocument';
 
@@ -41,7 +41,7 @@ const props = withDefaults(defineProps<IBaseLightbox>(), {
   isClosing: true,
 });
 
-const emits = defineEmits<IBaseLightboxEmits>();
+const emits = defineEmits<BaseLightboxEmits>();
 
 const { hidden, unhidden } = useHiddenDocument();
 

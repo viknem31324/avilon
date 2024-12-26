@@ -35,7 +35,7 @@ export interface IBaseTabsMore {
   size?: SizeDefault;
 }
 
-export type IBaseTabsMoreEmits = {
+export type BaseTabsMoreEmits = {
   select: [value: number | string];
 };
 
@@ -46,6 +46,6 @@ export interface IBaseTabs {
   size?: SizeDefault;
 }
 
-export type IBaseTabsEmits = {
+export type BaseTabsEmits = {
   'update:id': [value: string | number];
 };

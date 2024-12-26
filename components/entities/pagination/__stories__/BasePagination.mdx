@@ -1,0 +1,35 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as BasePaginationStories from './BasePagination.stories';
+
+<Meta of={BasePaginationStories} />
+
+# Pagination
+
+Pagination — это элемент интерфейса для разделения контента на несколько страниц
+
+<Canvas of={BasePaginationStories.Overview} />
+
+<Controls story="Overview" />
+
+## Usage
+
+```html
+<template>
+  <BasePagination
+    :current-page="currentPage"
+    :per-page="perPage"
+    :per-page-options="[12, 24, 48]"
+    :total-pages="totalPages"
+    @update:current-page="updateCurrentPage"
+    @update:per-page="updatePerPage"
+  />
+</template>
+```
+
+## Использование c ссылками
+
+Если кнопки пагинации должны использоваться как ссылки, необходимо указать url ссылки в пропс `href` (например `/?page=`).
+
+Итоговая ссылка будет содержать указанный href + номер страницы.
+
+<Canvas of={BasePaginationStories.Href} />

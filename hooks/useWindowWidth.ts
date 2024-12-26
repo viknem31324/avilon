@@ -1,7 +1,6 @@
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { Breakpoints } from '~/assets/constants/breakpoints';
 
-
 export default () => {
   const isWideDesktop = ref(false);
   const isDesktop = ref(false);
