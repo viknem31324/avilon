@@ -40,6 +40,11 @@ const config: StorybookConfig = {
           dts: true,
         }),
       ],
+      resolve: {
+        alias: {
+          '~/': '/',
+        },
+      },
       css: {
         preprocessorOptions: {
           scss: {

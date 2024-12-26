@@ -30,6 +30,11 @@
   transition-timing-function: $timingFunction;
 }
 
+@mixin has-hover() {
+  @media (hover: hover) {
+    @content;
+  }
+}
 
 @function mq-px2em($px, $base-font-size: responsive.$mq-base-font-size) {
   @if math.is-unitless($px) {

@@ -1,0 +1,25 @@
+import { Controls, Meta, Canvas  } from '@storybook/blocks';
+import * as BaseLoadingStories from './BaseLoading.stories';
+
+<Meta of={BaseLoadingStories} />
+
+# Loading
+
+Loading — это элемент интерфейса для оповещения пользователя о загрузке контента.
+
+<Canvas of={BaseLoadingStories.Overview} />
+
+<Controls story="Overview" />
+
+## Применение
+
+Loading используется, когда необходимо сообщить пользователю о загрузке контента.
+
+## Spinner
+
+Параметры спинера регулируются css переменными:
+
+* `--ds-loading-spinner-color` - цвет бегающего ползунка (по умолчанию `inherit`);
+* `--ds-loading-border-width` - ширина линии окружности;
+* `--ds-loading-spinner-border-round-bg` - цвет фоновой окружности;
+* `--ds-loading-spinner-size` - размер спинера.

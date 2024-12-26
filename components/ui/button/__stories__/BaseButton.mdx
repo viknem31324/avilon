@@ -1,0 +1,81 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as BaseButtonStories from './BaseButton.stories';
+
+<Meta of={BaseButtonStories} />
+
+# Button
+
+Button — это интерактивный элемент пользовательского интерфейса, предназначенный для выполнения определенного действия при нажатии.
+
+<Canvas of={BaseButtonStories.Overview} />
+
+<Controls story="Overview" />
+
+## Варианты использования
+
+### Tag
+
+В зависимости от стоящей задачи, Button может быть кнопкой, ссылкой или дивом.
+
+Укажите значение `div`, когда нужно вывести кнопку внутри ссылки, например, в плитках Tiles.
+
+Укажите значение `a`, когда нужно вывести ссылку, которая выглядит как кнопка.
+
+Во всех остальных случаях используйте дефолтное значение `button`.
+
+<Canvas of={BaseButtonStories.Tag} />
+
+### Type
+
+Устанавливает тип кнопки. Доступные значения: `button` и `submit`.
+
+Укажите тип `submit`, когда нужно вывести кнопку, отправляющую форму.
+
+Во всех остальных случаях используйте дефолтное значение `button`.
+
+### Href
+
+Устанавливает ссылку.
+Ссылки, ведущие на сторонний ресурс, открываются в новой вкладке.
+
+### Disabled
+
+Устанавливает `disabled` состояние кнопки.
+
+### Download
+
+При наличии атрибута `download` браузер не переходит по ссылке, а предлогает скачать документ, указанный в адресе ссылки.
+
+### Label
+
+Устанавливает надпись на кнопке.
+
+### Variant
+
+Устанавливает вариант кнопки. Может иметь один из семи значений: `accent`, `danger`, `ghost`, `primary`, `secondary`, `secondary-inverse`, `tertiary`.
+
+<Canvas of={BaseButtonStories.Variant} />
+
+### Size
+
+Устанавливает размер кнопки. Может иметь один из трех значений: `s`, `m` и `l`.
+
+<Canvas of={BaseButtonStories.Size} />
+
+### Icon
+
+Устанавливает иконку внутри кнопки.
+
+<Canvas of={BaseButtonStories.Icon} />
+
+### Loading
+
+Устанавливает спиннер.
+
+<Canvas of={BaseButtonStories.Loading} />
+
+### Reverse
+
+Меняет расположение иконки.
+
+<Canvas of={BaseButtonStories.Reverse} />

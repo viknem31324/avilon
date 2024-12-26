@@ -1,0 +1,369 @@
+<template>
+  <component
+    :is="isLink ? BaseRouteLink : tag"
+    :class="classes"
+    :href="isLink ? href : null"
+    :type="isButton ? type : null"
+    :disabled="isButton ? disabled : null"
+    :download="isLink && download ? download : null"
+  >
+    {{ label }}
+    <BaseIcon
+      v-if="icon"
+      :icon="icon"
+    />
+    <div v-if="loading" class="ds-button__loading-wrapper">
+      <BaseLoading is-loading />
+    </div>
+  </component>
+</template>
+
+<script lang="ts" setup>
+import { BUTTON_VARIANTS, type IBaseButton } from './button';
+import BaseRouteLink from '~/components/shared/BaseRouteLink.vue';
+
+const props = withDefaults(defineProps<IBaseButton>(), {
+  disabled: false,
+  download: false,
+  href: '',
+  icon: undefined,
+  label: '',
+  size: 'm',
+  tag: 'button',
+  type: 'button',
+  variant: BUTTON_VARIANTS.PRIMARY,
+  loading: false,
+  isReverse: false,
+});
+
+const classes = computed(() => ({
+  [`ds-button ds-button--variant-${props.variant} ds-button--size-${props.size}`]: true,
+  'ds-button--has-icon': props.icon,
+  'ds-button--loading': props.loading,
+  'ds-button--reverse': props.isReverse,
+}));
+
+const isButton = computed(() => (
+  props.tag === 'button'
+));
+
+const isLink = computed(() => (
+  props.tag === 'a'
+));
+</script>
+
+<style lang="scss">
+.ds-button {
+  $self: &;
+  cursor: pointer;
+
+  position: relative;
+
+  display: inline-block;
+
+  min-height: var(--ds-button-min-height);
+  padding: var(--ds-button-padding-y) var(--ds-button-padding-x);
+
+  font-weight: $font-weight-medium;
+  color: var(--ds-button-color);
+  text-align: center;
+  text-decoration: none;
+
+  background-color: var(--ds-button-bg);
+  border: 1px solid var(--ds-button-border-color);
+  outline: none;
+
+  @include transition('background-color, color, border-color');
+
+  @include media-min('tablet') {
+    @include has-hover {
+      &:hover {
+        color: var(--ds-button-hover-color);
+        text-decoration: none;
+        background-color: var(--ds-button-hover-bg);
+        border-color: var(--ds-button-hover-border-color);
+      }
+    }
+
+    &:active {
+      color: var(--ds-button-active-color);
+      background-color: var(--ds-button-active-bg);
+      border-color: var(--ds-button-active-border-color);
+    }
+  }
+
+  &:focus-visible {
+    box-shadow: 0 0 0 2px var(--ds-button-focus-color);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    user-select: none;
+
+    color: var(--ds-button-disabled-color);
+
+    background-color: var(--ds-button-disabled-bg);
+    border-color: var(--ds-button-disabled-border-color);
+  }
+
+  &--variant {
+    &-primary {
+      --ds-button-bg: #{color('black-80')};
+      --ds-button-color: #{color('total-white')};
+      --ds-button-border-color: transparent;
+      --ds-button-hover-bg: #{color('total-black')};
+      --ds-button-hover-color: #{color('total-white')};
+      --ds-button-hover-border-color: transparent;
+      --ds-button-active-bg: #{color('total-black')};
+      --ds-button-active-color: #{color('total-white')};
+      --ds-button-active-border-color: transparent;
+      --ds-button-focus-color: #{color('total-black')};
+      --ds-button-disabled-bg: #{color('black-20')};
+      --ds-button-disabled-color: #{color('total-white')};
+      --ds-button-disabled-border-color: transparent;
+    }
+
+    &-secondary {
+      --ds-button-bg: transparent;
+      --ds-button-border-color: #{color('total-black')};
+      --ds-button-color: #{color('total-black')};
+      --ds-button-hover-bg: #{color('total-black')};
+      --ds-button-hover-color: #{color('total-white')};
+      --ds-button-hover-border-color: #{color('total-black')};
+      --ds-button-active-bg: #{color('total-black')};
+      --ds-button-active-color: #{color('total-white')};
+      --ds-button-active-border-color: #{color('total-black')};
+      --ds-button-focus-color: #{color('total-black')};
+      --ds-button-disabled-bg: transparent;
+      --ds-button-disabled-color: #{color('black-40')};
+      --ds-button-disabled-border-color: #{color('black-20')};
+
+      &:focus-visible {
+        box-shadow: 0 0 0 1px var(--ds-button-focus-color);
+      }
+    }
+
+    &-secondary-inverse {
+      --ds-button-bg: #{color('total-white')};
+      --ds-button-border-color: #{color('total-white')};
+      --ds-button-color: #{color('total-black')};
+      --ds-button-hover-bg: #{color('black-5')};
+      --ds-button-hover-color: #{color('total-black')};
+      --ds-button-hover-border-color: #{color('black-5')};
+      --ds-button-active-bg: #{color('black-5')};
+      --ds-button-active-color: #{color('total-black')};
+      --ds-button-active-border-color: #{color('black-5')};
+      --ds-button-focus-color: #{color('black-20')};
+      --ds-button-disabled-bg: transparent;
+      --ds-button-disabled-color: #{color('black-40')};
+      --ds-button-disabled-border-color: #{color('black-20')};
+    }
+
+    &-accent {
+      --ds-button-bg: #{color('smart-green')};
+      --ds-button-color: #{color('total-white')};
+      --ds-button-border-color: transparent;
+      --ds-button-hover-bg: #{color('green-30')};
+      --ds-button-hover-color: #{color('total-white')};
+      --ds-button-hover-border-color: transparent;
+      --ds-button-active-bg: #{color('green-30')};
+      --ds-button-active-color: #{color('total-white')};
+      --ds-button-active-border-color: transparent;
+      --ds-button-focus-color: #{color('green-30')};
+      --ds-button-disabled-bg: #{color('black-20')};
+      --ds-button-disabled-color: #{color('total-white')};
+      --ds-button-disabled-border-color: transparent;
+    }
+
+    &-danger {
+      --ds-button-bg: #{color('active-red')};
+      --ds-button-border-color: transparent;
+      --ds-button-color: #{color('total-white')};
+      --ds-button-hover-bg: #{color('red-30')};
+      --ds-button-hover-color: #{color('total-white')};
+      --ds-button-hover-border-color: transparent;
+      --ds-button-active-bg: #{color('red-30')};
+      --ds-button-active-color: #{color('total-white')};
+      --ds-button-active-border-color: transparent;
+      --ds-button-focus-color: #{color('red-30')};
+      --ds-button-disabled-bg: #{color('black-20')};
+      --ds-button-disabled-color: #{color('total-white')};
+      --ds-button-disabled-border-color: transparent;
+    }
+
+    &-ghost {
+      --ds-button-bg: transparent;
+      --ds-button-border-color: transparent;
+      --ds-button-color: #{color('total-black')};
+      --ds-button-hover-bg: transparent;
+      --ds-button-hover-color: #{color('green-30')};
+      --ds-button-hover-border-color: transparent;
+      --ds-button-active-bg: transparent;
+      --ds-button-active-color: #{color('green-30')};
+      --ds-button-active-border-color: transparent;
+      --ds-button-focus-color: #{color('black-20')};
+      --ds-button-disabled-bg: transparent;
+      --ds-button-disabled-color: #{color('black-40')};
+      --ds-button-disabled-border-color: transparent;
+    }
+
+    &-tertiary {
+      --ds-button-padding-y: 0 !important;
+      --ds-button-padding-x: 0 !important;
+      --ds-button-bg: transparent;
+      --ds-button-border-color: transparent;
+      --ds-button-color: #{color('smart-green')};
+      --ds-button-hover-bg: transparent;
+      --ds-button-hover-color: #{color('green-30')};
+      --ds-button-hover-border-color: transparent;
+      --ds-button-active-bg: transparent;
+      --ds-button-active-color: #{color('smart-green')};
+      --ds-button-active-border-color: transparent;
+      --ds-button-focus-color: #{color('green-30')};
+      --ds-button-disabled-bg: transparent;
+      --ds-button-disabled-color: #{color('black-40')};
+      --ds-button-disabled-border-color: transparent;
+
+      &:focus-visible {
+        color: var(--ds-button-focus-color);
+        box-shadow: none;
+      }
+    }
+  }
+
+  &--size {
+    &-s {
+      --ds-button-min-height: 32px;
+      --ds-button-padding-y: 4px;
+      --ds-button-padding-x: 31px;
+
+      @include text-styles('s');
+
+      --ds-button-icon-size: 12px;
+
+      @include media-min('tablet') {
+        --ds-button-min-height: 40px;
+        --ds-button-padding-y: 7px;
+        --ds-button-padding-x: 31px;
+
+        @include text-styles('m');
+
+        --ds-button-icon-size: 16px;
+      }
+
+      @include media-min('desktop') {
+        --ds-button-min-height: 44px;
+        --ds-button-padding-y: 9px;
+        --ds-button-padding-x: 31px;
+      }
+    }
+
+    &-m {
+      --ds-button-min-height: 40px;
+      --ds-button-padding-y: 7px;
+      --ds-button-padding-x: 31px;
+
+      @include text-styles('m');
+
+      --ds-button-icon-size: 16px;
+
+      @include media-min('tablet') {
+        --ds-button-min-height: 44px;
+        --ds-button-padding-y: 9px;
+        --ds-button-padding-x: 31px;
+      }
+
+      @include media-min('desktop') {
+        --ds-button-min-height: 48px;
+        --ds-button-padding-y: 11px;
+        --ds-button-padding-x: 31px;
+      }
+    }
+
+    &-l {
+      --ds-button-min-height: 44px;
+      --ds-button-padding-y: 9px;
+      --ds-button-padding-x: 31px;
+
+      @include text-styles('m');
+
+      --ds-button-icon-size: 16px;
+
+      @include media-min('tablet') {
+        --ds-button-min-height: 48px;
+        --ds-button-padding-y: 11px;
+        --ds-button-padding-x: 31px;
+      }
+
+      @include media-min('desktop') {
+        --ds-button-min-height: 56px;
+        --ds-button-padding-y: 13px;
+        --ds-button-padding-x: 47px;
+
+        @include text-styles('l');
+
+        --ds-button-icon-size: 20px;
+      }
+    }
+  }
+
+  &--has-icon {
+    display: inline-flex;
+    gap: var(--ds-button-inner-gap);
+    align-items: center;
+    justify-content: center;
+
+    &#{$self}--size {
+      &-s {
+        --ds-button-inner-gap: 8px;
+        --ds-button-padding-x: 15px;
+
+        @include media-min('tablet') {
+          --ds-button-inner-gap: 12px;
+          --ds-button-padding-x: 19px;
+        }
+      }
+
+      &-m {
+        --ds-button-inner-gap: 12px;
+        --ds-button-padding-x: 19px;
+      }
+
+      &-l {
+        --ds-button-inner-gap: 12px;
+        --ds-button-padding-x: 19px;
+
+        @include media-min('desktop') {
+          --ds-button-inner-gap: 16px;
+          --ds-button-padding-x: 23px;
+        }
+      }
+    }
+  }
+
+  .ds-icon {
+    width: var(--ds-button-icon-size);
+    height: var(--ds-button-icon-size);
+  }
+
+  &__loading-wrapper {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--ds-button-bg);
+  }
+
+  &--loading {
+    pointer-events: none;
+  }
+
+  &--reverse {
+    flex-direction: row-reverse;
+  }
+}
+</style>
