@@ -14,9 +14,7 @@ export default {
 
   argTypes: {
     video: {
-      control: {
-        type: 'text',
-      },
+      control: 'text',
     },
   },
 

@@ -15,18 +15,12 @@ export default {
 
   argTypes: {
     level: {
-      control: {
-        type: 'select',
-      },
-
+      control: 'select',
       options: HEADING_LEVELS,
     },
 
     tag: {
-      control: {
-        type: 'select',
-      },
-
+      control: 'select',
       options: HEADING_TAGS,
     },
   },

@@ -19,9 +19,7 @@ export default {
 
   argTypes: {
     items: {
-      control: {
-        type: 'object',
-      },
+      control: 'object',
     },
   },
 

@@ -18,59 +18,40 @@ export default {
 
   argTypes: {
     currentPage: {
-      control: {
-        type: 'number',
-      },
+      control: 'number',
     },
 
     disabled: {
-      control: {
-        type: 'boolean',
-      },
+      control: 'boolean',
     },
 
     href: {
-      control: {
-        type: 'text',
-      },
+      control: 'text',
     },
 
     pageJumperTitle: {
-      control: {
-        type: 'text',
-      },
+      control: 'text',
     },
 
     perPage: {
-      control: {
-        type: 'number',
-      },
+      control: 'number',
     },
 
     perPageOptions: {
-      control: {
-        control: 'object',
-      },
+      control: 'object',
     },
 
     rowsSelectorTitle: {
-      control: {
-        type: 'text',
-      },
+      control: 'text',
     },
 
     size: {
-      control: {
-        type: 'select',
-      },
-
+      control: 'select',
       options: DEFAULT_SIZES,
     },
 
     totalPages: {
-      control: {
-        type: 'number',
-      },
+      control: 'number',
     },
   },
 

@@ -19,40 +19,27 @@ export default {
 
   argTypes: {
     id: {
-      control: {
-        type: 'text',
-      },
+      control: 'text',
     },
 
     addresses: {
-      control: {
-        type: 'object',
-      },
+      control: 'object',
     },
 
     apiKey: {
-      control: {
-        type: 'text',
-      },
+      control: 'text',
     },
 
     initialSettings: {
-      control: {
-        type: 'object',
-      },
+      control: 'object',
     },
 
     title: {
-      control: {
-        type: 'text',
-      },
+      control: 'text',
     },
 
     variant: {
-      control: {
-        type: 'select',
-      },
-
+      control: 'select',
       options: Object.keys(MAP_VARIANTS),
     },
   },

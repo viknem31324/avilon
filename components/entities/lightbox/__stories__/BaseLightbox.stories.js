@@ -26,9 +26,7 @@ export default {
 
   argTypes: {
     title: {
-      control: {
-        type: 'text',
-      },
+      control: 'text',
     },
 
     isOpen: {

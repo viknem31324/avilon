@@ -35,9 +35,7 @@ export default {
 
   argTypes: {
     id: {
-      control: {
-        type: 'text',
-      },
+      control: 'text',
     },
 
     multiple: {

@@ -14,9 +14,7 @@ export default {
 
   argTypes: {
     isLoading: {
-      control: {
-        type: 'boolean',
-      },
+      control: 'boolean',
     },
   },
 

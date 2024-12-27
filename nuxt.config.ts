@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
     'nuxt-delay-hydration',
+    'nuxt-swiper',
   ],
 
   components: [

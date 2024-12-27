@@ -16,32 +16,21 @@ export default {
 
   argTypes: {
     fluid: {
-      control: {
-        type: 'boolean',
-      },
+      control: 'boolean',
     },
 
     size: {
-      control: {
-        type: 'select',
-      },
-
+      control: 'select',
       options: DEFAULT_SIZES_WITH_EXTRA_SMALL,
     },
 
     tag: {
-      control: {
-        type: 'select',
-      },
-
+      control: 'select',
       options: TEXT_TAGS,
     },
 
     weight: {
-      control: {
-        type: 'select',
-      },
-
+      control: 'select',
       options: TEXT_WEIGHTS,
     },
   },

@@ -25,30 +25,20 @@ export default {
 
   argTypes: {
     label: {
-      control: {
-        type: 'text',
-      },
+      control: 'text',
     },
 
     href: {
-      control: {
-        type: 'text',
-      },
+      control: 'text',
     },
 
     size: {
-      control: {
-        type: 'select',
-      },
-
+      control: 'select',
       options: LINK_SIZES,
     },
 
     variant: {
-      control: {
-        type: 'select',
-      },
-
+      control: 'select',
       options: BASE_LINK_VARIANTS_VAL,
     },
   },

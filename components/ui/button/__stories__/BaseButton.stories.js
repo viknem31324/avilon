@@ -19,25 +19,17 @@ export default {
 
   argTypes: {
     tag: {
-      control: {
-        type: 'select',
-      },
-
+      control: 'select',
       options: BUTTON_TAGS,
     },
 
     type: {
-      control: {
-        type: 'select',
-      },
-
+      control: 'select',
       options: BUTTON_TYPES,
     },
 
     href: {
-      control: {
-        type: 'text',
-      },
+      control: 'text',
     },
 
     label: {
@@ -45,26 +37,17 @@ export default {
     },
 
     variant: {
-      control: {
-        type: 'select',
-      },
-
+      control: 'select',
       options: BUTTON_VARIANTS_VAL,
     },
 
     size: {
-      control: {
-        type: 'select',
-      },
-
+      control: 'select',
       options: DEFAULT_SIZES,
     },
 
     icon: {
-      control: {
-        type: 'select',
-      },
-
+      control: 'select',
       options: ICONS,
     },
 

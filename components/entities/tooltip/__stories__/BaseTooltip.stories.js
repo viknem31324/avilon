@@ -31,31 +31,21 @@ export default {
 
   argTypes: {
     position: {
-      control: {
-        type: 'select',
-      },
-
+      control: 'select',
       options: TOOLTIP_POSITION,
     },
 
     tooltipText: {
-      control: {
-        type: 'text',
-      },
+      control: 'text',
     },
 
     size: {
-      control: {
-        type: 'select',
-      },
-
+      control: 'select',
       options: DEFAULT_SIZES,
     },
 
     showButton: {
-      control: {
-        type: 'boolean',
-      },
+      control: 'boolean',
     },
   },
 

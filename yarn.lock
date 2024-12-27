@@ -1671,6 +1671,34 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@nuxt/kit@npm:^3.14.159":
+  version: 3.15.0
+  resolution: "@nuxt/kit@npm:3.15.0"
+  dependencies:
+    "@nuxt/schema": "npm:3.15.0"
+    c12: "npm:^2.0.1"
+    consola: "npm:^3.3.1"
+    defu: "npm:^6.1.4"
+    destr: "npm:^2.0.3"
+    globby: "npm:^14.0.2"
+    ignore: "npm:^7.0.0"
+    jiti: "npm:^2.4.2"
+    klona: "npm:^2.0.6"
+    knitwork: "npm:^1.2.0"
+    mlly: "npm:^1.7.3"
+    ohash: "npm:^1.1.4"
+    pathe: "npm:^1.1.2"
+    pkg-types: "npm:^1.2.1"
+    scule: "npm:^1.3.0"
+    semver: "npm:^7.6.3"
+    ufo: "npm:^1.5.4"
+    unctx: "npm:^2.4.1"
+    unimport: "npm:^3.14.5"
+    untyped: "npm:^1.5.2"
+  checksum: 10c0/0d2f8f5ee926a15d6cb500c7e6382c48ba64c11b2cea89ea4f5e8a3bf5aaf3b67dc77afb5a532bdf2c93368178d6bebb73ba0306f9001bec50365bc18657dced
+  languageName: node
+  linkType: hard
+
 "@nuxt/schema@npm:3.14.1592, @nuxt/schema@npm:^3.13.2, @nuxt/schema@npm:^3.14.1592":
   version: 3.14.1592
   resolution: "@nuxt/schema@npm:3.14.1592"
@@ -1689,6 +1717,27 @@ __metadata:
     unimport: "npm:^3.13.2"
     untyped: "npm:^1.5.1"
   checksum: 10c0/d10aff52958f72193c88554ab84d1b0dea1df94535781b1a2c8b57fccceb28af555ff8ae198da25b76d58cb3359615b5d0c87e12583b63132330e8d1a8d8899d
+  languageName: node
+  linkType: hard
+
+"@nuxt/schema@npm:3.15.0":
+  version: 3.15.0
+  resolution: "@nuxt/schema@npm:3.15.0"
+  dependencies:
+    c12: "npm:^2.0.1"
+    compatx: "npm:^0.1.8"
+    consola: "npm:^3.3.1"
+    defu: "npm:^6.1.4"
+    hookable: "npm:^5.5.3"
+    pathe: "npm:^1.1.2"
+    pkg-types: "npm:^1.2.1"
+    scule: "npm:^1.3.0"
+    std-env: "npm:^3.8.0"
+    ufo: "npm:^1.5.4"
+    uncrypto: "npm:^0.1.3"
+    unimport: "npm:^3.14.5"
+    untyped: "npm:^1.5.2"
+  checksum: 10c0/10fa521eb9eb32cae66d71fba21831780b1080bf55a4bb570bb477ea62f8a398ec4ec18e93ca70555f3787f779a4656c9b755d1bcc0a65a3046e487fa0f7b545
   languageName: node
   linkType: hard
 
@@ -4794,6 +4843,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"consola@npm:^3.3.1":
+  version: 3.3.3
+  resolution: "consola@npm:3.3.3"
+  checksum: 10c0/9f6f457f3d83fbb339b9f2ff4f5c2776a1a05fad7ce3939d8dc41765431d5f52401b5a632f4b10ed9145b2aadec1e84cea78c30178479d3a2fd4880894592fa5
+  languageName: node
+  linkType: hard
+
 "constantinople@npm:^4.0.1":
   version: 4.0.1
   resolution: "constantinople@npm:4.0.1"
@@ -7066,6 +7122,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ignore@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "ignore@npm:7.0.0"
+  checksum: 10c0/4bb6b6f7ab4cc79c14ca17b6f584e88a547c133b9b07de677fd6c2e98767379ae4314a116569204dd9b2cb252d5d8338ff178f134e7384a43fe627c43c4d4875
+  languageName: node
+  linkType: hard
+
 "image-meta@npm:^0.2.1":
   version: 0.2.1
   resolution: "image-meta@npm:0.2.1"
@@ -7509,7 +7572,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jiti@npm:^2.1.2, jiti@npm:^2.3.0, jiti@npm:^2.4.0, jiti@npm:^2.4.1":
+"jiti@npm:^2.1.2, jiti@npm:^2.3.0, jiti@npm:^2.4.0, jiti@npm:^2.4.1, jiti@npm:^2.4.2":
   version: 2.4.2
   resolution: "jiti@npm:2.4.2"
   bin:
@@ -8724,6 +8787,7 @@ __metadata:
     eslint-plugin-storybook: "npm:^0.6.15"
     nuxt: "npm:^3.14.1592"
     nuxt-delay-hydration: "npm:^1.3.8"
+    nuxt-swiper: "npm:2.0.0"
     postcss-html: "npm:^1.7.0"
     sass: "npm:^1.82.0"
     storybook: "npm:^8.1.9"
@@ -8784,6 +8848,16 @@ __metadata:
     site-config-stack: "npm:3.0.6"
     ufo: "npm:^1.5.4"
   checksum: 10c0/2ffa322180a7e26802979efb8e4c64d9e12f87302d044f352f23cd44eed706fa0b7d296fcc215aefdba798a29430c10662e9a6d06d8c169a9ae5f4e6626c7066
+  languageName: node
+  linkType: hard
+
+"nuxt-swiper@npm:2.0.0":
+  version: 2.0.0
+  resolution: "nuxt-swiper@npm:2.0.0"
+  dependencies:
+    "@nuxt/kit": "npm:^3.14.159"
+    swiper: "npm:^11.1.14"
+  checksum: 10c0/26827ccc01a52f285837b594ffd9ff924eed62425c1c6f98b0badfe0af832597653f7ca32e9ff40138bd242fbc3ecc7adbad097ffe744c8a131f24cdbcff1b40
   languageName: node
   linkType: hard
 
@@ -11276,6 +11350,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"swiper@npm:^11.1.14":
+  version: 11.1.15
+  resolution: "swiper@npm:11.1.15"
+  checksum: 10c0/3faabc5b33c0663513e8e41c4ef7920d4c9a1ca6b988848f2e51e1db0d01471a1bae22fce3177b9d3ab2c128fc6df23074415ae7957bd0f8542fd7387fa5263d
+  languageName: node
+  linkType: hard
+
 "symbol-observable@npm:^4.0.0":
   version: 4.0.0
   resolution: "symbol-observable@npm:4.0.0"
@@ -11666,7 +11747,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unctx@npm:^2.3.1":
+"unctx@npm:^2.3.1, unctx@npm:^2.4.1":
   version: 2.4.1
   resolution: "unctx@npm:2.4.1"
   dependencies:
@@ -11943,7 +12024,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"untyped@npm:^1.5.1":
+"untyped@npm:^1.5.1, untyped@npm:^1.5.2":
   version: 1.5.2
   resolution: "untyped@npm:1.5.2"
   dependencies:

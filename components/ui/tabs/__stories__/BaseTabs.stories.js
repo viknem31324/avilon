@@ -32,10 +32,7 @@ export default {
     },
 
     size: {
-      control: {
-        type: 'select',
-      },
-
+      control: 'select',
       options: DEFAULT_SIZES_WITH_EMPTY,
     },
   },
