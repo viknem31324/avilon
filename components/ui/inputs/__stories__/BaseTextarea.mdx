@@ -1,0 +1,74 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as BaseTextareaStories from './BaseTextarea.stories';
+
+<Meta of={BaseTextareaStories} />
+
+# Textarea
+
+Textarea — это элемент интерфейса формы, который позволяет обеспечить взаимодействие с пользователем.
+
+<Canvas of={BaseTextareaStories.Overview} />
+
+<Controls story="Overview" />
+
+## Применение
+
+Компонент `BaseTextarea` необходим каждый раз, когда пользователь вводит большое количество текста в пользовательский интерфейс. Самое частое местоположение компонента `BaseTextarea` — формы ввода.
+
+## Варианты использования
+
+### Общая информация
+
+`BaseTextarea`, как и обычный `textarea`, может принимать такие атрибуты как:
+
+<ul>
+  <li><code>name</code> — для указания имени поля. Является обязательным для заполнения;</li>
+  <li><code>placeholder</code> — для указания подсказки внутри поля формы.</li>
+</ul>
+
+### Sizes
+
+Устанавливает размер.
+
+Textarea может иметь один из трех размеров: `s`, `m` и `l`. По умолчанию `m`. Размеры адаптивны.
+
+<Canvas of={BaseTextareaStories.Sizes} />
+
+### States
+
+`BaseTextarea` может иметь одно из двух состояний: `default` и `disabled`. По умолчанию `default`.
+
+<Canvas of={BaseTextareaStories.States} />
+
+### Required
+
+<Canvas of={BaseTextareaStories.Required} />
+
+
+### Max length
+
+Устанавливает ограничение на количество введеных сиворов.
+
+<Canvas of={BaseTextareaStories.MaxLength} />
+
+
+## Rules
+
+Компонент `BaseTextarea` принимает пропс `rules` для валидации входных данных.
+
+Валидация полей может быть установлена одним из двух способов:
+
+1. C помощью библиотеки [yup](https://www.npmjs.com/package/yup);
+2. С помощью кастомных функций валидации.
+
+Примеры валидаций можно увидеть нажав кнопку `Show code` в правом нижнем углу истории.
+
+<Canvas of={BaseTextareaStories.Rules} />
+
+## BaseTextarea
+
+Компонент `BaseTextarea` поддерживает состояние ошибки.
+
+Текст ошибки можно задать во время описания правил валидации передаваемых в пропс `rules` или через `validationSchema`.
+
+<Canvas of={BaseTextareaStories.Error} />

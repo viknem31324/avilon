@@ -27,16 +27,19 @@ export type Type = (typeof BUTTON_TYPES)[number];
 
 export type Variant = (typeof BUTTON_VARIANTS_VAL)[number];
 
-export interface IBaseButton {
+export interface IBaseButtonLightweight {
+  icon?: Icon;
+  label: string;
+  size?: SizeDefault;
+  type?: Type;
+  variant?: Variant;
+}
+
+export interface IBaseButton extends IBaseButtonLightweight {
   disabled?: boolean;
   download?: boolean;
   href?: string;
-  icon?: Icon;
   isReverse?: boolean;
-  label?: string;
   loading?: boolean;
-  size?: SizeDefault;
   tag?: Tag;
-  type?: Type;
-  variant?: Variant;
 }

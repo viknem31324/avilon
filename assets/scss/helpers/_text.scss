@@ -127,6 +127,21 @@ $global-text-map: (
   @include text-styles-from-map($text_map, $take_responsive);
 }
 
+@mixin text-styles-variable($prefix, $size_name) {
+  $text_map: map.get($global-text-map, $size_name);
+
+  $font-size: map.get($text_map, 'font-size');
+  $line-height: map.get($text_map, 'line-height');
+
+  @if $font-size {
+    --#{$prefix}-font-size: #{$font-size};
+  }
+
+  @if $line-height {
+    --#{$prefix}-line-height: #{$line-height};
+  }
+}
+
 @mixin text-styles-from-map($_text-map, $take_responsive) {
   $_font-size: map.get($_text-map, 'font-size');
   $_line-height: map.get($_text-map, 'line-height');

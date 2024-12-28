@@ -1,0 +1,79 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as BaseInputStories from './BaseInput.stories';
+
+<Meta of={BaseInputStories} />
+
+# Input
+
+Input — это элемент интерфейса формы, который позволяет обеспечить взаимодействие с пользователем.
+
+<Canvas of={BaseInputStories.Overview} />
+
+<Controls story="Overview" />
+
+## Применение
+
+Компонент `BaseInput` необходим каждый раз, когда пользователь вводит данные в пользовательский интерфейс. Самое частое местоположение компонента `BaseInput` — формы ввода
+
+## Варианты использования
+
+### Общая информация
+
+`BaseInput`, как и обычный `input`, может принимать такие атрибуты как:
+
+<ul>
+  <li><code>type</code> — для указания типа поля. Значение по умолчанию text;</li>
+  <li><code>name</code> — для указания имени поля. Является обязательным для заполнения;</li>
+  <li><code>placeholder</code> — для указания подсказки внутри поля формы.</li>
+</ul>
+
+### Sizes
+
+Устанавливает размер.
+
+Input может иметь один из трех размеров: `s`, `m` и `l`. По умолчанию `m`. Размеры адаптивны.
+
+<Canvas of={BaseInputStories.Sizes} />
+
+### States
+
+Input может иметь одно из двух состояний: `default` и `disabled`. По умолчанию `default`.
+
+<Canvas of={BaseInputStories.States} />
+
+### Required
+
+<Canvas of={BaseInputStories.Required} />
+
+### Mask
+
+Устанавливает маску. Символы, из которых сотавляется маска: `#` - цифры, `X` - цифры и буквы, `S` - буквы, `A` - буквы в верхнем регистре, `a` - буквы в нижнем регистре.
+
+<Canvas of={BaseInputStories.Mask} />
+
+### Max length
+
+Устанавливает ограничение на количество введеных сиворов.
+
+<Canvas of={BaseInputStories.MaxLength} />
+
+## Rules
+
+Компонент `BaseInput` принимает пропс `rules` для валидации входных данных.
+
+Валидация полей может быть установлена одним из двух способов:
+
+1. C помощью библиотеки [yup](https://www.npmjs.com/package/yup);
+2. С помощью кастомных функций валидации.
+
+Примеры валидаций можно увидеть нажав кнопку `Show code` в правом нижнем углу истории.
+
+<Canvas of={BaseInputStories.Rules} />
+
+## Error
+
+Компонент `BaseInput` поддерживает состояние ошибки.
+
+Текст ошибки можно задать во время описания правил валидации передаваемых в пропс `rules` или через `validationSchema`.
+
+<Canvas of={BaseInputStories.Error} />

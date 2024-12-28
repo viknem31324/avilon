@@ -1,0 +1,44 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as BaseRadioButtonStories from './BaseRadioButton.stories';
+
+<Meta of={BaseRadioButtonStories} />
+
+# Radiobutton
+
+Radiobutton позволяет пользователям выбирать один элемент из набора опций.
+
+<Canvas of={BaseRadioButtonStories.Overview} />
+
+<Controls story="Overview" />
+
+### Default
+
+<Canvas of={BaseRadioButtonStories.Default} />
+
+### Disabled
+
+<Canvas of={BaseRadioButtonStories.Disabled} />
+
+### Sizes
+
+Устанавливает размер.
+
+Radiobutton может иметь один из трех размеров: `s`, `m` и `l`.
+
+<Canvas of={BaseRadioButtonStories.Sizes} />
+
+### Label
+
+Устанавливает подпись.
+
+Radiobutton может использоваться с подписью и без нее.
+
+<Canvas of={BaseRadioButtonStories.Label} />
+
+## Error
+
+Компонент `BaseRadioGroup` поддерживает состояние ошибки.
+
+Текст ошибки можно задать во время описания правил валидации передаваемых в `validationSchema`.
+
+<Canvas of={BaseRadioButtonStories.Error} />

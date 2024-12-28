@@ -1,0 +1,75 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as BaseCalendarStories from './BaseCalendar.stories';
+
+<Meta of={BaseCalendarStories} />
+
+# Calendar
+
+<Canvas of={BaseCalendarStories.Overview} />
+
+<Controls story="Overview" />
+
+## Применение
+
+Классический механизм работы календаря с выбором конкретного месяца, конкретной даты и периода между двумя числами в одном месяце или в разных соседних месяцах.
+
+## Format Date
+
+Отображение даты регулирует пропс `formatDate`. Для настройки формата даты необходимо передать строку вида: `DD.MM.YYYY`.
+
+<Canvas of={BaseCalendarStories.FormatDate} />
+
+### Sizes
+
+Calendar может иметь один из трех размеров инпута: `s`, `m` и `l`. По умолчанию `m`. Размеры инпута адаптивны. Размер календаря не изменяется.
+
+<Canvas of={BaseCalendarStories.Sizes} />
+
+### States
+
+Calendar может иметь одно из двух состояний: `default` и `disabled`. По умолчанию `default`.
+
+<Canvas of={BaseCalendarStories.States} />
+
+### Required
+
+<Canvas of={BaseCalendarStories.Required} />
+
+### Range
+
+Calendar может использоваться как для выбора конкретной даты, так и для выбора интервала дат.
+
+<Canvas of={BaseCalendarStories.Range} />
+
+### Disabled date
+
+Компонент `BaseCalendar` принимает пропсы `fromDate` и `toDate` для разрешения выбора определенных дат.
+
+<Canvas of={BaseCalendarStories.DisabledDate} />
+
+## Rules
+
+Компонент `BaseCalendar` принимает пропс `rules` для валидации входных данных.
+
+Валидация полей может быть установлена одним из двух способов:
+
+1. C помощью библиотеки [yup](https://www.npmjs.com/package/yup);
+2. С помощью кастомных функций валидации.
+
+Примеры валидаций можно увидеть нажав кнопку `Show code` в правом нижнем углу истории.
+
+<Canvas of={BaseCalendarStories.Rules} />
+
+## Error
+
+Компонент `BaseCalendar` поддерживает состояние ошибки.
+
+Текст ошибки можно задать во время описания правил валидации передаваемых в пропс `rules` или через `validationSchema`.
+
+<Canvas of={BaseCalendarStories.Error} />
+
+### Type
+
+Calendar может быть одним из 3 типов: `date` - выбор дня, месяца и года, `month` - выбор месяца и года и `year` - выбор года. По умолчанию `date`.
+
+<Canvas of={BaseCalendarStories.Type} />

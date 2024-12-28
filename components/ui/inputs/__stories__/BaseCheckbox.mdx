@@ -1,0 +1,57 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as BaseCheckboxStories from './BaseCheckbox.stories';
+
+<Meta of={BaseCheckboxStories} />
+
+# Checkbox
+
+Checkbox позволяет пользователям выбирать один или несколько элементов из набора опций.
+
+<Canvas of={BaseCheckboxStories.Overview} />
+
+<Controls story="Overview" />
+
+### Default
+
+<Canvas of={BaseCheckboxStories.Default} />
+
+### Disabled
+
+<Canvas of={BaseCheckboxStories.Disabled} />
+
+### Sizes
+
+Устанавливает размер.
+
+Checkbox может иметь один из трех размеров: `s`, `m` и `l`.
+
+<Canvas of={BaseCheckboxStories.Sizes} />
+
+### Label
+
+Устанавливает подпись.
+
+Checkbox может использоваться с подписью и без нее.
+
+<Canvas of={BaseCheckboxStories.Label} />
+
+## Rules
+
+Компонент `BaseCheckbox` принимает пропс `rules` для валидации входных данных.
+
+Валидация полей может быть установлена одним из двух способов:
+
+1. C помощью библиотеки [yup](https://www.npmjs.com/package/yup);
+2. С помощью кастомных функций валидации.
+
+Примеры валидаций можно увидеть нажав кнопку `Show code` в правом нижнем углу истории.
+
+<Canvas of={BaseCheckboxStories.Rules} />
+
+## Error
+
+Компонент `BaseCheckbox` поддерживает состояние ошибки.
+
+Текст ошибки можно задать во время описания правил валидации передаваемых в пропс `rules` или через `validationSchema`.
+
+<Canvas  of={BaseCheckboxStories.Error} />

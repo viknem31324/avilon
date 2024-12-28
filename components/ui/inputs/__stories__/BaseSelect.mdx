@@ -1,0 +1,82 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as BaseSelectStories from './BaseSelect.stories';
+
+<Meta of={BaseSelectStories} />
+
+# Select
+
+Select — это выпадающий список опций.
+
+<Canvas of={BaseSelectStories.Overview} />
+
+<Controls story="Overview" />
+
+### Items
+
+Задает опции выпадающего списка.
+
+Каждая опция должна иметь свойства `title` и `id`, а также может иметь свойство `description`, задающее краткое описание.
+
+<Canvas of={BaseSelectStories.Items} />
+
+### Label
+
+Устанавливает подпись.
+
+<Canvas of={BaseSelectStories.Label} />
+
+### Sizes
+
+Устанавливает размер.
+
+Select может иметь один из трех размеров: `s`, `m` и `l`.
+
+<Canvas of={BaseSelectStories.Sizes} />
+
+### Disabled
+
+Select может иметь состояние `disabled`.
+
+<Canvas of={BaseSelectStories.Disabled} />
+
+## Multiselect
+
+Компонент `BaseSelect` поддерживает множественный выбор. Чтобы разрешить множественный выбор, передайте пропс `multiselect`.
+
+<Canvas of={BaseSelectStories.Multiselect} />
+
+## Rules
+
+Компонент `BaseSelect` принимает пропс `rules` для валидации входных данных.
+
+Валидация полей может быть установлена одним из двух способов:
+
+1. C помощью библиотеки [yup](https://www.npmjs.com/package/yup);
+2. С помощью кастомных функций валидации.
+
+Примеры валидаций можно увидеть нажав кнопку `Show code` в правом нижнем углу истории.
+
+<Canvas of={BaseSelectStories.Rules} />
+
+## Error
+
+Компонент `BaseSelect` поддерживает состояние ошибки.
+
+Текст ошибки можно задать во время описания правил валидации передаваемых в пропс `rules` или через `validationSchema`.
+
+<Canvas of={BaseSelectStories.Error} />
+
+## Outer search
+
+Компонент `BaseSelect` поддерживает поиск элементов из внешнего API.
+
+Чтобы включить внешний поиск, нужно установить пропс `outerSearch` в значение `true`.
+После этого компонент, при вводе поискового запроса, начнет эмитить событие `searchChange` с аргументом, содержащим значение поискового запроса.
+В родительском компоненте это событие можно отловить, сделать запрос к внешнему API, получить ответ на поисковый запрос и использовать его для формирования нового значения пропса `items`.
+Для установки пустого значения селекта, нужно передать в пропс `modelValue` значение `null`.
+
+<Canvas of={BaseSelectStories.OuterSearch} />
+
+## Hide button
+
+Компонент `BaseSelect` принимает пропс `hideButton` который предназначен для скрытия кнопки развёртывания списка.
