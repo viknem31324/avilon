@@ -4,7 +4,7 @@ import type { SizeDefault } from '~/assets/types/sizes';
 export interface IBaseTextarea extends IBaseFormPartialsProps {
   errorText?: string;
   size?: SizeDefault;
-  maxLength: number;
+  maxLength?: number;
 }
 
 export type BaseTextareaEmits = {
