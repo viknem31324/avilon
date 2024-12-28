@@ -1,4 +1,6 @@
+import { action } from '@storybook/addon-actions';
 import BaseSlider from '../BaseSlider.vue';
+import { ITEMS } from './mocks/items';
 
 const Template = args => ({
   components: { BaseSlider },
@@ -7,8 +9,22 @@ const Template = args => ({
       args,
     };
   },
+  methods: {
+    changeSlide: action('changeActiveSlide'),
+    nextSlide: action('nextSlide'),
+    prevSlide: action('prevSlide'),
+  },
   template: `
-    <BaseSlider v-bind="args"></BaseSlider>
+    <BaseSlider
+      v-bind="args"
+      @changeSlide="changeActiveSlide"
+      @nextSlide="nextSlide"
+      @prevSlide="prevSlide"
+    >
+      <template #slide="slide">
+        <div style="margin: 0 auto; padding: 60px 0; text-align: center;">Slide {{ slide.name }}</div>
+      </template>
+    </BaseSlider>
   `,
 });
 
@@ -25,11 +41,11 @@ export default {
       control: 'object',
     },
 
-    hideArrows: {
+    navigation: {
       control: 'boolean',
     },
 
-    hidePagination: {
+    pagination: {
       control: 'boolean',
     },
 
@@ -40,20 +56,25 @@ export default {
     slidesPerView: {
       control: 'number',
     },
-
-    step: {
-      control: 'number',
-    },
   },
 
   args: {
     autoplay: 0,
-    breakpoints: undefined,
-    hideArrows: false,
-    hidePagination: false,
-    slides: [],
+    breakpoints: {
+      540: {
+        slidesPerView: 2,
+      },
+      768: {
+        slidesPerView: 3,
+      },
+      1024: {
+        slidesPerView: 4,
+      },
+    },
+    navigation: true,
+    pagination: true,
+    slides: ITEMS,
     slidesPerView: 1,
-    step: 1,
   },
 };
 
@@ -69,7 +90,7 @@ export const Overview = {
 
   decorators: [
     () => ({
-      template: `<div style="height: 100vh;">
+      template: `<div>
           <story />
         </div>`,
     }),

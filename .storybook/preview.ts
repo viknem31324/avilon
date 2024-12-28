@@ -21,6 +21,18 @@ setup((app) => {
   });
 });
 
+setup((app) => {
+  app.component('ClientOnly', {
+    props: {
+      to: {
+        type: String,
+        required: true,
+      },
+    },
+    template: '<div><slot></slot></div>',
+  });
+});
+
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: '^on[A-Z].*' },

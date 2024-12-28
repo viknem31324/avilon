@@ -32,7 +32,11 @@ const config: StorybookConfig = {
       plugins: [
         vue(),
         AutoImport({
-          imports: ['vue', 'vue-router'],
+          imports: [
+            'vue',
+            'vue-router',
+            'vee-validate',
+          ],
           vueTemplate: true,
         }),
         Components({
