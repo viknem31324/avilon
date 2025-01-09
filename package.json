@@ -11,7 +11,7 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint . && npx stylelint './**/*.{css,scss,vue}'",
     "lintfix": "eslint . --fix && npx stylelint './**/*.{css,scss,vue}' --fix",
-    "prepare": "husky",
+    "prepare": "git config core.hooksPath .git-hooks || echo 'Not in a git repo'",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },

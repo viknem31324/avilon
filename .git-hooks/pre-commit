@@ -2,4 +2,4 @@
 . "$(dirname "$0")/common.sh"
 
 yarn lintfix
-node .husky/check-branch-name.js
+node .git-hooks/check-branch-name.js
