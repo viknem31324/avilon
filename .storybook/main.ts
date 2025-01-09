@@ -52,7 +52,7 @@ const config: StorybookConfig = {
       css: {
         preprocessorOptions: {
           scss: {
-            additionalData: '@use "./assets/scss/helpers/index.scss" as *;',
+            additionalData: '@use "~/assets/scss/helpers/index.scss" as *;',
           },
         },
       },

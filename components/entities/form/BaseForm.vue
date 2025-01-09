@@ -81,6 +81,9 @@ const styles = computed(() => ({
 .ds-form {
   $self: &;
 
+  @include text-styles-variable("ds-form-title", "xl");
+  @include text-styles-variable("ds-form-description", "s");
+
   --ds-form-padding-y: 48px;
   --ds-form-padding-x: 12px;
   --ds-form-bg: #{color("black-5")};
@@ -140,9 +143,6 @@ const styles = computed(() => ({
     gap: 16px;
     margin-bottom: 40px;
   }
-
-  @include text-styles-variable("ds-form-title", "xl");
-  @include text-styles-variable("ds-form-description", "s");
 
   @include media-min("tablet") {
     --ds-form-padding-y: 64px;

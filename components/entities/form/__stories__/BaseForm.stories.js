@@ -2,12 +2,30 @@ import { action } from '@storybook/addon-actions';
 import * as yup from 'yup';
 import BaseForm from '../BaseForm.vue';
 import { FORM_POSITION, FORM_POSITION_VAL } from '../form';
-import { RADIO_GROUP_ITEMS, SELECT_ITEMS } from './mocks/items';
 import BaseCheckbox from '~/components/ui/inputs/BaseCheckbox.vue';
 import BaseRadioGroup from '~/components/ui/inputs/BaseRadioGroup.vue';
 import BaseSelect from '~/components/ui/inputs/BaseSelect.vue';
 import BaseInput from '~/components/ui/inputs/BaseInput.vue';
 import BaseTextarea from '~/components/ui/inputs/BaseTextarea.vue';
+
+export const RADIO_GROUP_ITEMS = [
+  {
+    label: 'Муж',
+    value: 'Муж',
+  },
+  {
+    label: 'Жен',
+    value: 'Жен',
+  },
+];
+
+export const SELECT_ITEMS = [
+  { title: 'Input value', id: '1', description: 'Description' },
+  { title: 'Menu item 2', id: '2' },
+  { title: 'Bitte wahle', id: '3' },
+  { title: 'Menu item 4', id: '4' },
+  { title: 'Menu item 5', id: '5', $isDisabled: true },
+];
 
 const Template = args => ({
   components: {

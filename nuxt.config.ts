@@ -64,6 +64,12 @@ export default defineNuxtConfig({
 
   css: ['@/assets/scss/index.scss'],
 
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag: string) => tag.startsWith('swiper-'),
+    },
+  },
+
   // vpn https://nuxtseo.com/sitemap/getting-started/installation
   site: {
     url: process.env.VITE_URL || '',

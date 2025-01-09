@@ -59,11 +59,11 @@
 </template>
 
 <script lang="ts" setup>
-import useAnchorScroll from './helpers/useAnchorScroll.js';
+import useAnchorScroll from './helpers/useAnchorScroll';
 
 import type { IModuleAnchorMenu, IModuleAnchorMenuItem } from './anchorMenu';
-import { Breakpoints } from '~/assets/constants/breakpoints.js';
-import useSubscribeEvent from '~/hooks/useSubscribeEvent.js';
+import { Breakpoints } from '~/assets/constants/breakpoints';
+import useSubscribeEvent from '~/hooks/useSubscribeEvent';
 
 const GAP_TOP_ACTIVE_ELEMENT = 50;
 

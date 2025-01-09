@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { IBaseLoading } from './loading.js';
+import type { IBaseLoading } from './loading';
 
 withDefaults(defineProps<IBaseLoading>(), {
   hasOverlay: true,

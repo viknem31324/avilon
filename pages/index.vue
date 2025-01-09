@@ -3,6 +3,5 @@
 <template>
   <AppContainer>
     main
-    <BaseSlider />
   </AppContainer>
 </template>

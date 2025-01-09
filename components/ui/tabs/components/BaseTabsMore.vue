@@ -46,7 +46,7 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue';
-import type { IBaseTabItem, IBaseTabsMore, BaseTabsMoreEmits } from '../tabs.js';
+import type { IBaseTabItem, IBaseTabsMore, BaseTabsMoreEmits } from '../tabs';
 
 const props = withDefaults(defineProps<IBaseTabsMore>(), {
   items: () => [],
