@@ -1,9 +1,9 @@
-@use "sass:map";
-@use "sass:math";
-@use "sass:meta";
-@use "sass:string";
-@use "responsive";
-@use "functions";
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:string';
+@use 'responsive';
+@use 'functions';
 
 @mixin media-min($media) {
   @if not map.has-key(responsive.$mq-breakpoints, $media) {
@@ -15,20 +15,20 @@
   }
 }
 
-@mixin add_font_woff($font_name, $link, $weight: 'normal', $style: 'normal') {
+@mixin add-font-woff($font_name, $link, $weight: 'normal', $style: 'normal') {
   @font-face {
-    font-display: swap;
     font-family: $font_name;
-    font-style: #{$style};
     font-weight: #{$weight};
+    font-style: #{$style};
+    font-display: swap;
     src: url($link + '.woff2') format('woff2');
   }
 }
 
 @mixin transition($property, $duration: 0.15s, $timingFunction: ease-out) {
-  transition-property: #{$property};
-  transition-duration: $duration;
   transition-timing-function: $timingFunction;
+  transition-duration: $duration;
+  transition-property: #{$property};
 }
 
 @mixin has-hover() {
@@ -44,18 +44,20 @@
   }
 
   &::-webkit-scrollbar-thumb {
+    border-radius: 16px;
     background-color: functions.color('black-40');
-    border-radius: 16px 16px 16px 16px;
   }
 }
 
 @function mq-px2em($px, $base-font-size: responsive.$mq-base-font-size) {
   @if math.is-unitless($px) {
-      @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels.";
+      @warn 'Assuming #{$px} to be in pixels, attempting to convert it into pixels.';
+
       @return mq-px2em($px * 1px, $base-font-size);
   } @else if math.unit($px) == em {
       @return $px;
   }
+
   @return calc($px / $base-font-size) * 1em;
 }
 
@@ -63,7 +65,7 @@
   @if map.has-key($breakpoints, $name) {
       @return map.get($breakpoints, $name);
   } @else {
-      @warn "Breakpoint #{$name} wasn't found in $breakpoints.";
+      @warn 'Breakpoint #{$name} wasn\'t found in $breakpoints.';
   }
 }
 
@@ -109,14 +111,14 @@
       ) {
           @content;
       }
-  }
-
-  @else {
+  } @else {
       @if $min-width != 0 { $media-query: '#{$media-query} and (min-width: #{$min-width})'; }
+
       @if $max-width != 0 { $media-query: '#{$media-query} and (max-width: #{$max-width})'; }
+
       @if $and            { $media-query: '#{$media-query} and #{$and}'; }
 
-      @if ($media-type == 'all' and $media-query != '') {
+      @if $media-type == 'all' and $media-query != '' {
           $media-type: '';
           $media-query: string.slice(string.unquote($media-query), 6);
       }

@@ -1,13 +1,11 @@
-@use "sass:map";
-@use "responsive";
-@use "mixins" as *;
+@use 'sass:map';
+@use 'responsive';
+@use 'mixins' as *;
 
-$font-family-base: Inter, sans-serif;
-
+$font-family-base: inter, sans-serif;
 $font-weight-light: 300;
 $font-weight-medium: 500;
 $font-weight-bold: 700;
-
 $global-text-map: (
   'h1': (
     font-size: 28px,
@@ -122,16 +120,15 @@ $global-text-map: (
 );
 
 @mixin text-styles($size_name, $take_responsive: true) {
-  $text_map: map.get($global-text-map, $size_name);
+  $text-map: map.get($global-text-map, $size_name);
 
-  @include text-styles-from-map($text_map, $take_responsive);
+  @include text-styles-from-map($text-map, $take_responsive);
 }
 
 @mixin text-styles-variable($prefix, $size_name) {
-  $text_map: map.get($global-text-map, $size_name);
-
-  $font-size: map.get($text_map, 'font-size');
-  $line-height: map.get($text_map, 'line-height');
+  $text-map: map.get($global-text-map, $size_name);
+  $font-size: map.get($text-map, 'font-size');
+  $line-height: map.get($text-map, 'line-height');
 
   @if $font-size {
     --#{$prefix}-font-size: #{$font-size};
@@ -143,30 +140,31 @@ $global-text-map: (
 }
 
 @mixin text-styles-from-map($_text-map, $take_responsive) {
-  $_font-size: map.get($_text-map, 'font-size');
-  $_line-height: map.get($_text-map, 'line-height');
+  $font-size: map.get($_text-map, 'font-size');
+  $line-height: map.get($_text-map, 'line-height');
 
-  @if $_font-size {
-    font-size: $_font-size;
+  @if $font-size {
+    font-size: $font-size;
   }
 
-  @if $_line-height {
-    line-height: $_line-height;
+  @if $line-height {
+    line-height: $line-height;
   }
 
   @each $property, $value in $_text-map {
-    @if ($property != 'responsive' and $property != 'font-size' and $property != 'line-height') {
+    @if $property != 'responsive' and $property != 'font-size' and $property != 'line-height' {
       #{$property}: $value;
     }
   }
 
   $medias: map.get($_text-map, 'responsive');
-  @if ($medias and $take_responsive) {
 
-    @each $media, $resp_text_map in $medias {
+  @if $medias and $take_responsive {
+
+    @each $media, $resp_text-map in $medias {
 
       @include mq($from: $media) {
-        @include text-styles-from-map($resp_text_map, $take_responsive: false);
+        @include text-styles-from-map($resp_text-map, $take_responsive: false);
       }
     }
   }

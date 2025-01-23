@@ -1,1 +1,3 @@
-// @include add_font_woff('Inter', '../fonts/FontName/FontVariant', 400);
+@use './helpers/mixins' as *;
+
+// @include add-font-woff('Inter', '../fonts/Inter-Black', 400);
