@@ -1,0 +1,13 @@
+overwrite: true
+schema: "https://api.develop.kokoc.tech/graphql" # Установить ссылку на VITE_API_URL
+generates:
+  ./graphql/schema.graphql:
+    plugins:
+      - "schema-ast"
+  ./graphql/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "fragment-matcher"
+    config:
+      withHooks: true

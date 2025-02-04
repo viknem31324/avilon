@@ -123,7 +123,7 @@ export const Disabled = {
 
 };
 
-export const Sizes = {
+export const Size = {
   render: () => {
     return {
       components: {

@@ -1,6 +1,6 @@
-@use 'lib/normalize';
-@use 'helpers/index';
-@use 'fonts';
+@use 'lib/normalize' as *;
+@use 'helpers/index' as *;
+@use 'fonts' as *;
 
 *,
 ::after,
@@ -23,7 +23,16 @@ html {
 }
 
 a {
-  color: inherit;
+  color: color('smart-green');
+  text-decoration: none;
+
+  @include transition('color');
+
+  &:hover,
+  &:active {
+    color: color('green-30');
+    text-decoration: none;
+  }
 }
 
 button {
@@ -48,6 +57,48 @@ ul {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 24px 0;
+  font-weight: $font-weight-bold;
+
+  @include media-min('tablet') {
+    margin-bottom: 32px;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+h1 {
+  @include text-styles('h1');
+}
+
+h2 {
+  @include text-styles('h2');
+}
+
+h3 {
+  @include text-styles('h3');
+}
+
+h4 {
+  @include text-styles('h4');
+}
+
+h5 {
+  @include text-styles('h5');
+}
+
+h6 {
+  @include text-styles('h6');
+}
+
+iframe {
+  border: none;
+  outline: none;
 }
 
 .visually-hidden {
