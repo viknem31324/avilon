@@ -6,7 +6,7 @@
   "scripts": {
     "build": "nuxt build",
     "build-storybook": "storybook build",
-    "codegen": "yarn graphql-codegen --config codegen.yml",
+    "codegen": "yarn graphql-codegen --config codegen.yml && yarn lintfix",
     "dev": "yarn prepare && nuxt dev",
     "findDuplicates": "jscpd --pattern './(assets|components|graphql|hooks|layouts|middleware|pages|plugins|public|types|utils)/**/*.(js|ts|vue)' -r html",
     "generate": "nuxt generate",
