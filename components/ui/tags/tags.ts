@@ -20,4 +20,5 @@ export interface IBaseTagItem {
 
 export type BaseTagItemEmits = {
   click: [evt: MouseEvent];
+  delete: [evt: MouseEvent];
 };
