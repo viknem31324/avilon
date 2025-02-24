@@ -1,0 +1,60 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as BaseToggleStories from './BaseToggle.stories';
+
+<Meta of={BaseToggleStories} />
+
+# Toggle
+
+Toggle позволяет пользователям выбирать один или несколько элементов из набора опций.
+
+<Canvas of={BaseToggleStories.Overview} />
+
+<Controls story="Overview" />
+
+### Default
+
+<Canvas of={BaseToggleStories.Default} />
+
+
+### Disabled
+
+<Canvas of={BaseToggleStories.Disabled} />
+
+### Variant
+
+Устанавливает вариант чекбокса.
+
+Toggle может иметь один из двух вариантов: `green` или `red`. По умолчанию установлен `green`.
+
+Вариант чекбокса `red` используется только в РЕХАУ Про.
+
+<Canvas of={BaseToggleStories.Variants} />
+
+### Sizes
+
+Устанавливает размер.
+
+Toggle может иметь один из трех размеров: `s`, `m` и `l`. По умолчанию используется размер `m`.
+
+<Canvas of={BaseToggleStories.Sizes} />
+
+## Rules
+
+Компонент `BaseToggle` принимает пропс `rules` для валидации входных данных.
+
+Валидация полей может быть установлена одним из двух способов:
+
+1. C помощью библиотеки [yup](https://www.npmjs.com/package/yup);
+2. С помощью кастомных функций валидации.
+
+Примеры валидации можно увидеть нажав кнопку `Show code` в правом нижнем углу истории.
+
+<Canvas of={BaseToggleStories.Rules} />
+
+## Error
+
+Компонент `BaseToggle` поддерживает состояние ошибки.
+
+Текст ошибки можно задать во время описания правил валидации передаваемых в пропс `rules` или через `validationSchema`.
+
+<Canvas  of={BaseToggleStories.Error} />
