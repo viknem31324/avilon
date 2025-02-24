@@ -92,23 +92,18 @@ export default {
     autoplay: {
       control: 'number',
     },
-
     breakpoints: {
       control: 'object',
     },
-
     navigation: {
       control: 'boolean',
     },
-
     pagination: {
       control: 'boolean',
     },
-
     slides: {
       control: 'object',
     },
-
     slidesPerView: {
       control: 'number',
     },

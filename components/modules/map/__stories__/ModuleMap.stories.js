@@ -21,23 +21,18 @@ export default {
     id: {
       control: 'text',
     },
-
     addresses: {
       control: 'object',
     },
-
     apiKey: {
       control: 'text',
     },
-
     initialSettings: {
       control: 'object',
     },
-
     title: {
       control: 'text',
     },
-
     variant: {
       control: 'select',
       options: Object.keys(MAP_VARIANTS),
@@ -46,11 +41,9 @@ export default {
 
   args: {
     id: 'map',
-
     addresses: [
       {
         coordinates: [37.51296223925207, 55.68253266577515],
-
         data: {
           id: '2',
           address: 'Адрес 2',
@@ -61,7 +54,6 @@ export default {
       },
       {
         coordinates: [37.51296223925207, 55.58253266577515],
-
         data: {
           id: '3',
           address: 'Адрес 3',
@@ -72,7 +64,6 @@ export default {
       },
       {
         coordinates: [36.51296223925207, 55.68253266577515],
-
         data: {
           id: '4',
           address: 'Адрес 4',
@@ -83,7 +74,6 @@ export default {
       },
       {
         coordinates: [37.51296223925207, 54.58253266577515],
-
         data: {
           id: '5',
           address: 'Адрес 5',
@@ -92,7 +82,6 @@ export default {
       },
       {
         coordinates: [34.72296223925207, 56.68253266577515],
-
         data: {
           id: '6',
           address: 'Адрес 6',
@@ -102,7 +91,6 @@ export default {
       },
       {
         coordinates: [37.71296223925207, 56.78253266577515],
-
         data: {
           id: '7',
           address: 'Адрес 7',
@@ -112,7 +100,6 @@ export default {
       },
       {
         coordinates: [37.41296223925207, 56.68253266577515],
-
         data: {
           id: '8',
           address: 'Адрес 8',
@@ -122,16 +109,13 @@ export default {
         },
       },
     ],
-
     apiKey: '26adb9fb-f355-43c0-aa72-2f9c350e2027',
-
     initialSettings: {
       location: {
         center: [37.61296223925207, 55.68253266577515],
         zoom: 10,
       },
     },
-
     title: 'Наши адреса',
     variant: 'small',
   },

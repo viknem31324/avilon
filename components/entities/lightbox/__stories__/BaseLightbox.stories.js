@@ -28,11 +28,9 @@ export default {
     title: {
       control: 'text',
     },
-
     isOpen: {
       control: 'boolean',
     },
-
     isClosing: {
       control: 'boolean',
     },

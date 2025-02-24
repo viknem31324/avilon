@@ -27,16 +27,13 @@ export default {
     label: {
       control: 'text',
     },
-
     href: {
       control: 'text',
     },
-
     size: {
       control: 'select',
       options: LINK_SIZES,
     },
-
     variant: {
       control: 'select',
       options: BASE_LINK_VARIANTS_VAL,

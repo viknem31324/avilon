@@ -40,7 +40,7 @@ export type BaseTabsMoreEmits = {
 };
 
 export interface IBaseTabs {
-  id: string;
+  id?: string;
   items?: IBaseTabItem[];
   moreTabLabel?: string;
   size?: SizeDefault;

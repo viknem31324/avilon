@@ -24,57 +24,44 @@ export default {
     disabled: {
       control: 'boolean',
     },
-
     fromDate: {
       control: 'date',
     },
-
     id: {
       control: 'text',
     },
-
     label: {
       control: 'text',
     },
-
     locale: {
       control: 'select',
       options: LANG_VARIANTS,
     },
-
     modelValue: {
       control: 'date',
     },
-
     name: {
       control: 'text',
     },
-
     placeholder: {
       control: 'text',
     },
-
     range: {
       control: 'boolean',
     },
-
     rules: {
       control: 'object',
     },
-
     size: {
       control: 'select',
       options: DEFAULT_SIZES,
     },
-
     toDate: {
       control: 'date',
     },
-
     formatDate: {
       control: 'text',
     },
-
     type: {
       control: 'select',
       options: CALENDAR_TYPES,

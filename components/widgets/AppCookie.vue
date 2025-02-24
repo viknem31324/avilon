@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!showCookies" class="cookies">
+  <div v-if="isShow" class="cookies">
     <AppContainer>
       <button type="button" @click="onCookieConfirm">
         cookies
@@ -11,11 +11,19 @@
 <script lang="ts" setup>
 const showCookies = useCookie<boolean>('showCookies', {
   maxAge: 31536000,
+  default: () => true,
 });
 
+const isShow = ref(false);
+
 const onCookieConfirm = () => {
-  showCookies.value = true;
+  showCookies.value = false;
+  isShow.value = false;
 };
+
+onMounted(() => {
+  isShow.value = showCookies.value;
+});
 </script>
 
 <style lang="scss" scoped>

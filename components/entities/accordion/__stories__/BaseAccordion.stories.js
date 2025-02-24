@@ -76,7 +76,6 @@ export default {
     id: {
       control: 'text',
     },
-
     multiple: {
       control: 'boolean',
     },

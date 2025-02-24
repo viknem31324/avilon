@@ -18,17 +18,14 @@ export default {
     fluid: {
       control: 'boolean',
     },
-
     size: {
       control: 'select',
       options: DEFAULT_SIZES_WITH_EXTRA_SMALL,
     },
-
     tag: {
       control: 'select',
       options: TEXT_TAGS,
     },
-
     weight: {
       control: 'select',
       options: TEXT_WEIGHTS,

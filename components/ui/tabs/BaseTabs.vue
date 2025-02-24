@@ -57,7 +57,6 @@ const resizeObserver = ref();
 
 const arrayMore = ref<IBaseTabItem[]>([]);
 const arrayTabs = ref<IBaseTabItem[]>([]);
-const showMore = ref(false);
 
 const classes = computed(() => ({
   'ds-tabs': true,
@@ -139,8 +138,6 @@ const initTabs = () => {
       return;
     }
   }
-
-  showMore.value = !!arrayMore.value.length;
 };
 
 const updateSelectedTab = (id: string | number) => {

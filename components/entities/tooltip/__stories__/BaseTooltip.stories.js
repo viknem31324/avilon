@@ -34,16 +34,13 @@ export default {
       control: 'select',
       options: TOOLTIP_POSITION,
     },
-
     tooltipText: {
       control: 'text',
     },
-
     size: {
       control: 'select',
       options: DEFAULT_SIZES,
     },
-
     showButton: {
       control: 'boolean',
     },
