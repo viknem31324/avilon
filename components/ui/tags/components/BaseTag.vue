@@ -42,11 +42,14 @@ const onClick = (evt: MouseEvent) => {
   @include transition('background-color');
 
   &__inner {
+    cursor: pointer;
+
     position: relative;
+
     display: flex;
     align-items: center;
+
     padding: 5px 12px;
-    cursor: pointer;
   }
 
   &--icon #{$content} {
