@@ -1,9 +1,7 @@
 import { action } from '@storybook/addon-actions';
 import { vueRouter } from 'storybook-vue3-router';
-
 import BaseTags from '../BaseTags.vue';
-
-import { DEFAULT_TAGS, LINK_ICON_TAGS, LINK_TAGS } from './mocks/tags';
+import { LINK_ICON_TAGS } from './mocks/tags';
 
 const Template = args => ({
   components: { BaseTags },
@@ -51,7 +49,7 @@ export default {
 
   args: {
     id: '',
-    items: DEFAULT_TAGS,
+    items: LINK_ICON_TAGS,
   },
 
   decorators: [
@@ -73,44 +71,5 @@ export const Overview = {
       type: 'figma',
       url: '',
     },
-  },
-};
-
-export const Link = {
-  render: () => {
-    return {
-      components: {
-        BaseTags,
-      },
-
-      data() {
-        return {
-          linkTags: LINK_TAGS,
-          linkIconTags: LINK_ICON_TAGS,
-        };
-      },
-
-      methods: {
-        click: action('click'),
-      },
-
-      decorators: [
-        vueRouter([], {
-          beforeEach: (to, from) =>
-            action('ROUTE CHANGED')({
-              to: to,
-              from: from,
-            }),
-        }),
-      ],
-
-      template: `
-      <div>
-        <h5>Без иконок</h5>
-        <BaseTags v-model:items="linkTags" @click="click" />
-        <h5>С иконками</h5>
-        <BaseTags v-model:items="linkIconTags" style="margin-top: 10px;" @click="click" />
-      </div>`,
-    };
   },
 };

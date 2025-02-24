@@ -1,10 +1,6 @@
 <template>
   <li :class="classes" @click="onClick">
     <component :is="link ? BaseRouteLink : 'div'" :href="link" class="ds-tag__inner">
-      <div v-if="icon" class="ds-tag__icon">
-        <BaseIcon :icon="icon" />
-      </div>
-
       <span class="ds-tag__label">
         {{ label }}
       </span>
@@ -12,15 +8,6 @@
       <div v-if="icon" class="ds-tag__icon">
         <BaseIcon :icon="icon" />
       </div>
-
-      <button
-        v-if="!icon"
-        class="ds-tag__delete"
-        type="button"
-        @click="deleteTag"
-      >
-        <BaseIcon icon="close" />
-      </button>
     </component>
   </li>
 </template>
@@ -35,17 +22,12 @@ const emits = defineEmits<BaseTagItemEmits>();
 const classes = computed(() => ({
   'ds-tag': true,
   'ds-tag--icon': props.icon,
-  'ds-tag--close': !props.icon,
-  'ds-tag--inactive': (props.icon) && !props.active,
-  'ds-tag--active': (props.icon) && props.active,
+  'ds-tag--inactive': !props.active,
+  'ds-tag--active': props.active,
 }));
 
 const onClick = (evt: MouseEvent) => {
   emits('click', evt);
-};
-
-const deleteTag = (evt: MouseEvent) => {
-  emits('delete', evt);
 };
 </script>
 
@@ -61,28 +43,14 @@ const deleteTag = (evt: MouseEvent) => {
 
   &__inner {
     position: relative;
-    display: grid;
+    display: flex;
+    align-items: center;
+    padding: 5px 12px;
+    cursor: pointer;
   }
 
   &--icon #{$content} {
-    cursor: pointer;
-
-    display: flex;
-    align-items: center;
-
-    padding: 0;
-    padding-right: 12px;
-  }
-
-  &--close {
-    --ds-tag-bg: #{color('smart-green')};
-    --ds-tag-color: #{color('total-white')};
-    --ds-tag-delete-button-bg: #{color('smart-green')};
-    --ds-tag-delete-button-color: #{color('total-white')};
-
-    #{$content} {
-      padding: 5px 36px 5px 4px;
-    }
+    padding: 0 0 0 12px;
   }
 
   &--inactive {
@@ -108,29 +76,6 @@ const deleteTag = (evt: MouseEvent) => {
     }
   }
 
-  &__delete {
-    cursor: pointer;
-
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 32px;
-    height: 32px;
-    margin: 0;
-    padding: 0;
-
-    color: var(--ds-tag-delete-button-color);
-
-    background-color: var(--ds-tag-delete-button-bg);
-    border: 0;
-    outline: none;
-  }
-
   &__icon {
     display: flex;
     align-items: center;
@@ -146,35 +91,6 @@ const deleteTag = (evt: MouseEvent) => {
   }
 
   @include has-hover {
-    &--close {
-      #{$content} {
-        @include transition('padding');
-      }
-
-      #{$self}__delete {
-        @include transition('opacity');
-
-        &:active {
-          --ds-tag-delete-button-bg: #{color('green-50')};
-        }
-      }
-
-      &:not(:hover) {
-
-        #{$content} {
-          padding: 5px 20px;
-        }
-
-        #{$self}__delete {
-          opacity: 0;
-        }
-      }
-
-      &:hover {
-        --ds-tag-delete-button-bg: #{color('green-30')};
-      }
-    }
-
     &--inactive {
       &:hover {
         color: var(--ds-tag-hover-color);
