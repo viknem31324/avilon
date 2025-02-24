@@ -90,7 +90,6 @@ const isVisibleError = computed(() => !props.disabled && errorMessage);
 
   &--disabled {
     --ds-toggle-wrapper-background-color: #{color('black-10')};
-
     pointer-events: none;
 
     &#{$self}--checked#{$self}--variant {
@@ -149,16 +148,18 @@ const isVisibleError = computed(() => !props.disabled && errorMessage);
     width: var(--ds-toggle-wrapper-width);
     height: var(--ds-toggle-wrapper-height);
     padding: 4px;
-    border-radius: 999px;
+
     background-color: var(--ds-toggle-wrapper-background-color);
+    border-radius: 999px;
 
     @include transition('background-color');
 
     &-circle {
       position: absolute;
       z-index: 1;
-      flex: none;
       right: calc(100% - var(--ds-toggle-wrapper-circle-size) - var(--ds-toggle-wrapper-circle-margin-y));
+
+      flex: none;
 
       width: var(--ds-toggle-wrapper-circle-size);
       height: var(--ds-toggle-wrapper-circle-size);
