@@ -1,0 +1,45 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as BaseInputFileUploadStories from './BaseInputFileUpload.stories';
+
+<Meta of={BaseInputFileUploadStories} />
+
+# Input File Upload
+
+`BaseInputFileUpload` — это элемент интерфейса, необходимый для загрузки файлов
+
+<Canvas of={BaseInputFileUploadStories.Overview} />
+
+<Controls story="Overview" />
+
+## Общая информация
+
+`BaseInputFileUpload` принимает следующие пропсы:
+  * `accept`(*string*\[optional]):
+  * `name`(*string*\[required]): Имя инпута;
+  * `title`(*string*\[required]): Заголовок;
+  * `formatsText`(*string*\[required]): Описание рекоммендуемых форматов файлов;
+  * `icon`(*string*\[required]): Иконка заглушка;
+  * `buttonText`(*string*\[required]): Текст кнопки;
+  * `rules`(*object*\[optional]): Объект валидации;
+  * `img`(*string*\[optional]): Дефолтный файл.
+
+## Rules
+
+Компонент `BaseInputFileUpload` принимает пропс `rules` для валидации входных данных.
+
+Валидация полей может быть установлена одним из двух способов:
+
+1. C помощью библиотеки [yup](https://www.npmjs.com/package/yup);
+2. С помощью кастомных функций валидации.
+
+Примеры валидаций можно увидеть нажав кнопку `Show code` в правом нижнем углу истории.
+
+<Canvas of={BaseInputFileUploadStories.Rules} />
+
+## Error
+
+Компонент `BaseInputFileUpload` поддерживает состояние ошибки.
+
+Текст ошибки можно задать во время описания правил валидации передаваемых в пропс `rules` или через `validationSchema`.
+
+<Canvas of={BaseInputFileUploadStories.Error} />
