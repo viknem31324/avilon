@@ -142,21 +142,25 @@ const clearInput = () => {
 <style lang="scss">
 .ds-input-file-upload {
   display: flex;
-  gap: 20px;
   flex-wrap: wrap;
+  gap: 20px;
+
   max-width: 498px;
   padding: 12px;
+
   border: 1px dashed color('black-20');
   border-radius: 8px;
 
   &__preview-wrapper {
+    overflow: hidden;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+
     width: 100px;
     height: 100px;
+
     border-radius: 5px;
-    overflow: hidden;
   }
 
   &__preview {
@@ -173,6 +177,7 @@ const clearInput = () => {
 
   &__format {
     margin-top: 8px;
+
     font-size: 12px;
     font-weight: 500;
     line-height: 14.4px;
@@ -189,12 +194,15 @@ const clearInput = () => {
   }
 
   &__input {
-    opacity: 0;
+    pointer-events: none;
+    cursor: pointer;
+
     position: absolute;
     inset: 0;
+
     margin: 0;
-    cursor: pointer;
-    pointer-events: none;
+
+    opacity: 0;
   }
 }
 </style>
