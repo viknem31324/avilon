@@ -26,7 +26,3 @@ export interface IBaseTagItem {
   variant?: VariantTag;
   size?: SizeDefault;
 }
-
-export type BaseTagItemEmits = {
-  click: [evt: MouseEvent];
-};

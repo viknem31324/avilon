@@ -1,5 +1,5 @@
 <template>
-  <li :class="classes" @click="onClick">
+  <li :class="classes">
     <component :is="link ? BaseRouteLink : 'div'" :href="link" class="ds-tag__inner">
       <span class="ds-tag__label">
         {{ label }}
@@ -13,21 +13,16 @@
 </template>
 
 <script lang="ts" setup>
-import type { BaseTagItemEmits, IBaseTagItem } from '../tags';
+import type { IBaseTagItem } from '../tags';
 import BaseRouteLink from '~/components/shared/BaseRouteLink.vue';
 
 const props = defineProps<IBaseTagItem>();
-const emits = defineEmits<BaseTagItemEmits>();
 
 const classes = computed(() => ({
   [`ds-tag ds-tag--variant-${props.variant} ds-tag--size-${props.size}`]: true,
   'ds-tag--icon': props.icon,
   'ds-tag--active': props.active,
 }));
-
-const onClick = (evt: MouseEvent) => {
-  emits('click', evt);
-};
 </script>
 
 <style lang="scss">
