@@ -1,7 +1,9 @@
 import { action } from '@storybook/addon-actions';
 import { vueRouter } from 'storybook-vue3-router';
 import BaseTags from '../BaseTags.vue';
+import { TAG_VARIANTS } from '../tags';
 import { LINK_ICON_TAGS } from './mocks/tags';
+import { DEFAULT_SIZES } from '/assets/constants/sizes';
 
 const Template = args => ({
   components: { BaseTags },
@@ -45,11 +47,23 @@ export default {
     items: {
       control: 'object',
     },
+
+    variant: {
+      control: 'select',
+      options: TAG_VARIANTS,
+    },
+
+    size: {
+      control: 'select',
+      options: DEFAULT_SIZES,
+    },
   },
 
   args: {
     id: '',
     items: LINK_ICON_TAGS,
+    variant: 'green',
+    size: 'm',
   },
 
   decorators: [
@@ -71,5 +85,59 @@ export const Overview = {
       type: 'figma',
       url: '',
     },
+  },
+};
+
+export const Variant = {
+  render: () => {
+    return {
+      components: {
+        BaseTags,
+      },
+
+      setup() {
+        return {
+          TAG_VARIANTS,
+          LINK_ICON_TAGS,
+        };
+      },
+
+      template: `
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px;">
+            <BaseTags
+              v-for="tagVariant in Object.values(TAG_VARIANTS)"
+              :variant="tagVariant"
+              :items="LINK_ICON_TAGS"
+            />
+          </div>
+        `,
+    };
+  },
+};
+
+export const Size = {
+  render: () => {
+    return {
+      components: {
+        BaseTags,
+      },
+
+      setup() {
+        return {
+          DEFAULT_SIZES,
+          LINK_ICON_TAGS,
+        };
+      },
+
+      template: `
+          <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 24px;">
+            <BaseTags
+              v-for="tagSize in DEFAULT_SIZES"
+              :size="tagSize"
+              :items="LINK_ICON_TAGS"
+            />
+          </div>
+        `,
+    };
   },
 };
