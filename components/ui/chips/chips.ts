@@ -9,6 +9,5 @@ export interface IBaseChips {
 }
 
 export type BaseChipsEmits = {
-  'update:items': [value: IBaseChipItem[]];
-  'click': [id: string | number];
+  click: [ids: string[] | number[]];
 };
