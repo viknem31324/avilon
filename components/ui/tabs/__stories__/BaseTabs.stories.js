@@ -22,15 +22,12 @@ export default {
     id: {
       control: 'text',
     },
-
     items: {
       control: 'object',
     },
-
     moreTabLabel: {
       control: 'text',
     },
-
     size: {
       control: 'select',
       options: DEFAULT_SIZES_WITH_EMPTY,
@@ -39,7 +36,6 @@ export default {
 
   args: {
     id: '9',
-
     items: [
       {
         id: '1',
@@ -86,7 +82,6 @@ export default {
         count: '5',
       },
     ],
-
     moreTabLabel: 'More...',
     size: '',
   },

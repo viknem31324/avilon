@@ -20,36 +20,28 @@ export default {
     currentPage: {
       control: 'number',
     },
-
     disabled: {
       control: 'boolean',
     },
-
     href: {
       control: 'text',
     },
-
     pageJumperTitle: {
       control: 'text',
     },
-
     perPage: {
       control: 'number',
     },
-
     perPageOptions: {
       control: 'object',
     },
-
     rowsSelectorTitle: {
       control: 'text',
     },
-
     size: {
       control: 'select',
       options: DEFAULT_SIZES,
     },
-
     totalPages: {
       control: 'number',
     },

@@ -111,36 +111,28 @@ export default {
     backgroundImg: {
       control: 'text',
     },
-
     buttonDisable: {
       control: 'boolean',
     },
-
     button: {
       control: 'object',
     },
-
     description: {
       control: 'text',
     },
-
     id: {
       control: 'text',
     },
-
     position: {
       control: 'select',
       options: FORM_POSITION_VAL,
     },
-
     submitMessage: {
       control: 'object',
     },
-
     title: {
       control: 'text',
     },
-
     validationSchema: {
       control: 'object',
     },
@@ -149,12 +141,10 @@ export default {
   args: {
     backgroundImg: '',
     buttonDisable: false,
-
     button: {
       icon: 'chevron-right',
       label: 'Отправить',
     },
-
     description: '',
     id: 'form',
     position: FORM_POSITION.CENTER,

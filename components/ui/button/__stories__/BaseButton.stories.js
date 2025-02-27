@@ -22,47 +22,37 @@ export default {
       control: 'select',
       options: BUTTON_TAGS,
     },
-
     type: {
       control: 'select',
       options: BUTTON_TYPES,
     },
-
     href: {
       control: 'text',
     },
-
     label: {
       control: 'text',
     },
-
     variant: {
       control: 'select',
       options: BUTTON_VARIANTS_VAL,
     },
-
     size: {
       control: 'select',
       options: DEFAULT_SIZES,
     },
-
     icon: {
       control: 'select',
       options: ICONS,
     },
-
     disabled: {
       control: 'boolean',
     },
-
     download: {
       control: 'boolean',
     },
-
     loading: {
       control: 'boolean',
     },
-
     isReverse: {
       control: 'boolean',
     },

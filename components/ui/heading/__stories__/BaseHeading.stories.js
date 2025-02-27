@@ -18,7 +18,6 @@ export default {
       control: 'select',
       options: HEADING_LEVELS,
     },
-
     tag: {
       control: 'select',
       options: HEADING_TAGS,

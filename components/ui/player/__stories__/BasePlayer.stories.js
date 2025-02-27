@@ -13,6 +13,9 @@ export default {
   component: BasePlayer,
 
   argTypes: {
+    title: {
+      control: 'text',
+    },
     video: {
       control: 'text',
     },

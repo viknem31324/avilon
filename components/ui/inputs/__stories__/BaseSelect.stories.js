@@ -121,7 +121,6 @@ export default {
         $isDisabled: true,
       },
     ],
-
     label: 'Label',
     modelValue: '',
     multiselect: false,
@@ -423,7 +422,6 @@ export const OuterSearch = {
       data() {
         return {
           value: null,
-
           items: [
             {
               id: '1',
@@ -442,7 +440,6 @@ export const OuterSearch = {
               title: 'Look better',
             },
           ],
-
           searchItems: [],
         };
       },

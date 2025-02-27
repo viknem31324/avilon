@@ -26,24 +26,19 @@ export default {
     disabled: {
       control: 'boolean',
     },
-
     label: {
       control: 'text',
     },
-
     modelValue: {
       control: 'text',
     },
-
     name: {
       control: 'text',
     },
-
     size: {
       control: 'select',
       options: DEFAULT_SIZES,
     },
-
     value: {
       control: 'text',
     },

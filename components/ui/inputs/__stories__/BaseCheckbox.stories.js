@@ -26,28 +26,22 @@ export default {
     disabled: {
       control: 'boolean',
     },
-
     label: {
       control: 'text',
     },
-
     modelValue: {
       control: 'object',
     },
-
     name: {
       control: 'text',
     },
-
     rules: {
       control: 'object',
     },
-
     size: {
       control: 'select',
       options: DEFAULT_SIZES,
     },
-
     value: {
       control: 'text',
     },
@@ -221,7 +215,6 @@ export const Error = {
         return {
           modelValue: '',
           modelValueGroup: [],
-
           items: [
             {
               label: 'checkbox-group-1',
