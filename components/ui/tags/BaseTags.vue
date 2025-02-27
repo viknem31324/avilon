@@ -4,6 +4,8 @@
       v-for="item in items"
       :key="item.id"
       v-bind="item"
+      :variant="variant"
+      :size="size"
       @click="onClick(item.id)"
     />
   </BaseList>
@@ -12,7 +14,12 @@
 <script lang="ts" setup>
 import type { IBaseTags, BaseTagsEmits } from './tags';
 
-defineProps<IBaseTags>();
+withDefaults(defineProps<IBaseTags>(),
+  {
+    variant: 'green',
+    size: 'm',
+  },
+);
 
 const emits = defineEmits<BaseTagsEmits>();
 

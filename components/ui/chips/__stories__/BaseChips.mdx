@@ -1,0 +1,38 @@
+import { Meta, Canvas, Controls } from "@storybook/blocks";
+import * as BaseChipsStories from './BaseChips.stories';
+
+<Meta of={BaseChipsStories} />
+
+# Chips
+
+Chips - элемент интерфейса, предназначенный для выбора пользователем одного или нескольких вариантов из списка чипс.
+
+<Canvas of={BaseChipsStories.Overview} />
+
+<Controls story="Overview" />
+
+## Items
+
+Chips принимает пропс `items`, который является массивом объектов и предназначен для вывода списка чипсов.
+
+Объект массива `items` состоит из следующих полей:
+
+* `id`(*string | number*\[required]): ID тега. Указывается в аргументах события клика по чипсу.
+* `label`(*string*\[required]): Текст чипса.
+* `isActive`(*boolean*\[optional]): Флаг, указывающий, активен ли чипс.
+
+## Применение
+
+Chips используется для выбора одного или нескольких значений из предложеннных.
+
+### Variant
+
+Устанавливает вариант чипсов. Может иметь значение `green` или `red`. По умолчанию `green`.
+
+<Canvas of={BaseChipsStories.Variant} />
+
+### Size
+
+Устанавливает размер чипсов. Может иметь одно из трех значений: `s`, `m` и `l`.
+
+<Canvas of={BaseChipsStories.Size} />

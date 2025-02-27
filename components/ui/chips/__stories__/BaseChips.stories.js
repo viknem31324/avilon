@@ -1,56 +1,44 @@
 import { action } from '@storybook/addon-actions';
 import { vueRouter } from 'storybook-vue3-router';
-import BaseTags from '../BaseTags.vue';
-import { TAG_VARIANTS } from '../tags';
-import { LINK_ICON_TAGS } from './mocks/tags';
+import BaseChips from '../BaseChips.vue';
+import { CHIPS_VARIANTS } from '../chips';
+import { CHIPS_ITEMS } from './mocks/chips';
 import { DEFAULT_SIZES } from '/assets/constants/sizes';
 
 const Template = args => ({
-  components: { BaseTags },
+  components: { BaseChips },
 
   methods: {
     click: action('click'),
   },
 
   setup() {
-    const modelValue = ref(args.items);
-
-    watch(() => args.items, () => {
-      modelValue.value = args.items;
-    });
-
     return {
-      modelValue,
       args,
     };
   },
 
   template: `
-    <BaseTags
+    <BaseChips
       v-bind="args"
-      v-model:items="modelValue"
       @click="click"
     />
   `,
 });
 
 export default {
-  title: '🟡 Micro components/Tags',
+  title: '🟡 Micro components/Chips',
 
-  component: BaseTags,
+  component: BaseChips,
 
   argTypes: {
-    id: {
-      control: 'text',
-    },
-
     items: {
       control: 'object',
     },
 
     variant: {
       control: 'select',
-      options: TAG_VARIANTS,
+      options: CHIPS_VARIANTS,
     },
 
     size: {
@@ -60,8 +48,7 @@ export default {
   },
 
   args: {
-    id: '',
-    items: LINK_ICON_TAGS,
+    items: CHIPS_ITEMS,
     variant: 'green',
     size: 'm',
   },
@@ -92,22 +79,22 @@ export const Variant = {
   render: () => {
     return {
       components: {
-        BaseTags,
+        BaseChips,
       },
 
       setup() {
         return {
-          TAG_VARIANTS,
-          LINK_ICON_TAGS,
+          CHIPS_ITEMS,
+          CHIPS_VARIANTS,
         };
       },
 
       template: `
           <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px;">
-            <BaseTags
-              v-for="tagVariant in Object.values(TAG_VARIANTS)"
-              :variant="tagVariant"
-              :items="LINK_ICON_TAGS"
+            <BaseChips
+              v-for="chipsVariant in CHIPS_VARIANTS"
+              :variant="chipsVariant"
+              :items="CHIPS_ITEMS"
             />
           </div>
         `,
@@ -119,22 +106,22 @@ export const Size = {
   render: () => {
     return {
       components: {
-        BaseTags,
+        BaseChips,
       },
 
       setup() {
         return {
           DEFAULT_SIZES,
-          LINK_ICON_TAGS,
+          CHIPS_ITEMS,
         };
       },
 
       template: `
           <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 24px;">
-            <BaseTags
-              v-for="tagSize in DEFAULT_SIZES"
-              :size="tagSize"
-              :items="LINK_ICON_TAGS"
+            <BaseChips
+              v-for="chipsSize in DEFAULT_SIZES"
+              :size="chipsSize"
+              :items="CHIPS_ITEMS"
             />
           </div>
         `,
