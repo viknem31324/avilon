@@ -18,8 +18,6 @@ const classes = computed(() => ({
 
 <style lang="scss">
 .ds-chips-item {
-  --ds-chips-bg: transparent;
-  --ds-chips-border-color: #{color('smart-green')};
   cursor: pointer;
   user-select: none;
 
@@ -30,15 +28,16 @@ const classes = computed(() => ({
   padding: 2px 5px;
 
   font-weight: $font-weight-medium;
+  color: var(--ds-chips-color);
 
   background-color: var(--ds-chips-bg);
   border: 1px solid var(--ds-chips-border-color);
   border-radius: 5px;
-  @include text-styles('m');
   @include transition('background-color');
 
   &--active {
-    --ds-chips-bg: #{color('smart-green')};
+    color: var(--ds-chips-active-color);
+    background-color: var(--ds-chips-active-bg);
   }
 
   svg {

@@ -1,9 +1,9 @@
 import { action } from '@storybook/addon-actions';
 import { vueRouter } from 'storybook-vue3-router';
 import BaseChips from '../BaseChips.vue';
-// import { TAG_VARIANTS } from '../tags';
+import { CHIPS_VARIANTS } from '../chips';
 import { CHIPS_ITEMS } from './mocks/chips';
-// import { DEFAULT_SIZES } from '/assets/constants/sizes';
+import { DEFAULT_SIZES } from '/assets/constants/sizes';
 
 const Template = args => ({
   components: { BaseChips },
@@ -35,10 +35,22 @@ export default {
     items: {
       control: 'object',
     },
+
+    variant: {
+      control: 'select',
+      options: CHIPS_VARIANTS,
+    },
+
+    size: {
+      control: 'select',
+      options: DEFAULT_SIZES,
+    },
   },
 
   args: {
     items: CHIPS_ITEMS,
+    variant: 'green',
+    size: 'm',
   },
 
   decorators: [
@@ -63,56 +75,56 @@ export const Overview = {
   },
 };
 
-// export const Variant = {
-//   render: () => {
-//     return {
-//       components: {
-//         BaseChips,
-//       },
+export const Variant = {
+  render: () => {
+    return {
+      components: {
+        BaseChips,
+      },
 
-//       setup() {
-//         return {
-//           TAG_VARIANTS,
-//           LINK_ICON_TAGS,
-//         };
-//       },
+      setup() {
+        return {
+          CHIPS_ITEMS,
+          CHIPS_VARIANTS,
+        };
+      },
 
-//       template: `
-//           <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px;">
-//             <BaseChips
-//               v-for="tagVariant in Object.values(TAG_VARIANTS)"
-//               :variant="tagVariant"
-//               :items="LINK_ICON_TAGS"
-//             />
-//           </div>
-//         `,
-//     };
-//   },
-// };
+      template: `
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px;">
+            <BaseChips
+              v-for="chipsVariant in CHIPS_VARIANTS"
+              :variant="chipsVariant"
+              :items="CHIPS_ITEMS"
+            />
+          </div>
+        `,
+    };
+  },
+};
 
-// export const Size = {
-//   render: () => {
-//     return {
-//       components: {
-//         BaseChips,
-//       },
+export const Size = {
+  render: () => {
+    return {
+      components: {
+        BaseChips,
+      },
 
-//       setup() {
-//         return {
-//           DEFAULT_SIZES,
-//           LINK_ICON_TAGS,
-//         };
-//       },
+      setup() {
+        return {
+          DEFAULT_SIZES,
+          CHIPS_ITEMS,
+        };
+      },
 
-//       template: `
-//           <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 24px;">
-//             <BaseChips
-//               v-for="tagSize in DEFAULT_SIZES"
-//               :size="tagSize"
-//               :items="LINK_ICON_TAGS"
-//             />
-//           </div>
-//         `,
-//     };
-//   },
-// };
+      template: `
+          <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 24px;">
+            <BaseChips
+              v-for="chipsSize in DEFAULT_SIZES"
+              :size="chipsSize"
+              :items="CHIPS_ITEMS"
+            />
+          </div>
+        `,
+    };
+  },
+};
