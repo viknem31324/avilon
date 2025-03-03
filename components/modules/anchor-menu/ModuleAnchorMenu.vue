@@ -1,73 +1,81 @@
 <template>
   <div :class="classes">
-    <AppContainer class="ds-anchor-menu__container">
+    <RhsContainer class="rhs-anchor-menu__container">
       <button
         v-if="isPrevButtonShow"
-        class="ds-anchor-menu__btn"
+        class="rhs-anchor-menu__btn"
         type="button"
         @click="scrollAxisY(-100)"
       >
-        <BaseIcon icon="chevron-left" />
+        <RhsIcon icon="chevron-left" />
       </button>
       <ul
         ref="anchorMenuRef"
-        class="ds-anchor-menu__list"
+        class="rhs-anchor-menu__list"
       >
         <li
           v-for="item in items"
           :key="item.href"
-          class="ds-anchor-menu__item"
+          class="rhs-anchor-menu__item"
           :class="{
-            'ds-anchor-menu__item--selected': item.href === activeIndex,
+            'rhs-anchor-menu__item--selected': item.href === activeIndex,
           }"
         >
           <a
-            class="ds-anchor-menu__link"
+            class="rhs-anchor-menu__link"
             :href="item.href"
             @click.prevent="onClickItem(item)"
           >
-            <span class="ds-anchor-menu__link-text">
+            <span class="rhs-anchor-menu__link-text">
               {{ item.text }}
             </span>
-            <BaseText
+            <RhsText
               v-if="item.tag"
-              class="ds-anchor-menu__link-tag"
+              class="rhs-anchor-menu__link-tag"
               fluid
             >
               {{ item.tag }}
-            </BaseText>
+            </RhsText>
           </a>
         </li>
       </ul>
-      <BaseIconButton
+      <RhsIconButton
         v-if="isMobile"
-        class="ds-anchor-menu__select"
+        class="rhs-anchor-menu__select"
         :icon="isOpen ? 'chevron-up' : 'chevron-down'"
         :variant="isOpen ? 'accent' : 'ghost'"
         @click="onClickBtn"
       />
       <button
         v-if="isNextButtonShow && !isMobile"
-        class="ds-anchor-menu__btn"
+        class="rhs-anchor-menu__btn"
         type="button"
         @click="scrollAxisY(100)"
       >
-        <BaseIcon icon="chevron-right" />
+        <RhsIcon icon="chevron-right" />
       </button>
-    </AppContainer>
+    </RhsContainer>
   </div>
 </template>
 
 <script lang="ts" setup>
-import useAnchorScroll from './helpers/useAnchorScroll';
+import { computed, watch, onMounted, ref, nextTick } from 'vue';
 
-import type { IModuleAnchorMenu, IModuleAnchorMenuItem } from './anchorMenu';
-import { Breakpoints } from '~/assets/constants/breakpoints';
-import useSubscribeEvent from '~/hooks/useSubscribeEvent';
+import useSubscribeEvent from '@hook/useSubscribeEvent.js';
+
+import RhsContainer from '@components/yellow/container/RhsContainer.vue';
+import RhsIconButton from '@components/yellow/buttons/RhsIconButton.vue';
+import RhsIcon from '@components/yellow/icon/RhsIcon.vue';
+import RhsText from '@components/yellow/text/RhsText.vue';
+
+import { Breakpoints } from '@common/constants';
+import useAnchorScroll from './helpers/useAnchorScroll.js';
+
+import type { IAnchorMenu, IAnchorMenuItem } from './types/RhsAnchorMenu.d.ts';
 
 const GAP_TOP_ACTIVE_ELEMENT = 50;
 
-const props = defineProps<IModuleAnchorMenu>();
+const props = defineProps<IAnchorMenu>();
 
 const anchorMenuRef = ref();
 const activeIndex = ref(props.items[0].href);
@@ -79,10 +87,9 @@ const { onAnchorScroll, getOffsetPosition } = useAnchorScroll(anchorMenuRef);
 
 const isMobile = ref(typeof window !== 'undefined' && !window.matchMedia(`(min-width: ${Breakpoints.TABLET}px)`).matches);
 
-const sections = computed(() => {
-  const queryLinks = [...anchorMenuRef.value.children].map(el => el.firstElementChild.getAttribute('href'));
-  return [...document.querySelectorAll(queryLinks.join(', '))];
-});
+const isAnchorMenuLoad = ref(false);
+const queryLinks = ref<any>([]);
+const sections = ref<any>([]);
 
 const checkButtonsVisibility = () => {
   const { clientWidth, scrollWidth, scrollLeft } = anchorMenuRef.value;
@@ -101,7 +108,7 @@ const onClickBtn = () => {
   }
 };
 
-const onClickItem = (item: IModuleAnchorMenuItem) => {
+const onClickItem = (item: IAnchorMenuItem) => {
   if (isMobile.value) {
     if (item.href === activeIndex.value && !isOpen.value) {
       isOpen.value = true;
@@ -128,6 +135,10 @@ const scrollAxisY = (shift: number) => {
 };
 
 const onWindowScroll = () => {
+  if (!isAnchorMenuLoad.value) {
+    return;
+  }
+
   for (const el of sections.value) {
     if (
       Math.abs(getOffsetPosition(el) - window.scrollY - GAP_TOP_ACTIVE_ELEMENT) <= anchorMenuRef.value.clientHeight
@@ -187,48 +198,76 @@ watch(() => props.items, async () => {
   checkButtonsVisibility();
 });
 
-onMounted(() => {
+onMounted(async () => {
+  await nextTick();
   checkButtonsVisibility();
+
+  // Был обнаружен кейс когда на странице присутствуют большие/тяжелые блоки которые не попадают в массив sections, т. к. на момент монтирования RhsAnchorMenu не все блоки на сайте смонтированы. Поэтому был добавлен setInterval который дополняет массив sections
+  let count = 0;
+  let timerId: any;
+
+  queryLinks.value = [...anchorMenuRef.value.children].map(el => el.firstElementChild.getAttribute('href'));
+  sections.value = [...document.querySelectorAll(queryLinks.value.join(', '))];
+
+  /* eslint-disable prefer-const */
+  timerId = setInterval(async () => {
+    sections.value = [...document.querySelectorAll(queryLinks.value.join(', '))];
+
+    if (count > 50 || queryLinks.value.length === sections.value.length) {
+      isAnchorMenuLoad.value = true;
+      document.documentElement.style.scrollBehavior = 'smooth';
+
+      await nextTick();
+
+      if (window.location.hash && queryLinks.value.includes(window.location.hash)) {
+        onAnchorScroll(window.location.hash);
+      }
+
+      clearInterval(timerId);
+    }
+
+    count += 1;
+  }, 100);
 });
 
 const classes = computed(() => ({
-  'ds-anchor-menu': true,
-  'ds-anchor-menu--open': isOpen.value,
+  'rhs-anchor-menu': true,
+  'rhs-anchor-menu--open': isOpen.value,
 }));
 </script>
 
 <style lang="scss">
-.ds-anchor-menu {
+.rhs-anchor-menu {
+
   $self: &;
 
-  --ds-anchor-menu-color: #{color('total-black')};
-  --ds-anchor-menu-border: #{color('black-20')};
-  --ds-anchor-menu-item-height: 44px;
-  --ds-anchor-menu-item-bg: #{color('total-white')};
-  --ds-anchor-menu-item-hover-bg: #{color('black-5')};
-  --ds-anchor-menu-item-selected-bg: #{color('total-white')};
-  --ds-anchor-menu-item-selected-color: #{color('total-black')};
-  --ds-anchor-menu-link-padding-x: 16px;
-  --ds-anchor-menu-link-gap: 12px;
-  --ds-anchor-menu-tag-color: #{color('total-white')};
-  --ds-anchor-menu-tag-bg: #{color('smart-green')};
-  --ds-anchor-menu-tag-padding-x: 8px;
-  --ds-anchor-menu-tag-padding-y: 1px;
+  --rhs-anchor-menu-color: #{color('total-black')};
+  --rhs-anchor-menu-border: #{color('black-20')};
+  --rhs-anchor-menu-item-height: 44px;
+  --rhs-anchor-menu-item-bg: #{color('total-white')};
+  --rhs-anchor-menu-item-hover-bg: #{color('black-5')};
+  --rhs-anchor-menu-item-selected-bg: #{color('total-white')};
+  --rhs-anchor-menu-item-selected-color: #{color('total-black')};
+  --rhs-anchor-menu-link-padding-x: 16px;
+  --rhs-anchor-menu-link-gap: 12px;
+  --rhs-anchor-menu-tag-color: #{color('total-white')};
+  --rhs-anchor-menu-tag-bg: #{color('smart-green')};
+  --rhs-anchor-menu-tag-padding-x: 8px;
+  --rhs-anchor-menu-tag-padding-y: 1px;
   position: sticky;
   z-index: 100;
-  top: var(--ds-anchor-menu-top, 0);
+  top: var(--rhs-anchor-menu-top, 0);
   background-color: white;
 
   &--open {
-    --ds-anchor-menu-border: #{color('smart-green')};
-    padding-bottom: var(--ds-anchor-menu-item-height);
+    --rhs-anchor-menu-border: #{color('smart-green')};
+    padding-bottom: var(--rhs-anchor-menu-item-height);
 
     #{$self}__list {
       position: absolute;
-      right: var(--ds-container-gutter);
-      left: var(--ds-container-gutter);
-      box-shadow: 0 6px 16px rgb(0 0 0 / 5%),
-      0 9px 28px 8px rgb(0 0 0 / 5%);
+      right: var(--rhs-container-gutter);
+      left: var(--rhs-container-gutter);
+      box-shadow: $color-shadow-100;
     }
 
     #{$self}__item {
@@ -252,53 +291,55 @@ const classes = computed(() => ({
     margin: 0;
     padding: 0;
 
-    color: var(--ds-anchor-menu-color);
+    color: var(--rhs-anchor-menu-color);
     list-style: none;
 
     @include media-min('tablet') {
       flex-direction: row;
       width: 100%;
-      border-bottom: 1px solid var(--ds-anchor-menu-border);
+      border-bottom: 1px solid var(--rhs-anchor-menu-border);
     }
   }
 
   &__item {
     display: none;
     width: 100%;
-    height: var(--ds-anchor-menu-item-height);
-    background-color: var(--ds-anchor-menu-item-bg);
+    height: var(--rhs-anchor-menu-item-height);
+    background-color: var(--rhs-anchor-menu-item-bg);
 
     &:hover {
-      background-color: var(--ds-anchor-menu-item-hover-bg);
+      background-color: var(--rhs-anchor-menu-item-hover-bg);
     }
 
     &--selected {
-      --ds-anchor-menu-tag-color: #{color('total-white')};
-      --ds-anchor-menu-tag-bg: #{color('smart-green')};
-      --ds-anchor-menu-link-line-height: 18px;
+      --rhs-anchor-menu-tag-color: #{color('total-white')};
+      --rhs-anchor-menu-tag-bg: #{color('smart-green')};
+      --rhs-anchor-menu-link-line-height: 18px;
       display: block;
       order: -1;
 
-      color: var(--ds-anchor-menu-item-selected-color);
+      color: var(--rhs-anchor-menu-item-selected-color);
 
-      background-color: var(--ds-anchor-menu-item-selected-bg);
-      border: 1px solid var(--ds-anchor-menu-border);
+      background-color: var(--rhs-anchor-menu-item-selected-bg);
+      border: 1px solid var(--rhs-anchor-menu-border);
 
       &:hover {
-        color: var(--ds-anchor-menu-item-selected-color);
-        background-color: var(--ds-anchor-menu-item-selected-bg);
+        color: var(--rhs-anchor-menu-item-selected-color);
+        background-color: var(--rhs-anchor-menu-item-selected-bg);
       }
 
-      #{$self}__link {
+      /* stylelint-disable-next-line selector-class-pattern */
+      .rhs-anchor-menu__link {
         padding-right: calc(
-          var(--ds-anchor-menu-item-height) + var(--ds-anchor-menu-link-padding-x)
+          var(--rhs-anchor-menu-item-height) + var(--rhs-anchor-menu-link-padding-x)
         );
 
         @include media-min('tablet') {
-          padding-right: var(--ds-anchor-menu-link-padding-x);
+          padding-right: var(--rhs-anchor-menu-link-padding-x);
         }
 
-        & > #{$self}__link-btn {
+        /* stylelint-disable-next-line selector-class-pattern */
+        & > .rhs-anchor-menu__link-btn {
           display: block !important;
 
           @include media-min('tablet') {
@@ -308,10 +349,10 @@ const classes = computed(() => ({
       }
 
       @include media-min('tablet') {
-        --ds-anchor-menu-tag-bg: #{color('black-10')};
-        --ds-anchor-menu-tag-color: #{color('total-black')};
-        --ds-anchor-menu-item-selected-bg: #{color('smart-green')};
-        --ds-anchor-menu-item-selected-color: #{color('total-white')};
+        --rhs-anchor-menu-tag-bg: #{color('black-10')};
+        --rhs-anchor-menu-tag-color: #{color('total-black')};
+        --rhs-anchor-menu-item-selected-bg: #{color('smart-green')};
+        --rhs-anchor-menu-item-selected-color: #{color('total-white')};
         order: inherit;
         border: none;
       }
@@ -323,33 +364,26 @@ const classes = computed(() => ({
     }
   }
 
+  /* stylelint-disable-next-line no-descending-specificity */
   &__link {
     position: relative;
 
     display: flex;
-    gap: var(--ds-anchor-menu-link-gap);
+    gap: var(--rhs-anchor-menu-link-gap);
     align-items: center;
 
     width: 100%;
     height: 100%;
-    padding: 0 var(--ds-anchor-menu-link-padding-x);
+    padding: 0 var(--rhs-anchor-menu-link-padding-x);
 
+    font-size: var(--rhs-anchor-menu-link-font-size);
+    line-height: var(--rhs-anchor-menu-link-line-height);
     color: inherit;
     text-decoration: none;
 
     &:hover {
       color: inherit;
       text-decoration: none;
-    }
-
-    @include text-styles('m');
-
-    @include media-min('tablet') {
-      @include text-styles('s');
-    }
-
-    @include media-min('desktop') {
-      @include text-styles('m');
     }
   }
 
@@ -361,10 +395,10 @@ const classes = computed(() => ({
   }
 
   &__link-tag {
-    padding: var(--ds-anchor-menu-tag-padding-y) var(--ds-anchor-menu-tag-padding-x);
-    color: var(--ds-anchor-menu-tag-color);
+    padding: var(--rhs-anchor-menu-tag-padding-y) var(--rhs-anchor-menu-tag-padding-x);
+    color: var(--rhs-anchor-menu-tag-color);
     text-transform: uppercase;
-    background-color: var(--ds-anchor-menu-tag-bg);
+    background-color: var(--rhs-anchor-menu-tag-bg);
   }
 
   &__select {
@@ -384,7 +418,7 @@ const classes = computed(() => ({
       display: block;
 
       width: 24px;
-      height: var(--ds-anchor-menu-item-height);
+      height: var(--rhs-anchor-menu-item-height);
       padding: 0;
 
       background-color: transparent;
@@ -405,13 +439,13 @@ const classes = computed(() => ({
         background: linear-gradient(90deg, #fff 0%, rgb(255 255 255 / 0%) 90%);
       }
 
-      .ds-icon {
+      .rhs-icon {
         width: 24px;
         height: 24px;
       }
 
       &:first-child {
-        left: var(--ds-container-gutter);
+        left: var(--rhs-container-gutter);
 
         &::before {
           left: 0;
@@ -419,7 +453,7 @@ const classes = computed(() => ({
       }
 
       &:last-child {
-        right: var(--ds-container-gutter);
+        right: var(--rhs-container-gutter);
 
         &::before {
           right: 0;
@@ -428,16 +462,21 @@ const classes = computed(() => ({
       }
     }
   }
+  @include text-styles('rhs-anchor-menu-link', 'm');
 
   @include media-min('tablet') {
-    --ds-anchor-menu-item-height: 40px;
+    --rhs-anchor-menu-item-height: 40px;
+
+    @include text-styles('rhs-anchor-menu-link', 's');
   }
 
   @include media-min('desktop') {
-    --ds-anchor-menu-item-height: 52px;
-    --ds-anchor-menu-link-padding-x: 24px;
-    --ds-anchor-menu-link-gap: 8px;
-    --ds-anchor-menu-tag-padding-y: 2px;
+    --rhs-anchor-menu-item-height: 52px;
+    --rhs-anchor-menu-link-padding-x: 24px;
+    --rhs-anchor-menu-link-gap: 8px;
+    @include text-styles('rhs-anchor-menu-link', 'm');
+
+    --rhs-anchor-menu-tag-padding-y: 2px;
   }
 }
 </style>

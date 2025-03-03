@@ -18,25 +18,27 @@ export default (anchorMenuRef: Ref<HTMLElement>) => {
   };
 
   const onAnchorScroll = (anchorId: string) => {
-    if (typeof window === 'undefined') {
-      return;
-    }
+    setTimeout(() => {
+      if (typeof window === 'undefined') {
+        return;
+      }
 
-    const anchorElement = document.querySelector(anchorId);
-    const anchorMenuItem = anchorMenuRef.value.firstElementChild;
+      const anchorElement = document.querySelector(anchorId);
+      const anchorMenuItem = anchorMenuRef.value.firstElementChild;
 
-    if (!anchorElement || !anchorMenuItem) {
-      return;
-    }
+      if (!anchorElement || !anchorMenuItem) {
+        return;
+      }
 
-    const paddingTop = Number.parseFloat(getComputedStyle(anchorElement).paddingTop);
+      const paddingTop = Number.parseFloat(getComputedStyle(anchorElement).paddingTop);
 
-    const coordinateScrollY = getOffsetPosition(anchorElement) + paddingTop - anchorMenuItem.clientHeight - MARGIN;
+      const coordinateScrollY = getOffsetPosition(anchorElement) + paddingTop - anchorMenuItem.clientHeight - MARGIN;
 
-    window.scrollTo({
-      top: coordinateScrollY,
-      behavior: 'smooth',
-    });
+      window.scrollTo({
+        top: coordinateScrollY,
+        behavior: 'smooth',
+      });
+    }, 0);
   };
 
   return {
