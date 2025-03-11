@@ -1,12 +1,6 @@
 import type { RuleExpression } from 'vee-validate';
 import type { SizeDefault } from '~/assets/types/sizes';
 
-export const INPUT_TYPES = [
-  'text',
-  'password',
-  'tel',
-] as const;
-
 export interface IBaseCheckbox {
   disabled?: boolean;
   indeterminate?: boolean;
