@@ -12,7 +12,6 @@
         <BaseIcon
           v-if="isChecked"
           icon="check"
-          :size="iconSize"
         />
       </span>
       <!-- eslint-disable-next-line vue/no-v-html -->
@@ -81,16 +80,6 @@ const classes = computed(() => ({
   'ds-checkbox-disabled': props.disabled,
   'ds-checkbox-error': errorMessage.value,
 }));
-
-const iconSize = computed(() => {
-  if (props.size === 'l') {
-    return 'xl';
-  } else if (props.size === 'm') {
-    return 'l';
-  } else {
-    return 'm';
-  }
-});
 
 const isVisibleError = computed(() => !Array.isArray(props.modelValue) && !props.disabled && errorMessage);
 </script>
