@@ -3,7 +3,6 @@ import type { SizeDefault } from '~/assets/types/sizes';
 
 export interface IBaseCheckbox {
   disabled?: boolean;
-  indeterminate?: boolean;
   label?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   modelValue?: Array<any> | string | boolean;
