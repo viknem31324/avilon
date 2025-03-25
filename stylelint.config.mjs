@@ -18,6 +18,8 @@ export default {
     'at-rule-empty-line-before': undefined,
     'scss/at-else-empty-line-before': undefined,
     'scss/at-if-closing-brace-newline-after': undefined,
+    'alpha-value-notation': undefined,
+    'color-function-notation': undefined,
     'scss/at-if-closing-brace-space-after': 'always-intermediate',
     'value-keyword-case': ['lower', {
       ignoreKeywords: ['tabletLarge', 'wideTablet', 'wideDesktop'],

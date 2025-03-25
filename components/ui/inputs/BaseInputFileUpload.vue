@@ -85,19 +85,17 @@ async function handleFileChange(e: any) {
   handleChange(e);
 
   if (newValue) {
-    isVideoType.value = false;
     files.value = newValue;
     isVideoType.value = newValue.type?.includes('video');
 
     await nextTick();
 
+    const url = URL.createObjectURL(files.value);
+
     if (!newValue.type?.includes('video')) {
-      previewImg.value.src = URL.createObjectURL(files.value);
+      previewImg.value.src = url;
     } else {
       const context = previewVideo.value.getContext('2d');
-
-      const url = URL.createObjectURL(files.value);
-
       const videoElement = document.createElement('video');
       videoElement.src = url;
 

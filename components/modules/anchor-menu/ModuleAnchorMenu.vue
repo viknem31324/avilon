@@ -1,37 +1,37 @@
 <template>
   <div :class="classes">
-    <RhsContainer class="rhs-anchor-menu__container">
+    <RhsContainer class="ds-anchor-menu__container">
       <button
         v-if="isPrevButtonShow"
-        class="rhs-anchor-menu__btn"
+        class="ds-anchor-menu__btn"
         type="button"
         @click="scrollAxisY(-100)"
       >
-        <RhsIcon icon="chevron-left" />
+        <BaseIcon icon="chevron-left" />
       </button>
       <ul
         ref="anchorMenuRef"
-        class="rhs-anchor-menu__list"
+        class="ds-anchor-menu__list"
       >
         <li
           v-for="item in items"
           :key="item.href"
-          class="rhs-anchor-menu__item"
+          class="ds-anchor-menu__item"
           :class="{
-            'rhs-anchor-menu__item--selected': item.href === activeIndex,
+            'ds-anchor-menu__item--selected': item.href === activeIndex,
           }"
         >
           <a
-            class="rhs-anchor-menu__link"
+            class="ds-anchor-menu__link"
             :href="item.href"
             @click.prevent="onClickItem(item)"
           >
-            <span class="rhs-anchor-menu__link-text">
+            <span class="ds-anchor-menu__link-text">
               {{ item.text }}
             </span>
             <RhsText
               v-if="item.tag"
-              class="rhs-anchor-menu__link-tag"
+              class="ds-anchor-menu__link-tag"
               fluid
             >
               {{ item.tag }}
@@ -39,20 +39,21 @@
           </a>
         </li>
       </ul>
-      <RhsIconButton
+      <BaseButton
         v-if="isMobile"
-        class="rhs-anchor-menu__select"
+        class="ds-anchor-menu__select"
+        label=""
         :icon="isOpen ? 'chevron-up' : 'chevron-down'"
-        :variant="isOpen ? 'accent' : 'ghost'"
+        :variant="isOpen ? BUTTON_VARIANTS.ACCENT : BUTTON_VARIANTS.GHOST"
         @click="onClickBtn"
       />
       <button
         v-if="isNextButtonShow && !isMobile"
-        class="rhs-anchor-menu__btn"
+        class="ds-anchor-menu__btn"
         type="button"
         @click="scrollAxisY(100)"
       >
-        <RhsIcon icon="chevron-right" />
+        <BaseIcon icon="chevron-right" />
       </button>
     </RhsContainer>
   </div>
@@ -60,22 +61,15 @@
 
 <script lang="ts" setup>
 import { computed, watch, onMounted, ref, nextTick } from 'vue';
-
-import useSubscribeEvent from '@hook/useSubscribeEvent.js';
-
-import RhsContainer from '@components/yellow/container/RhsContainer.vue';
-import RhsIconButton from '@components/yellow/buttons/RhsIconButton.vue';
-import RhsIcon from '@components/yellow/icon/RhsIcon.vue';
-import RhsText from '@components/yellow/text/RhsText.vue';
-
-import { Breakpoints } from '@common/constants';
 import useAnchorScroll from './helpers/useAnchorScroll.js';
-
-import type { IAnchorMenu, IAnchorMenuItem } from './types/RhsAnchorMenu.d.ts';
+import type { IModuleAnchorMenu, IModuleAnchorMenuItem } from './anchorMenu.js';
+import { Breakpoints } from '~/assets/constants/breakpoints.js';
+import useSubscribeEvent from '~/hooks/useSubscribeEvent.js';
+import { BUTTON_VARIANTS } from '~/components/ui/button/button.js';
 
 const GAP_TOP_ACTIVE_ELEMENT = 50;
 
-const props = defineProps<IAnchorMenu>();
+const props = defineProps<IModuleAnchorMenu>();
 
 const anchorMenuRef = ref();
 const activeIndex = ref(props.items[0].href);
@@ -108,7 +102,7 @@ const onClickBtn = () => {
   }
 };
 
-const onClickItem = (item: IAnchorMenuItem) => {
+const onClickItem = (item: IModuleAnchorMenuItem) => {
   if (isMobile.value) {
     if (item.href === activeIndex.value && !isOpen.value) {
       isOpen.value = true;
@@ -231,43 +225,42 @@ onMounted(async () => {
 });
 
 const classes = computed(() => ({
-  'rhs-anchor-menu': true,
-  'rhs-anchor-menu--open': isOpen.value,
+  'ds-anchor-menu': true,
+  'ds-anchor-menu--open': isOpen.value,
 }));
 </script>
 
 <style lang="scss">
-.rhs-anchor-menu {
-
+.ds-anchor-menu {
   $self: &;
 
-  --rhs-anchor-menu-color: #{color('total-black')};
-  --rhs-anchor-menu-border: #{color('black-20')};
-  --rhs-anchor-menu-item-height: 44px;
-  --rhs-anchor-menu-item-bg: #{color('total-white')};
-  --rhs-anchor-menu-item-hover-bg: #{color('black-5')};
-  --rhs-anchor-menu-item-selected-bg: #{color('total-white')};
-  --rhs-anchor-menu-item-selected-color: #{color('total-black')};
-  --rhs-anchor-menu-link-padding-x: 16px;
-  --rhs-anchor-menu-link-gap: 12px;
-  --rhs-anchor-menu-tag-color: #{color('total-white')};
-  --rhs-anchor-menu-tag-bg: #{color('smart-green')};
-  --rhs-anchor-menu-tag-padding-x: 8px;
-  --rhs-anchor-menu-tag-padding-y: 1px;
+  --ds-anchor-menu-color: #{color('total-black')};
+  --ds-anchor-menu-border: #{color('black-20')};
+  --ds-anchor-menu-item-height: 44px;
+  --ds-anchor-menu-item-bg: #{color('total-white')};
+  --ds-anchor-menu-item-hover-bg: #{color('black-5')};
+  --ds-anchor-menu-item-selected-bg: #{color('total-white')};
+  --ds-anchor-menu-item-selected-color: #{color('total-black')};
+  --ds-anchor-menu-link-padding-x: 16px;
+  --ds-anchor-menu-link-gap: 12px;
+  --ds-anchor-menu-tag-color: #{color('total-white')};
+  --ds-anchor-menu-tag-bg: #{color('smart-green')};
+  --ds-anchor-menu-tag-padding-x: 8px;
+  --ds-anchor-menu-tag-padding-y: 1px;
   position: sticky;
   z-index: 100;
-  top: var(--rhs-anchor-menu-top, 0);
-  background-color: white;
+  top: var(--ds-anchor-menu-top, 0);
+  background-color: #{color('total-white')};
 
   &--open {
-    --rhs-anchor-menu-border: #{color('smart-green')};
-    padding-bottom: var(--rhs-anchor-menu-item-height);
+    --ds-anchor-menu-border: #{color('smart-green')};
+    padding-bottom: var(--ds-anchor-menu-item-height);
 
     #{$self}__list {
       position: absolute;
-      right: var(--rhs-container-gutter);
-      left: var(--rhs-container-gutter);
-      box-shadow: $color-shadow-100;
+      right: var(--ds-container-gutter);
+      left: var(--ds-container-gutter);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
     }
 
     #{$self}__item {
@@ -291,55 +284,55 @@ const classes = computed(() => ({
     margin: 0;
     padding: 0;
 
-    color: var(--rhs-anchor-menu-color);
+    color: var(--ds-anchor-menu-color);
     list-style: none;
 
     @include media-min('tablet') {
       flex-direction: row;
       width: 100%;
-      border-bottom: 1px solid var(--rhs-anchor-menu-border);
+      border-bottom: 1px solid var(--ds-anchor-menu-border);
     }
   }
 
   &__item {
     display: none;
     width: 100%;
-    height: var(--rhs-anchor-menu-item-height);
-    background-color: var(--rhs-anchor-menu-item-bg);
+    height: var(--ds-anchor-menu-item-height);
+    background-color: var(--ds-anchor-menu-item-bg);
 
     &:hover {
-      background-color: var(--rhs-anchor-menu-item-hover-bg);
+      background-color: var(--ds-anchor-menu-item-hover-bg);
     }
 
     &--selected {
-      --rhs-anchor-menu-tag-color: #{color('total-white')};
-      --rhs-anchor-menu-tag-bg: #{color('smart-green')};
-      --rhs-anchor-menu-link-line-height: 18px;
+      --ds-anchor-menu-tag-color: #{color('total-white')};
+      --ds-anchor-menu-tag-bg: #{color('smart-green')};
+      --ds-anchor-menu-link-line-height: 18px;
       display: block;
       order: -1;
 
-      color: var(--rhs-anchor-menu-item-selected-color);
+      color: var(--ds-anchor-menu-item-selected-color);
 
-      background-color: var(--rhs-anchor-menu-item-selected-bg);
-      border: 1px solid var(--rhs-anchor-menu-border);
+      background-color: var(--ds-anchor-menu-item-selected-bg);
+      border: 1px solid var(--ds-anchor-menu-border);
 
       &:hover {
-        color: var(--rhs-anchor-menu-item-selected-color);
-        background-color: var(--rhs-anchor-menu-item-selected-bg);
+        color: var(--ds-anchor-menu-item-selected-color);
+        background-color: var(--ds-anchor-menu-item-selected-bg);
       }
 
       /* stylelint-disable-next-line selector-class-pattern */
-      .rhs-anchor-menu__link {
+      .ds-anchor-menu__link {
         padding-right: calc(
-          var(--rhs-anchor-menu-item-height) + var(--rhs-anchor-menu-link-padding-x)
+          var(--ds-anchor-menu-item-height) + var(--ds-anchor-menu-link-padding-x)
         );
 
         @include media-min('tablet') {
-          padding-right: var(--rhs-anchor-menu-link-padding-x);
+          padding-right: var(--ds-anchor-menu-link-padding-x);
         }
 
         /* stylelint-disable-next-line selector-class-pattern */
-        & > .rhs-anchor-menu__link-btn {
+        & > .ds-anchor-menu__link-btn {
           display: block !important;
 
           @include media-min('tablet') {
@@ -349,10 +342,10 @@ const classes = computed(() => ({
       }
 
       @include media-min('tablet') {
-        --rhs-anchor-menu-tag-bg: #{color('black-10')};
-        --rhs-anchor-menu-tag-color: #{color('total-black')};
-        --rhs-anchor-menu-item-selected-bg: #{color('smart-green')};
-        --rhs-anchor-menu-item-selected-color: #{color('total-white')};
+        --ds-anchor-menu-tag-bg: #{color('black-10')};
+        --ds-anchor-menu-tag-color: #{color('total-black')};
+        --ds-anchor-menu-item-selected-bg: #{color('smart-green')};
+        --ds-anchor-menu-item-selected-color: #{color('total-white')};
         order: inherit;
         border: none;
       }
@@ -369,15 +362,15 @@ const classes = computed(() => ({
     position: relative;
 
     display: flex;
-    gap: var(--rhs-anchor-menu-link-gap);
+    gap: var(--ds-anchor-menu-link-gap);
     align-items: center;
 
     width: 100%;
     height: 100%;
-    padding: 0 var(--rhs-anchor-menu-link-padding-x);
+    padding: 0 var(--ds-anchor-menu-link-padding-x);
 
-    font-size: var(--rhs-anchor-menu-link-font-size);
-    line-height: var(--rhs-anchor-menu-link-line-height);
+    font-size: var(--ds-anchor-menu-link-font-size);
+    line-height: var(--ds-anchor-menu-link-line-height);
     color: inherit;
     text-decoration: none;
 
@@ -395,10 +388,10 @@ const classes = computed(() => ({
   }
 
   &__link-tag {
-    padding: var(--rhs-anchor-menu-tag-padding-y) var(--rhs-anchor-menu-tag-padding-x);
-    color: var(--rhs-anchor-menu-tag-color);
+    padding: var(--ds-anchor-menu-tag-padding-y) var(--ds-anchor-menu-tag-padding-x);
+    color: var(--ds-anchor-menu-tag-color);
     text-transform: uppercase;
-    background-color: var(--rhs-anchor-menu-tag-bg);
+    background-color: var(--ds-anchor-menu-tag-bg);
   }
 
   &__select {
@@ -418,7 +411,7 @@ const classes = computed(() => ({
       display: block;
 
       width: 24px;
-      height: var(--rhs-anchor-menu-item-height);
+      height: var(--ds-anchor-menu-item-height);
       padding: 0;
 
       background-color: transparent;
@@ -439,13 +432,13 @@ const classes = computed(() => ({
         background: linear-gradient(90deg, #fff 0%, rgb(255 255 255 / 0%) 90%);
       }
 
-      .rhs-icon {
+      .ds-icon {
         width: 24px;
         height: 24px;
       }
 
       &:first-child {
-        left: var(--rhs-container-gutter);
+        left: var(--ds-container-gutter);
 
         &::before {
           left: 0;
@@ -453,7 +446,7 @@ const classes = computed(() => ({
       }
 
       &:last-child {
-        right: var(--rhs-container-gutter);
+        right: var(--ds-container-gutter);
 
         &::before {
           right: 0;
@@ -462,21 +455,21 @@ const classes = computed(() => ({
       }
     }
   }
-  @include text-styles('rhs-anchor-menu-link', 'm');
+  @include text-styles-variable('ds-anchor-menu-link', 'm');
 
   @include media-min('tablet') {
-    --rhs-anchor-menu-item-height: 40px;
+    --ds-anchor-menu-item-height: 40px;
 
-    @include text-styles('rhs-anchor-menu-link', 's');
+    @include text-styles-variable('ds-anchor-menu-link', 's');
   }
 
   @include media-min('desktop') {
-    --rhs-anchor-menu-item-height: 52px;
-    --rhs-anchor-menu-link-padding-x: 24px;
-    --rhs-anchor-menu-link-gap: 8px;
-    @include text-styles('rhs-anchor-menu-link', 'm');
+    --ds-anchor-menu-item-height: 52px;
+    --ds-anchor-menu-link-padding-x: 24px;
+    --ds-anchor-menu-link-gap: 8px;
+    @include text-styles-variable('ds-anchor-menu-link', 'm');
 
-    --rhs-anchor-menu-tag-padding-y: 2px;
+    --ds-anchor-menu-tag-padding-y: 2px;
   }
 }
 </style>

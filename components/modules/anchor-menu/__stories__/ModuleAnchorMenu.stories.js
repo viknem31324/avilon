@@ -26,49 +26,40 @@ export default {
   args: {
     items: [
       {
-        text: 'Описание',
-        href: '#описание-overview',
-      },
-      {
-        text: 'Область применения',
-        href: '#область-overview',
-      },
-      {
-        text: 'Характеристики',
-        href: '#характеристики-overview',
-      },
-      {
-        text: 'Особенности',
-        href: '#особенности-overview',
-      },
-      {
-        text: 'RAUTUBE®',
-        href: '#rautube-overview',
-        tag: 'NEW',
-      },
-      {
-        text: 'Установка',
-        href: '#установка-overview',
-      },
-      {
         text: 'Заголовок 1',
-        href: '#заголовок1-overview',
+        href: '#заголовок1',
       },
       {
         text: 'Заголовок 2',
-        href: '#заголовок2-overview',
+        href: '#заголовок2',
       },
       {
         text: 'Заголовок 3',
-        href: '#заголовок3-overview',
+        href: '#заголовок3',
       },
       {
         text: 'Заголовок 4',
-        href: '#заголовок4-overview',
+        href: '#заголовок4',
       },
       {
         text: 'Заголовок 5',
-        href: '#заголовок5-overview',
+        href: '#заголовок5',
+      },
+      {
+        text: 'Заголовок 6',
+        href: '#заголовок6',
+      },
+      {
+        text: 'Заголовок 7',
+        href: '#заголовок7',
+      },
+      {
+        text: 'Заголовок 8',
+        href: '#заголовок8',
+      },
+      {
+        text: 'Заголовок 9',
+        href: '#заголовок9',
       },
     ],
   },
@@ -86,32 +77,32 @@ export const Overview = {
 };
 
 export const Example = {
-  render: () => {
+  render: (args) => {
     return {
       components: {
         ModuleAnchorMenu,
         AppContainer,
       },
 
+      setup() {
+        return {
+          args,
+        };
+      },
+
       template: `
               <div>
-                <ModuleAnchorMenu :items="[
-                  {text: 'Описание', href: '#описание'},
-                  {text: 'Область применения', href: '#область-применения'},
-                  {text: 'Характеристики', href: '#характеристики'},
-                  {text: 'Особенности', href: '#особенности'},
-                  {text: 'RAUTUBE®', href: '#rautube', tag: 'NEW'},
-                  {text: 'Установка', href: '#установка'},
-                  {text: 'Портфолио', href: '#портфолио'},
-                ]" />
+                <ModuleAnchorMenu :items="args.items" />
                 <AppContainer>
-                  <section id="описание" style="margin-top: 30px;">Описание</section>
-                  <section id="область-применения" style="margin-top: 500px;">Область применения</section>
-                  <section id="характеристики" style="margin-top: 546px;">Характеристики</section>
-                  <section id="особенности" style="margin-top: 146px; padding: 40px 0">Особенности</section>
-                  <section id="rautube" style="margin-top: 350px;">RAUTUBE®</section>
-                  <section id="установка" style="margin-top: 1900px;">Установка</section>
-                  <section id="портфолио" style="margin-top: 2300px; padding-bottom: 900px;">Портфолио</section>
+                  <section id="заголовок1" style="margin-top: 30px;">Заголовок 1</section>
+                  <section id="заголовок2" style="margin-top: 500px;">Заголовок 2</section>
+                  <section id="заголовок3" style="margin-top: 546px;">Заголовок 3</section>
+                  <section id="заголовок4" style="margin-top: 146px; padding: 40px 0;">Заголовок 4</section>
+                  <section id="заголовок5" style="margin-top: 350px;">Заголовок 5</section>
+                  <section id="заголовок6" style="margin-top: 1900px;">Заголовок 6</section>
+                  <section id="заголовок7" style="margin-top: 2300px, padding-bottom: '900px';">Заголовок 7</section>
+                  <section id="заголовок8" style="margin-top: 1900px;">Заголовок 8</section>
+                  <section id="заголовок9" style="margin-top: 2300px; padding-bottom: 900px">Заголовок 9</section>
                 </AppContainer>
             </div>`,
     };
