@@ -128,5 +128,5 @@ $ pm2 start ecosystem.config.js
 📁 utils                         # Вспомогательные утилиты
 📄 README.md                     # Файл с описанием проекта
 📄 yarn.lock                     # Файл, автоматически создаваемый при установке пакетов с помощью Yarn
-📄 next.config.js                # Файл с конфигурацией next
+📄 nuxt.config.ts                # Файл с конфигурацией nuxt
 ```
