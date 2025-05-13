@@ -1,13 +1,13 @@
 export const createRobots = (isProduction: boolean) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const robots: any[] = [
-    { UserAgent: '*' },
-  ];
+  const robots = {
+    disallow: [] as string[],
+    // allow: [] as string[],
+  };
 
   if (isProduction) {
-    robots.push({ Disallow: '/*?' });
+    robots.disallow.push('/*?');
   } else {
-    robots.push({ Disallow: '/' });
+    robots.disallow.push('/');
   }
 
   return robots;

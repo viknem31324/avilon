@@ -125,9 +125,7 @@ export default defineNuxtConfig({
     },
   },
 
-  robots: {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    rules: createRobots(isProduction),
-  },
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  robots: createRobots(isProduction),
 });
