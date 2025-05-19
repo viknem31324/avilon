@@ -1,5 +1,6 @@
 import * as yup from 'yup';
 
+// https://pulse.kokoc.tech/confluence/pages/viewpage.action?pageId=10322022
 export const CYRILLIC_LATIN_ERROR_MESSAGE
   = 'Текст должен содержать только символы кириллицы и латиницы';
 export const CYRILLIC_LATIN_NUMERIC_ERROR_MESSAGE
@@ -10,11 +11,14 @@ export const MAX_LENGTH_ERROR_MESSAGE
 export const MIN_LENGTH_ERROR_MESSAGE
   = ({ min }: { min: number }) => `Число символов должно быть больше ${min}`;
 export const PHONE_ERROR_MESSAGE = 'Номер телефона недействителен';
+export const PASSWORD_ERROR_MESSAGE = 'Пароль должен содержать минимум один спецсимвол, цифру и букву в верхнем регистре';
 export const REQUIRED_ERROR_MESSAGE = 'Обязательное поле';
 export const SPACE_ERROR_MESSAGE = 'В начале и конце текста не должно быть пробелов';
 
 export const CYRILLIC_LATIN_REGEXP = /^[А-Яа-яЁёA-Za-z\s-—"’,.]+$/;
 export const EMAIL_REGEXP = /^(?=.{1,64}@.{1,64}$)(?=.{3,255}$)([a-zA-Z0-9._%+-]+(?:'[a-zA-Z0-9]+)?)@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+export const PASSWORD_REGEX
+  = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&#-./(){}[\]^])(?=.*[0-9])[A-Za-z\d@$!%*?&#-./(){}[\]^]{8,}$/;
 export const PHONE_REGEXP
   // eslint-disable-next-line no-useless-escape
   = /^(\+7)?[\s\-]?\([0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
@@ -92,6 +96,17 @@ export const NAME_REQUIRED_RULE = {
       message: CYRILLIC_LATIN_ERROR_MESSAGE,
     })
     .max(50, MAX_LENGTH_ERROR_MESSAGE),
+};
+
+export const PASSWORD_REQUIRED_RULE = {
+  password: yup
+    .string()
+    .required(REQUIRED_ERROR_MESSAGE)
+    .test('password', SPACE_ERROR_MESSAGE, checkSpaceError)
+    .min(8, MIN_LENGTH_ERROR_MESSAGE)
+    .test('password', PASSWORD_ERROR_MESSAGE, (value) => {
+      return PASSWORD_REGEX.test(value);
+    }),
 };
 
 export const PHONE_RULE = {
