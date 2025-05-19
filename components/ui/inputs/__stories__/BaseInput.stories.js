@@ -187,7 +187,7 @@ export const Mask = {
               placeholder="+7"
               label="Label"
               type="tel"
-              :mask="'+7 ### ### ## ##'"
+              mask="+7 (###) ###-##-##"
             />
           </div>
         `,

@@ -55,7 +55,7 @@ export const EMAIL_RULE = {
         return true;
       }
 
-      return EMAIL_REGEXP.test(value.replaceAll(' ', ''));
+      return EMAIL_REGEXP.test(value);
     }),
 };
 
@@ -66,7 +66,7 @@ export const EMAIL_REQUIRED_RULE = {
     .test('email', SPACE_ERROR_MESSAGE, checkSpaceError)
     .max(128, MAX_LENGTH_ERROR_MESSAGE)
     .test('email', EMAIL_ERROR_MESSAGE, (value) => {
-      return EMAIL_REGEXP.test(value.replaceAll(' ', ''));
+      return EMAIL_REGEXP.test(value);
     }),
 };
 
@@ -103,7 +103,7 @@ export const PHONE_RULE = {
         return true;
       }
 
-      return PHONE_REGEXP.test(value.replaceAll(' ', ''));
+      return PHONE_REGEXP.test(value);
     }),
 };
 
@@ -113,7 +113,7 @@ export const PHONE_REQUIRED_RULE = {
     .required(REQUIRED_ERROR_MESSAGE)
     .test('phone', SPACE_ERROR_MESSAGE, checkSpaceError)
     .test('phone', PHONE_ERROR_MESSAGE, (value) => {
-      return PHONE_REGEXP.test(value.replaceAll(' ', ''));
+      return PHONE_REGEXP.test(value);
     }),
 };
 
