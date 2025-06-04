@@ -1,0 +1,28 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as BaseInputCodeStories from './BaseInputCode.stories';
+
+<Meta of={BaseInputCodeStories} />
+
+# Input Code
+
+`BaseInputCode` — это элемент интерфейса формы, который позволяет ввести код подтверждения.
+
+<Canvas of={BaseInputCodeStories.Overview} />
+
+<Controls story="Overview" />
+
+## Применение
+
+Компонент `BaseInputCode` необходим каждый раз, когда пользователь вводит данные в пользовательский интерфейс. Самое частое местоположение компонента `BaseInputCode` — формы авторизации и подтверждения почты или номера телефона
+
+## Варианты использования
+
+### Number elements
+
+Устанавливает ограничение на размер кода. По умолчанию можно ввести 4 числа.
+
+## Error text
+
+Компонент `BaseInputCode` поддерживает состояние ошибки.
+
+Текст ошибки можно задать через пропс `errorText`.
