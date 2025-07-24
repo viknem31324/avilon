@@ -19,9 +19,8 @@ export const CYRILLIC_LATIN_REGEXP = /^[А-Яа-яЁёA-Za-z\s-—"’,.]+$/;
 export const EMAIL_REGEXP = /^(?=.{1,64}@.{1,64}$)(?=.{3,255}$)([a-zA-Z0-9._%+-]+(?:'[a-zA-Z0-9]+)?)@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 export const PASSWORD_REGEX
   = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&#-./(){}[\]^])(?=.*[0-9])[A-Za-z\d@$!%*?&#-./(){}[\]^]{8,}$/;
-export const PHONE_REGEXP
-  // eslint-disable-next-line no-useless-escape
-  = /^(\+7)?[\s\-]?\([0-9]{3}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
+export const PHONE_RU_REGEXP = /^(\+7)\([0-9]{3}\)?[\s-]?[0-9]{3}[\s-]?[0-9]{2}[\s-]?[0-9]{2}$/;
+export const PHONE_BY_REGEXP = /^\+375\([0-9]{2}\)[0-9]{3}[\s-]?[0-9]{2}[\s-]?[0-9]{2}$/;
 export const checkSpaceError = (value?: string) => {
   return !/^[ \s]+|[ \s]+$/.test(value || '');
 };
@@ -109,7 +108,7 @@ export const PASSWORD_REQUIRED_RULE = {
     }),
 };
 
-export const PHONE_RULE = {
+export const PHONE_RU_RULE = {
   phone: yup
     .string()
     .test('phone', SPACE_ERROR_MESSAGE, checkSpaceError)
@@ -118,17 +117,17 @@ export const PHONE_RULE = {
         return true;
       }
 
-      return PHONE_REGEXP.test(value);
+      return PHONE_RU_REGEXP.test(value);
     }),
 };
 
-export const PHONE_REQUIRED_RULE = {
+export const PHONE_RU_REQUIRED_RULE = {
   phone: yup
     .string()
     .required(REQUIRED_ERROR_MESSAGE)
     .test('phone', SPACE_ERROR_MESSAGE, checkSpaceError)
     .test('phone', PHONE_ERROR_MESSAGE, (value) => {
-      return PHONE_REGEXP.test(value);
+      return PHONE_RU_REGEXP.test(value);
     }),
 };
 

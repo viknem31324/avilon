@@ -7,8 +7,9 @@ import BaseRadioGroup from '~/components/ui/inputs/BaseRadioGroup.vue';
 import BaseSelect from '~/components/ui/inputs/BaseSelect.vue';
 import BaseInput from '~/components/ui/inputs/BaseInput.vue';
 import BaseTextarea from '~/components/ui/inputs/BaseTextarea.vue';
+import { PHONE_RU_REQUIRED_RULE, POLITICS_RULE } from '~/assets/constants/formRules';
 
-export const RADIO_GROUP_ITEMS = [
+const RADIO_GROUP_ITEMS = [
   {
     label: 'Муж',
     value: 'Муж',
@@ -19,7 +20,7 @@ export const RADIO_GROUP_ITEMS = [
   },
 ];
 
-export const SELECT_ITEMS = [
+const SELECT_ITEMS = [
   { title: 'Input value', id: '1', description: 'Description' },
   { title: 'Menu item 2', id: '2' },
   { title: 'Bitte wahle', id: '3' },
@@ -47,6 +48,8 @@ const Template = args => ({
         name: yup.string().trim().required('Error message'),
         surname: yup.string().trim().required('Error message'),
         email: yup.string().required('Error message').email('Invalid email'),
+        ...PHONE_RU_REQUIRED_RULE,
+        ...POLITICS_RULE,
       }),
     };
   },
@@ -78,6 +81,14 @@ const Template = args => ({
         placeholder="Input placeholder"
         required
       />
+      <BaseInput
+        type="tel"
+        label="Phone"
+        name="phone"
+        placeholder="+7"
+        mask="+7(###) ###-##-##"
+        required
+      />
       <BaseSelect
         :items="SELECT_ITEMS"
         label="Items"
@@ -92,7 +103,7 @@ const Template = args => ({
       <BaseCheckbox
         :label="CHECKBOX_LABEL"
         model-value=""
-        name="checkbox"
+        name="politics"
         value="checkbox"
       />
     </BaseForm>
