@@ -134,21 +134,20 @@ const shortList = computed(() => {
   }
 
   &__button {
-    cursor: pointer;
-
     display: flex;
-    align-items: center;
-    justify-content: center;
 
     width: var(--ds-pagination-button-size);
     height: var(--ds-pagination-button-size);
     padding: 0;
+    justify-content: center;
+    align-items: center;
 
     font-weight: $font-weight-medium;
     color: var(--ds-pagination-button-color);
 
     background-color: var(--ds-pagination-button-bg);
     border: 1px solid var(--ds-pagination-button-border-color);
+    cursor: pointer;
 
     @include transition('background-color, border-color, color');
 
@@ -159,9 +158,9 @@ const shortList = computed(() => {
     }
 
     &:disabled {
-      pointer-events:none;
       color: var(--ds-pagination-button-disabled-color);
       background-color: var(--ds-pagination-button-disabled-bg);
+      pointer-events:none;
       border-color: var(--ds-pagination-button-disabled-border-color);
     }
 

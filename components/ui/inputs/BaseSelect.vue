@@ -363,16 +363,16 @@ const classes = computed(() => ({
       position: absolute;
       top: 0;
       right: 0;
-      transform: none !important;
 
       display: flex;
-      align-items: center;
-      justify-content: center;
 
       width: var(--ds-select-control-size);
       height: var(--ds-select-control-size);
+      justify-content: center;
+      align-items: center;
 
       background: var(--ds-select-control-select-bg);
+      transform: none !important;
 
       &::before {
         position: static;
@@ -461,8 +461,8 @@ const classes = computed(() => ({
     &__input,
     &__single,
     &__placeholder {
-      overflow: hidden;
       display: block;
+      overflow: hidden;
 
       margin: 0;
       padding: 0;
@@ -470,13 +470,13 @@ const classes = computed(() => ({
       font-size: var(--ds-select-input-font-size);
       font-weight: $font-weight-medium;
       line-height: var(--ds-select-input-line-height);
-      color: inherit;
-      text-overflow: ellipsis;
       white-space: nowrap;
+      color: inherit;
 
       background-color: transparent;
       border: 0;
       border-radius: 0;
+      text-overflow: ellipsis;
     }
 
     &__input::placeholder,
@@ -513,19 +513,19 @@ const classes = computed(() => ({
       position: relative;
 
       display: flex;
-      flex-direction: column;
-      gap: var(--ds-select-option-gap);
 
       min-height: 0;
       padding: var(--ds-select-control-padding-y) var(--ds-select-control-padding-x);
+      flex-direction: column;
 
       font-size: var(--ds-select-option-font-size);
       font-weight: $font-weight-medium;
       line-height: var(--ds-select-option-line-height);
-      color: var(--ds-select-option-color);
       white-space: normal;
+      color: var(--ds-select-option-color);
 
       background-color: var(--ds-select-option-bg);
+      gap: var(--ds-select-option-gap);
 
       @include transition('background-color, color');
 
@@ -583,10 +583,10 @@ const classes = computed(() => ({
     }
 
     &--disabled {
+      background-color: transparent;
+      opacity: 1;
       cursor: not-allowed;
       user-select: none;
-      opacity: 1;
-      background-color: transparent;
     }
   }
 
@@ -601,8 +601,8 @@ const classes = computed(() => ({
     }
 
     .multiselect__select {
-      cursor: inherit;
       background-color: var(--ds-select-control-select-bg);
+      cursor: inherit;
 
       &::before {
         border-color: var(--ds-select-disabled-control-arrow-color);

@@ -57,16 +57,15 @@ const classes = computed(() => ({
   --ds-radio-button-hover-border-color: #{color('green-30')};
   --ds-radio-button-text-color: inherit;
   --ds-radio-button-focus-color: #{color('black-40')};
-  cursor: pointer;
-  user-select: none;
-
   position: relative;
 
   display: inline-flex;
-  gap: var(--ds-radio-button-gap);
   align-items: center;
 
   color: var(--ds-radio-button-text-color);
+  cursor: pointer;
+  user-select: none;
+  gap: var(--ds-radio-button-gap);
   vertical-align: middle;
 
   &--size {
@@ -136,20 +135,20 @@ const classes = computed(() => ({
 
   &__mark {
     display: flex;
-    flex: 0 0 auto;
-    align-items: center;
-    justify-content: center;
 
     width: var(--ds-radio-button-size);
     height: var(--ds-radio-button-size);
     padding: var(--ds-radio-button-padding);
+    flex: 0 0 auto;
+    justify-content: center;
+    align-items: center;
 
     color: var(--ds-radio-button-color);
 
     background-color: var(--ds-radio-button-bg);
-    background-clip: content-box;
     border: 1px solid var(--ds-radio-button-border-color);
     border-radius: 50%;
+    background-clip: content-box;
 
     @include transition('background-color, box-shadow, color, border-color');
 

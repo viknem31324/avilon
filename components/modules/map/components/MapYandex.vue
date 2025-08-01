@@ -66,19 +66,19 @@ const clickMarker = (data: IModuleMapAddressAndCoordinates) => {
 
   &__loader {
     position: absolute;
-    z-index: 10;
     top: 50%;
     right: 50%;
+    z-index: 10;
     transform: translate3d(50%, -50%, 0);
   }
 
   &__clusterer {
     display: flex;
-    align-items: center;
-    justify-content: center;
 
     width: 48px;
     height: 48px;
+    justify-content: center;
+    align-items: center;
 
     font-size: var(--ds-map-clusterer-font-size);
     line-height: var(--ds-map-clusterer-line-height);
@@ -99,10 +99,7 @@ const clickMarker = (data: IModuleMapAddressAndCoordinates) => {
   }
 
   &__marker {
-    cursor: pointer;
-
     position: relative;
-    transform: translate3d(-50%, -100%, 0);
 
     width: 23px;
     height: 35px;
@@ -114,6 +111,8 @@ const clickMarker = (data: IModuleMapAddressAndCoordinates) => {
     background-color: transparent;
     border: none;
     outline: none;
+    cursor: pointer;
+    transform: translate3d(-50%, -100%, 0);
 
     @include text-styles('xs');
 
@@ -126,17 +125,16 @@ const clickMarker = (data: IModuleMapAddressAndCoordinates) => {
 
     &-number {
       position: absolute;
-      z-index: 1;
       top: 3px;
       left: 50%;
-      transform: translateX(-50%);
+      z-index: 1;
 
       display: flex;
-      align-items: center;
-      justify-content: center;
 
       width: 17px;
       height: 17px;
+      justify-content: center;
+      align-items: center;
 
       font-size: var(--ds-map-marker-font-size);
       line-height: var(--ds-map-marker-line-height);
@@ -144,6 +142,7 @@ const clickMarker = (data: IModuleMapAddressAndCoordinates) => {
 
       background-color: color('active-red');
       border-radius: 50%;
+      transform: translateX(-50%);
 
       @include media-min('tablet') {
         width: 24px;

@@ -38,11 +38,11 @@ const changeActiveSlide = (index: number) => {
   position: static;
 
   display: flex;
-  justify-content: center;
 
   width: 100%;
   margin: var(--ds-slider-pagination-margin-y) 0;
   padding: 0 20px;
+  justify-content: center;
 
   @include media-min('tablet') {
     --ds-slider-pagination-margin-y: 20px;
@@ -57,14 +57,13 @@ const changeActiveSlide = (index: number) => {
     max-width: var(--ds-slider-pagination-bullet-max-width);
 
     &-bullet {
-      cursor: pointer;
-
       width: 100%;
       height: var(--ds-slider-pagination-bullet-height);
 
       background-color: var(--ds-slider-pagination-bullet-bg);
       border: none;
       outline: none;
+      cursor: pointer;
 
       &--active {
         background-color: var(--ds-slider-pagination-bullet-bg-active);

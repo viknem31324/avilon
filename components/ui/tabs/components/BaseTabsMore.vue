@@ -92,11 +92,11 @@ const onSelect = (option: IBaseTabItem) => {
 
   &__count-wrapper {
     display: flex;
-    gap: 4px;
-    align-items: center;
-    justify-content: space-between;
 
     max-height: 22px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
 
     @include media-min('tablet') {
       max-height: 24px;
@@ -172,13 +172,13 @@ const onSelect = (option: IBaseTabItem) => {
 
       margin: 0;
       padding: 0;
+      white-space: nowrap;
 
       color: var(--ds-tab-more-option-color);
-      text-overflow: ellipsis;
-      white-space: nowrap;
 
       background-color: transparent;
       border-radius: 0;
+      text-overflow: ellipsis;
     }
 
     &__element {
@@ -265,11 +265,11 @@ const onSelect = (option: IBaseTabItem) => {
       padding: 8px 16px;
 
       line-height: 28px;
-      color: var(--ds-tab-more-option-color);
       text-decoration: none;
       text-transform: none;
-      word-break: break-word;
       white-space: normal;
+      color: var(--ds-tab-more-option-color);
+      word-break: break-word;
 
       @include media-min('tablet') {
         padding: 10px 16px;

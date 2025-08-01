@@ -58,8 +58,8 @@ withDefaults(defineProps<IBaseBreadcrumbsItem>(), {
   &__link {
     display: flex;
     align-items: center;
-    color: inherit;
     text-decoration: none;
+    color: inherit;
 
     &:not(div):hover {
       color: var(--ds-breadcrumb-item-active-color);

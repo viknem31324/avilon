@@ -131,9 +131,9 @@ const isPassword = computed(() => props.type === 'password');
   flex-direction: column;
 
   &--disabled {
+    color: var(--ds-input-disabled-color);
     cursor: not-allowed;
     user-select: none;
-    color: var(--ds-input-disabled-color);
   }
 
   &--type {
@@ -255,12 +255,11 @@ const isPassword = computed(() => props.type === 'password');
     }
 
     &:disabled {
-      cursor: not-allowed;
-      user-select: none;
-
       color: var(--ds-input-item-disabled-color);
 
       background-color: var(--ds-input-item-disabled-bg);
+      cursor: not-allowed;
+      user-select: none;
       border-color: var(--ds-input-item-disabled-border);
     }
   }
@@ -271,11 +270,11 @@ const isPassword = computed(() => props.type === 'password');
     right: var(--ds-input-item-padding-x);
 
     display: flex;
-    align-items: center;
 
     width: max-content;
     height: 100%;
     padding: 0;
+    align-items: center;
 
     color: var(--ds-input-icon-color);
 
@@ -289,9 +288,6 @@ const isPassword = computed(() => props.type === 'password');
   }
 
   &__counter {
-    pointer-events: none;
-    user-select: none;
-
     position: absolute;
     top: var(--ds-input-item-padding-y);
     right: var(--ds-input-item-padding-x);
@@ -300,6 +296,8 @@ const isPassword = computed(() => props.type === 'password');
     font-weight: $font-weight-medium;
     line-height: var(--ds-input-line-height);
     color: var(--ds-input-item-placeholder-color);
+    pointer-events: none;
+    user-select: none;
   }
 }
 </style>

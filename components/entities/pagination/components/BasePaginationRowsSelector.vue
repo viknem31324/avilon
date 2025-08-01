@@ -57,21 +57,20 @@ watch(() => props.modelValue, (newValue) => {
   }
 
   &__button {
-    cursor: pointer;
-
     display: flex;
-    align-items: center;
-    justify-content: center;
 
     width: var(--base-pagination-button-size);
     height: var(--base-pagination-button-size);
     padding: 0;
+    justify-content: center;
+    align-items: center;
 
     font-weight: $font-weight-medium;
     color: var(--base-pagination-button-color);
 
     background-color: var(--base-pagination-button-bg);
     border: 1px solid var(--base-pagination-button-border-color);
+    cursor: pointer;
 
     @include transition('background-color, border-color, color');
 
@@ -82,9 +81,9 @@ watch(() => props.modelValue, (newValue) => {
     }
 
     &:disabled {
-      pointer-events:none;
       color: var(--base-pagination-button-disabled-color);
       background-color: var(--base-pagination-button-disabled-bg);
+      pointer-events:none;
       border-color: var(--base-pagination-button-disabled-border-color);
     }
 

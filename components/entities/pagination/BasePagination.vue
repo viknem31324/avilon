@@ -100,11 +100,11 @@ const onChangePaginationResultNumber = (perPage: number) => {
   --ds-pagination-more-button-hover-border-color: transparent;
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
 
   color: var(--ds-pagination-color);
+  gap: 16px;
 
   @include media-min('tablet') {
     gap: 24px;

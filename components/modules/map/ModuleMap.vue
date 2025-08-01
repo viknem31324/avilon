@@ -150,9 +150,9 @@ watch(isLaptop, () => {
       @include media-min('wideTablet') {
         --ds-map-block-padding: 40px;
         position: absolute;
-        z-index: 10;
         top: 40px;
         left: 40px;
+        z-index: 10;
 
         display: grid;
 
@@ -190,8 +190,8 @@ watch(isLaptop, () => {
     display: none;
 
     @include media-min('wideTablet') {
-      overflow-y: auto;
       display: block;
+      overflow-y: auto;
       padding-right: 8px;
 
       &::-webkit-scrollbar {
@@ -216,13 +216,12 @@ watch(isLaptop, () => {
     }
 
     &-item {
-      cursor: pointer;
-
       position: relative;
 
       padding: 28px 32px;
 
       background-color: color('black-5');
+      cursor: pointer;
       border-left: 8px solid transparent;
 
       @include transition('border-color');
@@ -241,9 +240,9 @@ watch(isLaptop, () => {
     &__header {
       --ds-icon-size: 20px;
       position: absolute;
-      z-index: 1;
       top: 35px;
       right: 32px;
+      z-index: 1;
 
       padding: 0;
     }

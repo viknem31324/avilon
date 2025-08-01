@@ -81,9 +81,9 @@ useKeydownHandler({
     linear-gradient(180deg, #{rgba(color('total-white'), 1)} 6.77%, #{rgba(color('total-white'), 0)} 100%);
   --ds-lightbox-body-color: #{color('black-80')};
   position: fixed;
-  z-index: 1000;
   top: 0;
   left: 0;
+  z-index: 1000;
 
   overflow: hidden auto;
 
@@ -94,20 +94,17 @@ useKeydownHandler({
   outline: 0;
 
   &__dialog {
-    pointer-events: none;
-
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: var(--ds-lightbox-dialog-justify-content, center);
 
     min-height: 100%;
     padding: var(--ds-lightbox-dialog-padding, 12px);
+    flex-direction: column;
+    justify-content: var(--ds-lightbox-dialog-justify-content, center);
+    align-items: center;
+    pointer-events: none;
   }
 
   &__content {
-    pointer-events: auto;
-
     overflow-y: auto;
 
     width: 100%;
@@ -119,15 +116,16 @@ useKeydownHandler({
     background-color: var(--ds-modal-bg);
     box-shadow: 0 6px 16px rgb(0 0 0 / 5%),
     0 9px 28px 8px rgb(0 0 0 / 5%);
+    pointer-events: auto;
 
     @include custom-scroll;
   }
 
   &__header {
     display: flex;
-    gap: 24px;
-    align-items: flex-start;
     padding: 12px;
+    align-items: flex-start;
+    gap: 24px;
 
     @include media-min('desktop') {
       padding: 32px 32px 24px;

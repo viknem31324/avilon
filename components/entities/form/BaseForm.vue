@@ -107,10 +107,10 @@ const styles = computed(() => ({
       justify-content: center;
 
       @include media-min("desktop") {
+        justify-content: space-between;
+        align-items: start;
         grid-template-columns: repeat(2, 1fr);
         gap: 40px;
-        align-items: start;
-        justify-content: space-between;
       }
 
       #{$self}__description {

@@ -35,17 +35,16 @@ const classes = computed(() => ({
   @include transition('background-color');
 
   &__inner {
-    cursor: pointer;
-
     position: relative;
 
     display: flex;
-    align-items: center;
 
     height: 100%;
     padding: 5px 12px;
+    align-items: center;
 
     border: 1px solid var(--ds-tag-border-color);
+    cursor: pointer;
     @include transition('border-color');
   }
 
@@ -104,11 +103,11 @@ const classes = computed(() => ({
 
   &__icon {
     display: flex;
-    align-items: center;
-    justify-content: center;
 
     width: 32px;
     height: 32px;
+    justify-content: center;
+    align-items: center;
     @include transition('color');
   }
 

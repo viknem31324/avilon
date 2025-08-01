@@ -233,9 +233,9 @@ $namespace: 'ds-mx';
   }
 
   &--disabled {
+    color: var(--ds-calendar-input-disabled-color);
     cursor: not-allowed;
     user-select: none;
-    color: var(--ds-calendar-input-disabled-color);
   }
 
   &__btn {
@@ -380,18 +380,18 @@ $namespace: 'ds-mx';
 
   .ds-mx-datepicker-btn-confirm {
     display: inline-block;
-
-    margin-left: auto;
     padding: 4px 31px;
 
     font-weight: $font-weight-medium;
-    color: var(--ds-calendar-datepicker-btn-confirm-color);
     text-align: center;
     text-decoration: none;
+    color: var(--ds-calendar-datepicker-btn-confirm-color);
 
     background-color: var(--ds-calendar-datepicker-btn-confirm-bg);
     border: 1px solid transparent;
     border-radius: 0;
+
+    margin-left: auto;
 
     @include text-styles('s');
 
@@ -418,8 +418,6 @@ $namespace: 'ds-mx';
 
   tbody {
     .cell.not-current-month {
-      pointer-events: none;
-
       height: 0;
 
       font-size: 1px;
@@ -427,6 +425,7 @@ $namespace: 'ds-mx';
       color: transparent;
 
       background-color: transparent;
+      pointer-events: none;
     }
 
     .cell.in-range:not(.not-current-month),
@@ -449,9 +448,9 @@ $namespace: 'ds-mx';
     }
 
     .cell.disabled {
-      cursor: default;
       color: var(--ds-calendar-table-cell-disabled-color);
       background-color: transparent;
+      cursor: default;
     }
 
     .cell.today:not(.not-current-month) {
