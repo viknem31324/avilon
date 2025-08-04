@@ -32,38 +32,36 @@ withDefaults(defineProps<IBaseLoading>(), {
     height: var(--ds-loading-spinner-size, 20px);
 
     &::before {
-      content: "";
-
       position: absolute;
-      z-index: 1;
       top: 0;
       left: 0;
-      transform: translate(-50%, -50%);
+      z-index: 1;
 
       width: 100%;
       height: 100%;
 
       border: var(--ds-loading-border-width, 2px) solid transparent;
-      border-top-color: var(--ds-loading-spinner-color, inherit);
-      border-left-color: var(--ds-loading-spinner-color, inherit);
       border-radius: 50%;
 
       animation: spin 0.6s linear infinite;
+      content: "";
+      transform: translate(-50%, -50%);
+      border-top-color: var(--ds-loading-spinner-color, inherit);
+      border-left-color: var(--ds-loading-spinner-color, inherit);
     }
 
     &::after {
-      content: "";
-
       position: absolute;
-      z-index: 0;
       top: 0;
       left: 0;
+      z-index: 0;
 
       width: 100%;
       height: 100%;
 
       border: var(--ds-loading-border-width, 2px) solid var(--ds-loading-spinner-border-round-bg, color('black-20'));
       border-radius: 50%;
+      content: "";
     }
 
     @keyframes spin {

@@ -85,8 +85,8 @@ watch(() => props.modelValue, () => {
 
     font-size: 20px;
     line-height: 100%;
-    color: color('white');
     text-align: center;
+    color: color('white');
 
     background-color: color('dark-grey');
     border: none;

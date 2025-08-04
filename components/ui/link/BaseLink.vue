@@ -29,30 +29,29 @@ const classes = computed(() => ({
 
   font-size: inherit;
   line-height: inherit;
-  color: var(--ds-link-color);
   text-decoration: none;
+  color: var(--ds-link-color);
 
   @include transition("color");
 
   &::after {
-    content: "";
-
     position: absolute;
     bottom: 0;
     left: 0;
 
     width: 100%;
     height: 1px;
+    background-color: currentcolor;
 
     opacity: 0;
-    background-color: currentcolor;
+    content: "";
 
     @include transition("opacity");
   }
 
   &:hover {
-    color: color("green-30");
     text-decoration: none;
+    color: color("green-30");
 
     &::after {
       opacity: 1;

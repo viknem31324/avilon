@@ -140,23 +140,23 @@ const clearInput = () => {
 <style lang="scss">
 .ds-input-file-upload {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
 
   max-width: 498px;
   padding: 12px;
+  flex-wrap: wrap;
 
   border: 1px dashed color('black-20');
   border-radius: 8px;
+  gap: 20px;
 
   &__preview-wrapper {
-    overflow: hidden;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden;
 
     width: 100px;
     height: 100px;
+    justify-content: center;
+    align-items: center;
 
     border-radius: 5px;
   }
@@ -192,15 +192,14 @@ const clearInput = () => {
   }
 
   &__input {
-    pointer-events: none;
-    cursor: pointer;
-
     position: absolute;
-    inset: 0;
 
     margin: 0;
 
     opacity: 0;
+    cursor: pointer;
+    pointer-events: none;
+    inset: 0;
   }
 }
 </style>

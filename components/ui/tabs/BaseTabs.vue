@@ -222,17 +222,16 @@ onBeforeUnmount(() => {
   }
 
   &__tab {
-    cursor: pointer;
-
     position: relative;
 
     display: flex;
     flex-shrink: 0;
-    gap: 4px;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
     color: var(--ds-tabs-tab-color);
+    cursor: pointer;
+    gap: 4px;
 
     border-bottom: 4px solid var(--ds-tabs-tab-border-bottom);
 
@@ -264,18 +263,17 @@ onBeforeUnmount(() => {
   }
 
   &__tab-btn {
-    cursor: pointer;
-
     width: 100%;
     padding: var(--ds-tabs-tab-padding-y) var(--ds-tabs-tab-padding-x);
-
-    font: inherit;
-    color: inherit;
     white-space: nowrap;
+    color: inherit;
 
     background-color: transparent;
     border: none;
     outline: none;
+    cursor: pointer;
+
+    font: inherit;
   }
 
   &__tab-more {

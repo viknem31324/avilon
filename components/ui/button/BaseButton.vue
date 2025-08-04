@@ -55,8 +55,6 @@ const isLink = computed(() => (
 <style lang="scss">
 .ds-button {
   $self: &;
-  cursor: pointer;
-
   position: relative;
 
   display: inline-block;
@@ -65,21 +63,22 @@ const isLink = computed(() => (
   padding: var(--ds-button-padding-y) var(--ds-button-padding-x);
 
   font-weight: $font-weight-medium;
-  color: var(--ds-button-color);
   text-align: center;
   text-decoration: none;
+  color: var(--ds-button-color);
 
   background-color: var(--ds-button-bg);
   border: 1px solid var(--ds-button-border-color);
   outline: none;
+  cursor: pointer;
 
   @include transition('background-color, color, border-color');
 
   @include media-min('tablet') {
     @include has-hover {
       &:hover {
-        color: var(--ds-button-hover-color);
         text-decoration: none;
+        color: var(--ds-button-hover-color);
         background-color: var(--ds-button-hover-bg);
         border-color: var(--ds-button-hover-border-color);
       }
@@ -97,12 +96,11 @@ const isLink = computed(() => (
   }
 
   &:disabled {
-    cursor: not-allowed;
-    user-select: none;
-
     color: var(--ds-button-disabled-color);
 
     background-color: var(--ds-button-disabled-bg);
+    cursor: not-allowed;
+    user-select: none;
     border-color: var(--ds-button-disabled-border-color);
   }
 
@@ -309,9 +307,9 @@ const isLink = computed(() => (
 
   &--has-icon {
     display: inline-flex;
-    gap: var(--ds-button-inner-gap);
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    gap: var(--ds-button-inner-gap);
 
     &#{$self}--size {
       &-s {
@@ -349,13 +347,13 @@ const isLink = computed(() => (
   &__loading-wrapper {
     position: absolute;
     z-index: 1;
-    inset: 0;
 
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
     background-color: var(--ds-button-bg);
+    inset: 0;
   }
 
   &--loading {

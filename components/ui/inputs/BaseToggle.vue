@@ -143,11 +143,11 @@ const isVisibleError = computed(() => !props.disabled && errorMessage);
     position: relative;
 
     display: flex;
-    align-items: center;
 
     width: var(--ds-toggle-wrapper-width);
     height: var(--ds-toggle-wrapper-height);
     padding: 4px;
+    align-items: center;
 
     background-color: var(--ds-toggle-wrapper-background-color);
     border-radius: 999px;
@@ -156,13 +156,13 @@ const isVisibleError = computed(() => !props.disabled && errorMessage);
 
     &-circle {
       position: absolute;
-      z-index: 1;
       right: calc(100% - var(--ds-toggle-wrapper-circle-size) - var(--ds-toggle-wrapper-circle-margin-y));
-
-      flex: none;
+      z-index: 1;
 
       width: var(--ds-toggle-wrapper-circle-size);
       height: var(--ds-toggle-wrapper-circle-size);
+
+      flex: none;
 
       background-color: color('total-white');
       border-radius: 50%;

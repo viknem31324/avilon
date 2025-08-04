@@ -57,12 +57,9 @@ const prevSlide = () => {
 
 <style lang="scss">
 .ds-slider-nav-btn {
-  cursor: pointer;
-
   position: absolute;
-  z-index: 10;
   top: 50%;
-  transform: translateY(-50%);
+  z-index: 10;
 
   margin: 0;
   padding: 0;
@@ -73,6 +70,8 @@ const prevSlide = () => {
   background-color: transparent;
   border: none;
   outline: none;
+  cursor: pointer;
+  transform: translateY(-50%);
 
   @include transition('color');
 
@@ -81,8 +80,8 @@ const prevSlide = () => {
   }
 
   &:disabled {
-    cursor: default;
     opacity: 0;
+    cursor: default;
   }
 
   &--prev {

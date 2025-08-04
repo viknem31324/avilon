@@ -178,27 +178,26 @@ const classes = computed(() => ({
   color: var(--ds-tooltip-color);
 
   &__body {
-    pointer-events: none;
-
     position: absolute;
     z-index: -1000;
 
     display: flex;
-    gap: var(--ds-tooltip-gap);
-    align-items: flex-start;
 
     width: max-content;
     max-width: var(--ds-tooltip-max-width);
     padding: var(--ds-tooltip-padding);
+    align-items: flex-start;
 
     font-size: var(--ds-tooltip-font-size);
     font-weight: $font-weight-medium;
     line-height: var(--ds-tooltip-line-height);
-
-    opacity: 0;
     background-color: var(--ds-tooltip-bg);
     border: 1px solid var(--ds-tooltip-border);
     box-shadow: var(--theme-shadow-default);
+
+    opacity: 0;
+    pointer-events: none;
+    gap: var(--ds-tooltip-gap);
 
     @include transition('opacity, z-index');
 
@@ -296,15 +295,13 @@ const classes = computed(() => ({
     }
 
     &--open {
-      pointer-events: all;
       z-index: 2000;
       opacity: 1;
+      pointer-events: all;
     }
   }
 
   &__close {
-    cursor: pointer;
-
     margin: 0;
     padding: 0;
 
@@ -313,6 +310,7 @@ const classes = computed(() => ({
     background-color: transparent;
     border: 0;
     outline: none;
+    cursor: pointer;
 
     @include transition('opacity');
 

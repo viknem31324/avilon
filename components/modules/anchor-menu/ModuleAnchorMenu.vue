@@ -248,8 +248,8 @@ const classes = computed(() => ({
   --ds-anchor-menu-tag-padding-x: 8px;
   --ds-anchor-menu-tag-padding-y: 1px;
   position: sticky;
-  z-index: 100;
   top: var(--ds-anchor-menu-top, 0);
+  z-index: 100;
   background-color: #{color('total-white')};
 
   &--open {
@@ -277,19 +277,19 @@ const classes = computed(() => ({
   }
 
   &__list {
-    overflow: hidden;
     display: flex;
-    flex-direction: column;
+    overflow: hidden;
 
     margin: 0;
     padding: 0;
+    flex-direction: column;
 
     color: var(--ds-anchor-menu-color);
     list-style: none;
 
     @include media-min('tablet') {
-      flex-direction: row;
       width: 100%;
+      flex-direction: row;
       border-bottom: 1px solid var(--ds-anchor-menu-border);
     }
   }
@@ -362,21 +362,21 @@ const classes = computed(() => ({
     position: relative;
 
     display: flex;
-    gap: var(--ds-anchor-menu-link-gap);
-    align-items: center;
 
     width: 100%;
     height: 100%;
     padding: 0 var(--ds-anchor-menu-link-padding-x);
+    align-items: center;
 
     font-size: var(--ds-anchor-menu-link-font-size);
     line-height: var(--ds-anchor-menu-link-line-height);
-    color: inherit;
     text-decoration: none;
+    color: inherit;
+    gap: var(--ds-anchor-menu-link-gap);
 
     &:hover {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
     }
   }
 
@@ -389,8 +389,8 @@ const classes = computed(() => ({
 
   &__link-tag {
     padding: var(--ds-anchor-menu-tag-padding-y) var(--ds-anchor-menu-tag-padding-x);
-    color: var(--ds-anchor-menu-tag-color);
     text-transform: uppercase;
+    color: var(--ds-anchor-menu-tag-color);
     background-color: var(--ds-anchor-menu-tag-bg);
   }
 
@@ -403,8 +403,6 @@ const classes = computed(() => ({
 
   &__btn {
     @include media-min('tablet') {
-      cursor: pointer;
-
       position: absolute;
       z-index: 30;
 
@@ -417,19 +415,19 @@ const classes = computed(() => ({
       background-color: transparent;
       border: none;
       border-radius: 0;
+      cursor: pointer;
 
       &::before {
-        pointer-events: none;
-        content: '';
-
         position: absolute;
-        z-index: -1;
         top: 0;
+        z-index: -1;
 
         width: 150px;
         height: 100%;
 
         background: linear-gradient(90deg, #fff 0%, rgb(255 255 255 / 0%) 90%);
+        pointer-events: none;
+        content: '';
       }
 
       .ds-icon {

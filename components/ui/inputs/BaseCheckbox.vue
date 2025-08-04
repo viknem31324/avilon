@@ -95,16 +95,15 @@ const isVisibleError = computed(() => !Array.isArray(props.modelValue) && !props
   --ds-checkbox-hover-border-color: #{color('green-30')};
   --ds-checkbox-focus-color: #{color('black-40')};
   --ds-checkbox-text-color: inherit;
-  cursor: pointer;
-  user-select: none;
-
   position: relative;
 
   display: inline-flex;
-  gap: var(--ds-checkbox-gap);
   align-items: flex-start;
 
   color: var(--ds-checkbox-text-color);
+  cursor: pointer;
+  user-select: none;
+  gap: var(--ds-checkbox-gap);
   vertical-align: middle;
 
   &--size {
@@ -192,12 +191,12 @@ const isVisibleError = computed(() => !Array.isArray(props.modelValue) && !props
 
   &__mark {
     display: flex;
-    flex: 0 0 auto;
-    align-items: center;
-    justify-content: center;
 
     width: var(--ds-checkbox-size);
     height: var(--ds-checkbox-size);
+    flex: 0 0 auto;
+    justify-content: center;
+    align-items: center;
 
     color: var(--ds-checkbox-color);
 

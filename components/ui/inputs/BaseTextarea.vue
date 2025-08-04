@@ -198,12 +198,11 @@ const onFocus = (evt: FocusEvent) => {
     }
 
     &:disabled {
-      cursor: not-allowed;
-      user-select: none;
-
       color: var(--ds-textarea-item-disabled-color);
 
       background-color: var(--ds-textarea-item-disabled-bg);
+      cursor: not-allowed;
+      user-select: none;
       border-color: var(--ds-textarea-item-disabled-border-color);
     }
   }

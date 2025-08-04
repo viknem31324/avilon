@@ -18,14 +18,10 @@ const classes = computed(() => ({
 
 <style lang="scss">
 .ds-chips-item {
-  cursor: pointer;
-  user-select: none;
-
   display: flex;
-  gap: 8px;
-  align-items: center;
 
   padding: 2px 5px;
+  align-items: center;
 
   font-weight: $font-weight-medium;
   color: var(--ds-chips-color);
@@ -33,6 +29,9 @@ const classes = computed(() => ({
   background-color: var(--ds-chips-bg);
   border: 1px solid var(--ds-chips-border-color);
   border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+  gap: 8px;
   @include transition('background-color');
 
   &--active {

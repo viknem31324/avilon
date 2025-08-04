@@ -148,20 +148,19 @@ const changeActive = (index: number) => {
   }
 
   &__head {
-    cursor: pointer;
-
     display: flex;
-    align-items: stretch;
 
     width: 100%;
     padding: 0;
-
-    color: var(--ds-accordion-head-color);
+    align-items: stretch;
     text-align: left;
 
+    color: var(--ds-accordion-head-color);
+
     background-color: var(--ds-accordion-head-bg);
-    border-width: 0;
     outline: none;
+    cursor: pointer;
+    border-width: 0;
 
     @include transition('background-color, color');
 
@@ -174,16 +173,16 @@ const changeActive = (index: number) => {
   }
 
   &__title {
-    flex: 1 1 0;
     padding: var(--ds-accordion-title-padding-y) var(--ds-accordion-title-padding-x);
+    flex: 1 1 0;
   }
 
   &__icon {
     display: flex;
-    align-items: center;
-    justify-content: center;
 
     width: var(--ds-accordion-icon-size);
+    justify-content: center;
+    align-items: center;
 
     color: var(--ds-accordion-icon-color);
 
@@ -194,9 +193,9 @@ const changeActive = (index: number) => {
 
   &__body {
     display: flex;
-    flex-direction: column;
 
     padding: var(--ds-accordion-body-padding-y) var(--ds-accordion-body-padding-x);
+    flex-direction: column;
 
     color: var(--ds-accordion-body-color);
 
