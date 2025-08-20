@@ -1,18 +1,15 @@
+import type { IBaseInput } from './input';
+
 type PhoneLocaleType = 'ru' | 'be';
 
 interface IPhoneData {
   locale: PhoneLocaleType;
-  label: string;
+  label?: string;
   mask: string;
+  placeholder?: string;
 }
 
-export interface BaseInputProps {
-  required?: boolean;
-  locale: PhoneLocaleType;
-  mask: string;
-  label: string;
-  modelValue?: string;
-  name: string;
-  placeholder: string;
-  itemsPhone: IPhoneData[];
+export interface BaseInputProps extends IBaseInput {
+  locale?: PhoneLocaleType;
+  itemsPhone?: IPhoneData[];
 }

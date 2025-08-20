@@ -1,13 +1,10 @@
 <template>
   <BaseInput
     v-bind="bindData"
-    :model-value="modelValue"
-    :label="label"
-    :mask="mask"
+    v-model="modelValue"
     :name="name"
-    :placeholder="placeholder"
     :required="required"
-    @input="onInput"
+    type="tel"
   />
 </template>
 
@@ -16,33 +13,26 @@ import type { BaseInputProps } from './types/inputPhone';
 
 const props = withDefaults(defineProps<BaseInputProps>(), {
   required: false,
-  mask: '+7 (###) ###-##-##',
-  placeholder: '+7',
   locale: 'ru',
 });
 
-const modelValue = ref('');
+const modelValue = ref(props.modelValue);
 
-const bindData = computed(() => props.itemsPhone.find(item => item.locale === props.locale));
+const bindData = computed(() => {
+  const findLocale = props.itemsPhone?.find(item => item.locale === props.locale);
 
-const onInput = (evt: InputEvent) => {
-  const target = evt.target as HTMLInputElement;
-
-  if (target.value === '+7 (8') {
-    modelValue.value = '+7 (';
-    return;
-  }
-
-  if (target.value === '+7 ') {
-    modelValue.value = '';
-    return;
-  }
-
-  if (target.value === '+375 ') {
-    modelValue.value = '';
-    return;
-  }
-
-  modelValue.value = target.value;
-};
+  return {
+    placeholder: props.placeholder,
+    mask: props.mask,
+    label: props.label,
+    ...findLocale,
+    name: props.name,
+    required: props.required,
+    size: props.size,
+    errorText: props.errorText,
+    rules: props.rules,
+    disabled: props.disabled,
+    id: props.id,
+  };
+});
 </script>

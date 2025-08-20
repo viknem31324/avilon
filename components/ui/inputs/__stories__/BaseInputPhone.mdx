@@ -1,0 +1,78 @@
+import { Meta, Canvas, Controls } from '@storybook/blocks';
+import * as BaseInputPhoneStories from './BaseInputPhone.stories';
+
+<Meta of={BaseInputPhoneStories} />
+
+# InputPhone
+
+InputPhone — это элемент интерфейса формы, который позволяет вводить номер телефона с возможностью установки нужной локали.
+
+<Canvas of={BaseInputPhoneStories.Overview} />
+
+<Controls story="Overview" />
+
+## Применение
+
+Компонент `BaseInputPhone` необходим каждый раз, когда пользователь вводит данные номера телефона.
+
+## Варианты использования
+
+### Общая информация
+
+`BaseInputPhone` может принимать такие атрибуты как:
+
+<ul>
+  <li><code>name</code> — для указания имени поля. Является обязательным для заполнения;</li>
+  <li><code>placeholder</code> — для указания подсказки внутри поля формы.</li>
+</ul>
+
+### Size
+
+Устанавливает размер.
+
+InputPhone может иметь один из трех размеров: `s`, `m` и `l`. По умолчанию `m`. Размеры адаптивны.
+
+<Canvas of={BaseInputPhoneStories.Size} />
+
+### States
+
+InputPhone может иметь одно из двух состояний: `default` и `disabled`. По умолчанию `default`.
+
+<Canvas of={BaseInputPhoneStories.States} />
+
+### Required
+
+<Canvas of={BaseInputPhoneStories.Required} />
+
+### Mask
+
+Устанавливает маску. Символы, из которых составляется маска: `#` - цифры, `X` - цифры и буквы, `S` - буквы, `A` - буквы в верхнем регистре, `a` - буквы в нижнем регистре.
+
+<Canvas of={BaseInputPhoneStories.Mask} />
+
+### Max length
+
+Устанавливает ограничение на количество введенных символов.
+
+<Canvas of={BaseInputPhoneStories.MaxLength} />
+
+## Rules
+
+Компонент `BaseInputPhone` принимает пропс `rules` для валидации входных данных.
+
+Валидация полей может быть установлена одним из двух способов:
+
+1. C помощью библиотеки [yup](https://www.npmjs.com/package/yup);
+2. С помощью кастомных функций валидации.
+
+Примеры валидаций можно увидеть нажав кнопку `Show code` в правом нижнем углу истории.
+
+<Canvas of={BaseInputPhoneStories.Rules} />
+
+## Error
+
+Компонент `BaseInputPhone` поддерживает состояние ошибки.
+
+Текст ошибки можно задать во время описания правил валидации передаваемых в пропс `rules` или через `validationSchema`.
+
+<Canvas of={BaseInputPhoneStories.Error} />
