@@ -58,7 +58,7 @@ export default {
     mask: {
       control: 'text',
     },
-    itemsPhone: {
+    localesPhone: {
       control: 'object',
     },
   },
@@ -69,13 +69,13 @@ export default {
     id: '',
     label: 'Label',
     modelValue: '',
-    name: 'input',
-    placeholder: 'Placeholder',
+    name: 'input_phone',
+    placeholder: '+7',
     required: false,
     rules: undefined,
     size: 'm',
     mask: '',
-    itemsPhone: PHONE_LOCALES,
+    localesPhone: PHONE_LOCALES,
   },
 };
 
@@ -100,7 +100,6 @@ export const Size = {
       setup() {
         return {
           DEFAULT_SIZES,
-          PHONE_LOCALES,
         };
       },
 
@@ -110,10 +109,10 @@ export const Size = {
               <BaseInputPhone
                 v-for="inputPhoneSize in DEFAULT_SIZES"
                 label="Label"
-                placeholder="+7"
                 :name="inputPhoneSize"
                 :size="inputPhoneSize"
-                itemsPhone="PHONE_LOCALES"
+                placeholder="+7"
+                mask="+7 (###) ###-##-##"
               />
             </div>
           </div>
@@ -130,37 +129,31 @@ export const States = {
         BaseInputPhone,
       },
 
-      setup() {
-        return {
-          PHONE_LOCALES,
-        };
-      },
-
       template: `
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 24px;">
             <BaseInputPhone
               name="input_phone_states_1"
               placeholder="+7"
-              itemsPhone="PHONE_LOCALES"
+              mask="+7 (###) ###-##-##"
             />
             <BaseInputPhone
               name="input_phone_states_2"
-              placeholder="+7"
               modelValue="987 995 55 55"
-              itemsPhone="PHONE_LOCALES"
+              placeholder="+7"
+              mask="+7 (###) ###-##-##"
             />
             <BaseInputPhone
               name="input_phone_states_3"
-              placeholder="+7"
               disabled
-              itemsPhone="PHONE_LOCALES"
+              placeholder="+7"
+              mask="+7 (###) ###-##-##"
             />
             <BaseInputPhone
               name="input_phone_states_4"
-              placeholder="+7"
               modelValue="987 995 55 55"
               disabled
-              itemsPhone="PHONE_LOCALES"
+              placeholder="+7"
+              mask="+7 (###) ###-##-##"
             />
           </div>
         `,
@@ -175,28 +168,22 @@ export const Required = {
         BaseInputPhone,
       },
 
-      setup() {
-        return {
-          PHONE_LOCALES,
-        };
-      },
-
       template: `
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 24px;">
             <BaseInputPhone
               name="input_phone_required_1"
-              placeholder="+7"
               label="Label"
               required
-              itemsPhone="PHONE_LOCALES"
+              placeholder="+7"
+              mask="+7 (###) ###-##-##"
             />
             <BaseInputPhone
               name="input_phone_required_2"
               disabled
-              placeholder="+7"
               label="Label"
               required
-              itemsPhone="PHONE_LOCALES"
+              placeholder="+7"
+              mask="+7 (###) ###-##-##"
             />
           </div>
         `,
@@ -212,6 +199,33 @@ export const Mask = {
         BaseInputPhone,
       },
 
+      template: `
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 24px;">
+            <BaseInputPhone
+              name="Mask"
+              label="Label"
+              placeholder="+7"
+              mask="+7 (###) ###-##-##"
+            />
+            <BaseInputPhone
+              name="MaskBy"
+              label="Label"
+              placeholder="+7"
+              mask="+7 (###) ###-##-##"
+            />
+          </div>
+        `,
+    };
+  },
+};
+
+export const Locales = {
+  render: () => {
+    return {
+      components: {
+        BaseInputPhone,
+      },
+
       setup() {
         return {
           PHONE_LOCALES,
@@ -221,18 +235,11 @@ export const Mask = {
       template: `
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 24px;">
             <BaseInputPhone
-              name="Mask"
-              placeholder="+7"
+              v-for="(inputPhoneLocale, index) in PHONE_LOCALES"
+              v-bind="inputPhoneLocale"
+              name="input_phone"
               label="Label"
-              mask="+7(###) ###-##-##"
-              itemsPhone="PHONE_LOCALES"
-            />
-            <BaseInputPhone
-              name="MaskBy"
-              placeholder="+375"
-              label="Label"
-              mask="+375(##) ###-##-##"
-              itemsPhone="PHONE_LOCALES"
+              :locale="index === 0 ? 'ru' : 'be'"
             />
           </div>
         `,
@@ -267,7 +274,6 @@ export const Rules = {
         return {
           yupRules,
           customRules,
-          PHONE_LOCALES,
         };
       },
       template: `
@@ -275,18 +281,18 @@ export const Rules = {
             <BaseInputPhone
               label="Yup validation"
               name="input_phone_rules_yup"
-              placeholder="+7"
               required
               :rules="yupRules"
-              itemsPhone="PHONE_LOCALES"
+              placeholder="+7"
+              mask="+7 (###) ###-##-##"
             />
             <BaseInputPhone
               label="Custom validation"
               name="input_phone_rules_custom"
-              placeholder="+7"
               required
               :rules="customRules"
-              itemsPhone="PHONE_LOCALES"
+              placeholder="+7"
+              mask="+7 (###) ###-##-##"
             />
           </div>
         `,
@@ -304,7 +310,6 @@ export const Error = {
 
       setup() {
         return {
-          PHONE_LOCALES,
           validationSchema: yup.object({
             input: yup.string().required('Обязательное поле'),
           }),
@@ -314,16 +319,16 @@ export const Error = {
       template: `
           <BaseForm
             buttonLabel="Submit"
-            title="Input form"
+            title="InputPhone form"
             :validation-schema="validationSchema"
             validateOnMount
           >
             <BaseInputPhone
               label="Input"
               name="input_phone"
-              placeholder="+7"
               required
-              itemsPhone="PHONE_LOCALES"
+              placeholder="+7"
+              mask="+7 (###) ###-##-##"
             />
           </BaseForm>
         `,

@@ -11,5 +11,11 @@ interface IPhoneData {
 
 export interface BaseInputProps extends IBaseInput {
   locale?: PhoneLocaleType;
-  itemsPhone?: IPhoneData[];
+  localesPhone?: IPhoneData[];
 }
+
+export type BaseInputPhoneEmits = {
+  'blur': [event: FocusEvent];
+  'focus': [event: FocusEvent];
+  'update:modelValue': [value: string];
+};

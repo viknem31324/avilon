@@ -50,11 +50,17 @@ InputPhone может иметь одно из двух состояний: `def
 
 <Canvas of={BaseInputPhoneStories.Mask} />
 
-### Max length
+### Locales
 
-Устанавливает ограничение на количество введенных символов.
+InputPhone может использовать локали для форматирования номера телефона. Для этого необходимо указать массив поддерживаемых локалей `localesPhone` и указать текущую локаль в атрибуте `locale`(например, `'ru'`, `'be'`).
+Элементы `localesPhone` состоят из следующих полей:
 
-<Canvas of={BaseInputPhoneStories.MaxLength} />
+* `locale`(*string*\[required]): название локали(например, `'ru'`, `'be'`).
+* `label`(*string*\[optional]): label для текущей локали, если не указан, используется label по умолчанию.
+* `mask`(*string*\[optional]): mask для текущей локали, если не указан, используется mask по умолчанию.
+* `placeholder`(*string*\[optional]): placeholder для текущей локали, если не указан, используется placeholder по умолчанию.
+
+<Canvas of={BaseInputPhoneStories.Locales} />
 
 ## Rules
 
