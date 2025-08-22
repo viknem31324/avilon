@@ -33,16 +33,13 @@ export default {
     id: {
       control: 'text',
     },
-    label: {
-      control: 'text',
-    },
     modelValue: {
       control: 'text',
     },
-    name: {
+    locale: {
       control: 'text',
     },
-    placeholder: {
+    name: {
       control: 'text',
     },
     required: {
@@ -55,9 +52,6 @@ export default {
       control: 'select',
       options: DEFAULT_SIZES,
     },
-    mask: {
-      control: 'text',
-    },
     localesPhone: {
       control: 'object',
     },
@@ -67,14 +61,12 @@ export default {
     disabled: false,
     errorText: '',
     id: '',
-    label: 'Label',
     modelValue: '',
     name: 'input_phone',
-    placeholder: '+7',
     required: false,
     rules: undefined,
     size: 'm',
-    mask: '',
+    locale: 'ru',
     localesPhone: PHONE_LOCALES,
   },
 };
@@ -108,11 +100,8 @@ export const Size = {
             <div style="display: flex; flex-direction: column; gap: 24px;">
               <BaseInputPhone
                 v-for="inputPhoneSize in DEFAULT_SIZES"
-                label="Label"
                 :name="inputPhoneSize"
                 :size="inputPhoneSize"
-                placeholder="+7"
-                mask="+7 (###) ###-##-##"
               />
             </div>
           </div>
@@ -133,27 +122,19 @@ export const States = {
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 24px;">
             <BaseInputPhone
               name="input_phone_states_1"
-              placeholder="+7"
-              mask="+7 (###) ###-##-##"
             />
             <BaseInputPhone
               name="input_phone_states_2"
               modelValue="987 995 55 55"
-              placeholder="+7"
-              mask="+7 (###) ###-##-##"
             />
             <BaseInputPhone
               name="input_phone_states_3"
               disabled
-              placeholder="+7"
-              mask="+7 (###) ###-##-##"
             />
             <BaseInputPhone
               name="input_phone_states_4"
               modelValue="987 995 55 55"
               disabled
-              placeholder="+7"
-              mask="+7 (###) ###-##-##"
             />
           </div>
         `,
@@ -172,51 +153,18 @@ export const Required = {
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 24px;">
             <BaseInputPhone
               name="input_phone_required_1"
-              label="Label"
               required
-              placeholder="+7"
-              mask="+7 (###) ###-##-##"
             />
             <BaseInputPhone
               name="input_phone_required_2"
               disabled
-              label="Label"
               required
-              placeholder="+7"
-              mask="+7 (###) ###-##-##"
             />
           </div>
         `,
     };
   },
 
-};
-
-export const Mask = {
-  render: () => {
-    return {
-      components: {
-        BaseInputPhone,
-      },
-
-      template: `
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 24px;">
-            <BaseInputPhone
-              name="Mask"
-              label="Label"
-              placeholder="+7"
-              mask="+7 (###) ###-##-##"
-            />
-            <BaseInputPhone
-              name="MaskBy"
-              label="Label"
-              placeholder="+7"
-              mask="+7 (###) ###-##-##"
-            />
-          </div>
-        `,
-    };
-  },
 };
 
 export const Locales = {
@@ -238,8 +186,7 @@ export const Locales = {
               v-for="(inputPhoneLocale, index) in PHONE_LOCALES"
               v-bind="inputPhoneLocale"
               name="input_phone"
-              label="Label"
-              :locale="index === 0 ? 'ru' : 'be'"
+              :locale="index === 0 ? 'ru' : 'by'"
             />
           </div>
         `,
@@ -279,20 +226,14 @@ export const Rules = {
       template: `
           <div style="display: flex; flex-direction: column; gap: 20px;">
             <BaseInputPhone
-              label="Yup validation"
               name="input_phone_rules_yup"
               required
               :rules="yupRules"
-              placeholder="+7"
-              mask="+7 (###) ###-##-##"
             />
             <BaseInputPhone
-              label="Custom validation"
               name="input_phone_rules_custom"
               required
               :rules="customRules"
-              placeholder="+7"
-              mask="+7 (###) ###-##-##"
             />
           </div>
         `,
@@ -324,11 +265,8 @@ export const Error = {
             validateOnMount
           >
             <BaseInputPhone
-              label="Input"
               name="input_phone"
               required
-              placeholder="+7"
-              mask="+7 (###) ###-##-##"
             />
           </BaseForm>
         `,

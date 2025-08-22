@@ -1,8 +1,8 @@
 import type { IBaseInput } from './input';
 
-type PhoneLocaleType = 'ru' | 'be';
+type PhoneLocaleType = 'ru' | 'by';
 
-interface IPhoneData {
+export interface IPhoneData {
   locale: PhoneLocaleType;
   label?: string;
   mask: string;

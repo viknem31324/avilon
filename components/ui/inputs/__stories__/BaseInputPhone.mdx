@@ -44,21 +44,15 @@ InputPhone может иметь одно из двух состояний: `def
 
 <Canvas of={BaseInputPhoneStories.Required} />
 
-### Mask
-
-Устанавливает маску. Символы, из которых составляется маска: `#` - цифры, `X` - цифры и буквы, `S` - буквы, `A` - буквы в верхнем регистре, `a` - буквы в нижнем регистре.
-
-<Canvas of={BaseInputPhoneStories.Mask} />
-
 ### Locales
 
-InputPhone может использовать локали для форматирования номера телефона. Для этого необходимо указать массив поддерживаемых локалей `localesPhone` и указать текущую локаль в атрибуте `locale`(например, `'ru'`, `'be'`).
+InputPhone может использовать локали для форматирования номера телефона. Для этого необходимо указать массив поддерживаемых локалей `localesPhone` и указать текущую локаль в атрибуте `locale`(например, `'ru'`, `'by'`).
 Элементы `localesPhone` состоят из следующих полей:
 
-* `locale`(*string*\[required]): название локали(например, `'ru'`, `'be'`).
-* `label`(*string*\[optional]): label для текущей локали, если не указан, используется label по умолчанию.
-* `mask`(*string*\[optional]): mask для текущей локали, если не указан, используется mask по умолчанию.
-* `placeholder`(*string*\[optional]): placeholder для текущей локали, если не указан, используется placeholder по умолчанию.
+* `locale`(*string*\[required]): название локали(например, `'ru'`, `'by'`).
+* `label`(*string*\[optional]): label для текущей локали.
+* `mask`(*string*\[optional]): mask для текущей локали.
+* `placeholder`(*string*\[optional]): placeholder для текущей локали.
 
 <Canvas of={BaseInputPhoneStories.Locales} />
 
