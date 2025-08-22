@@ -12,6 +12,8 @@ export const MIN_LENGTH_ERROR_MESSAGE
   = ({ min }: { min: number }) => `Число символов должно быть больше ${min}`;
 export const PHONE_ERROR_MESSAGE = 'Номер телефона недействителен';
 export const PASSWORD_ERROR_MESSAGE = 'Пароль должен содержать минимум один спецсимвол, цифру и букву в верхнем регистре';
+export const POSTAL_CODE_LENGTH_ERROR_MESSAGE = 'Не правильная длина почтового индекса';
+export const POSTAL_CODE_ERROR_MESSAGE = 'Почтовый индекс должен состоять из 6 цифр';
 export const REQUIRED_ERROR_MESSAGE = 'Обязательное поле';
 export const SPACE_ERROR_MESSAGE = 'В начале и конце текста не должно быть пробелов';
 
@@ -19,6 +21,7 @@ export const CYRILLIC_LATIN_REGEXP = /^[А-Яа-яЁёA-Za-z\s-—"’,.]+$/;
 export const EMAIL_REGEXP = /^(?=.{1,64}@.{1,64}$)(?=.{3,255}$)([a-zA-Z0-9._%+-]+(?:'[a-zA-Z0-9]+)?)@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 export const PASSWORD_REGEX
   = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&#-./(){}[\]^])(?=.*[0-9])[A-Za-z\d@$!%*?&#-./(){}[\]^]{8,}$/;
+export const POSTAL_CODE_REGEXP = /^\d{6}$/;
 export const PHONE_RU_REGEXP = /^(\+7)\([0-9]{3}\)?[\s-]?[0-9]{3}[\s-]?[0-9]{2}[\s-]?[0-9]{2}$/;
 export const PHONE_BY_REGEXP = /^\+375\([0-9]{2}\)[0-9]{3}[\s-]?[0-9]{2}[\s-]?[0-9]{2}$/;
 export const checkSpaceError = (value?: string) => {
@@ -131,6 +134,33 @@ export const PHONE_RU_REQUIRED_RULE = {
     }),
 };
 
+export const POSTAL_CODE_RULE = {
+  postal: yup
+    .string()
+    .length(6, POSTAL_CODE_LENGTH_ERROR_MESSAGE)
+    .matches(POSTAL_CODE_REGEXP, {
+      message: POSTAL_CODE_ERROR_MESSAGE,
+      excludeEmptyString: true,
+    }),
+};
+
 export const POLITICS_RULE = {
   politics: yup.string().trim().required(REQUIRED_ERROR_MESSAGE),
 };
+
+export const VERIFICATION_CODE_RULE = (numberElements: number) =>
+  yup.object({
+    verificationCode: yup
+      .string()
+      .required('Пожалуйста, введите код')
+      .test(
+        'is-complete',
+        `Число символов должно быть ${numberElements}`,
+        (value) => {
+          const digitsOnly = value.trim();
+          return (
+            digitsOnly.length === numberElements && /^\d+$/.test(digitsOnly)
+          );
+        },
+      ),
+  });
