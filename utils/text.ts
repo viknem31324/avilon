@@ -19,61 +19,33 @@ export const toNbsp = <T>(text: T): T | string => {
     return text;
   }
 
-  // Символ неразрывного пробела
   const NON_BREAK_SPACE = '\u00A0';
-
+  const NON_BREAK_HYPHEN = '\u2011';
   const charRegex = '[№0-9а-яё]';
 
-  /**
-   * Регулярка для поиска 2-символьных предлогов/союзов/местоимений,
-   * идущих 2 раза подряд. Например, "но их"
-   */
-  const doubleCharPairRegex = new RegExp(
-    `( ${charRegex}{2} ${charRegex}{2})( )`,
-    'gi',
-  );
+  // Регулярное выражение для определения URL
+  const urlRegex = /(https?:\/\/[^\s]+)/gi;
 
-  /**
-   * Регулярка для поиска 1-символьных предлогов/союзов/местоимений,
-   * идущих 2 раза подряд. Например, "а в"
-   */
-  const singleCharPairRegex = new RegExp(
-    `( ${charRegex} ${charRegex})( )`,
-    'gi',
-  );
+  // Разделяем текст на части: URL и не-URL
+  const parts = text.split(urlRegex);
 
-  /**
-   * Регулярка для поиска 2-символьных предлогов/союзов/местоимений,
-   * идущих 1 раз подряд. Например, "но"
-   */
-  const doubleCharRegex = new RegExp(`( ${charRegex}{2})( )`, 'gi');
+  // Обрабатываем каждую часть отдельно
+  const processedParts = parts.map((part, index) => {
+    // Если это URL (нечетный индекс), оставляем как есть
+    if (index % 2 !== 0) {
+      return part;
+    }
 
-  /**
-   * Регулярка для поиска 1-символьных предлогов/союзов/местоимений,
-   * идущих 1 раз подряд. Например, "а"
-   */
-  const singleCharRegex = new RegExp(`( ${charRegex}{1})( )`, 'gi');
-
-  return (
-    text
+    // Если это не URL, применяем наши преобразования
+    return part
       .replaceAll('  ', ' ')
-      .replaceAll('-', '\u2011')
-      /**
-       * Сначала находим парные предлоги/союзы/местоимения, чтобы преобразовать
-       * конечный пробел в неразрывный пробел.
-       */
-      .replace(doubleCharPairRegex, `$1${NON_BREAK_SPACE}`)
-      .replace(singleCharPairRegex, `$1${NON_BREAK_SPACE}`)
-      /**
-       * Потом находим не парные предлоги/союзы/местоимения, чтобы сделать
-       * то же самое.
-       */
-      .replace(doubleCharRegex, `$1${NON_BREAK_SPACE}`)
-      .replace(singleCharRegex, `$1${NON_BREAK_SPACE}`)
-      /**
-       * Такой порядок потому, что если находить сразу парные и одиночные вхождения,
-       * то мы заранее не знаем, в какой группе окажется вхождение, которое
-       * нужно заменить.
-       */
-  );
+      .replace(/(?<![/:])(-)/g, NON_BREAK_HYPHEN) // Заменяем дефисы, но не в URL
+      .replace(new RegExp(`( ${charRegex}{2} ${charRegex}{2})( )`, 'gi'), `$1${NON_BREAK_SPACE}`)
+      .replace(new RegExp(`( ${charRegex} ${charRegex})( )`, 'gi'), `$1${NON_BREAK_SPACE}`)
+      .replace(new RegExp(`( ${charRegex}{2})( )`, 'gi'), `$1${NON_BREAK_SPACE}`)
+      .replace(new RegExp(`( ${charRegex}{1})( )`, 'gi'), `$1${NON_BREAK_SPACE}`);
+  });
+
+  // Собираем текст обратно
+  return processedParts.join('');
 };
