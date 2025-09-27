@@ -1,0 +1,4 @@
+- src: git@gitlab.webprofy.ru:devops/ansible-roles/ansible-role-deploy.git
+  scm: git
+  version: 3.0.0
+  name: deploy

@@ -1,0 +1,22 @@
+version: "3.5"
+
+services:
+  app-nrf:
+    image: cr.yandex/crpu8vc7rm5vioj7h43n/projects/{{ PROJECT }}/{{CI_PROJECT_NAME}}/{{ CI_COMMIT_REF_NAME }}:{{ CI_COMMIT_SHORT_SHA }}
+    container_name: ${COMPOSE_PROJECT_NAME}-app
+    restart: unless-stopped
+    environment:
+      VIRTUAL_PORT: ${PORT}
+      VIRTUAL_HOST: ${DOMAIN}
+      LETSENCRYPT_HOST: ${DOMAIN}
+    networks:
+      - frontend-network
+    logging:
+      driver: loki
+      options:
+        loki-url: ${LOKI_URL}
+
+networks:
+  frontend-network:
+    external:
+      name: ${FRONTEND_NETWORK_NAME:-frontend-network}

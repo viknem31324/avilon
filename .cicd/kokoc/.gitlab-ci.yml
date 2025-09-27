@@ -1,0 +1,88 @@
+include:
+  - project: 'devops/ci-cd/stages'
+    file: 'stages.gitlab-ci.yml'
+    ref: master
+  - project: 'devops/ci-cd/docker-build'
+    file: 'docker-build.gitlab-ci.yml'
+    ref: 2.0.11
+  - project: 'devops/ci-cd/deploy-develop'
+    file: 'deploy-develop.gitlab-ci.yml'
+    ref: 2.2.0
+  - project: 'devops/ci-cd/deploy-staging'
+    file: 'deploy-staging.gitlab-ci.yml'
+    ref: 2.2.0
+  - project: 'devops/ci-cd/deploy-production'
+    file: 'deploy-production.gitlab-ci.yml'
+    ref: 2.0.5
+  - project: 'devops/ci-cd/telegram-chat-notification'
+    file: 'telegram-chat-notification.yml'
+    ref: 1.0.3
+  - project: 'devops/ci-cd/telegram-chat-notification'
+    file: 'telegram-chat-notification.yml'
+    ref: 2.0.1
+
+# Билд докер контейнера
+Build:
+  extends:
+    - .docker_build
+  tags:
+    - docker
+  only:
+    - develop
+    - master
+    - prestaging
+
+build:staging:
+  extends:
+    - .docker_build
+  tags:
+    - docker
+  only:
+    - staging
+
+
+#    - master
+#  when: manual
+
+# Деплой на develop
+Deploy to develop:
+  extends:
+    - .deploy-to-develop
+  tags:
+    - shell
+  only:
+    - develop
+
+Deploy to staging:
+  extends:
+    - .deploy-to-staging
+  tags:
+    - shell
+  only:
+    - staging
+
+Deploy to production:
+  extends:
+    - .deploy-to-production
+  tags:
+    - shell
+  only:
+    - master
+
+
+
+
+# Деплой на Prestaging
+
+# Оповещение про Мастер
+Telegram chat notification failed:
+  extends:
+    - .telegram-chat-notification-failed
+  tags:
+    - docker
+
+Telegram chat notification success:
+  extends:
+    - .telegram-chat-notification-success
+  tags:
+    - docker
