@@ -1,4 +1,4 @@
-const allowedExtensions = ['svg', 'png', 'jpg', 'jpeg'];
+const allowedExtensions = ['svg', 'png', 'jpg', 'jpeg', 'gif', 'xlsx', 'pdf', 'doc', 'docx', 'ppt', 'pptx', 'csv', 'txt', 'odt', 'rtf', 'zip', 'rar'];
 
 /**
  * удаляет дубли слешей, добавляет слеш в конце
@@ -7,6 +7,10 @@ const allowedExtensions = ['svg', 'png', 'jpg', 'jpeg'];
 export const getCorrectPageUrl = (path?: string | null): string => {
   if (!path) {
     return '';
+  }
+
+  if (/^(mailto|tel):/.test(path)) {
+    return path;
   }
 
   if (
