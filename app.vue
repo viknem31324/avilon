@@ -3,5 +3,5 @@
     <NuxtPage />
   </NuxtLayout>
 
-  <LazyAppCookie />
+  <!-- <LazyAppCookie /> -->
 </template>

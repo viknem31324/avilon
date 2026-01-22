@@ -2,10 +2,16 @@
   <div id="app">
     <AppHeader />
 
-    <main>
+    <main class="main-layout">
       <slot />
     </main>
 
-    <LazyAppFooter />
+    <!-- <LazyAppFooter /> -->
   </div>
 </template>
+
+<style lang="scss">
+.main-layout {
+  min-height: 100vh;
+}
+</style>

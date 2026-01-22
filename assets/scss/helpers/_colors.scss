@@ -14,6 +14,10 @@ $color-black-60: #818181;
 $color-black-80: #4E4E4E;
 $color-black-90: #3D3D3D;
 $color-black-95: #313131;
+$color-orange-1: #F68E57;
+
+$bg-gradient-1: radial-gradient(54.48% 119.51% at 51.53% 102.5%, #D6551F 0%, #9E431D 1.08%, #67321B 43.62%, #46271A 62.34%, #181818 87.51%);
+
 $theme-colors: (
   'smart-green': $color-smart-green,
   'active-red': $color-active-red,
@@ -31,4 +35,5 @@ $theme-colors: (
   'black-80': $color-black-80,
   'black-90': $color-black-90,
   'black-95': $color-black-95,
+  'orange-1': $color-orange-1,
 );
