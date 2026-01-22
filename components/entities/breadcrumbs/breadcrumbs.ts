@@ -4,7 +4,6 @@ export interface IBaseBreadcrumbsItem {
   href?: string;
   text?: string;
   icon?: Icon;
-  isAccent?: boolean;
   isDisabled?: boolean;
 }
 
