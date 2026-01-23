@@ -41,8 +41,6 @@ export default defineNuxtConfig({
     },
   ],
 
-  devtools: { enabled: isDevelopMode },
-
   app: {
     head: {
       htmlAttrs: {

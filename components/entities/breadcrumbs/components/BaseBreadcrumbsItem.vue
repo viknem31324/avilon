@@ -27,14 +27,14 @@ withDefaults(defineProps<IBaseBreadcrumbsItem>(), {
 
   --ds-breadcrumb-item-color: #{color('total-white')};
   --ds-breadcrumb-item-hover-color: #{color('orange-1')};
-  --ds-breadcrumb-separator-icon: url("data:image/svg+xml,%3Csvg viewBox='0 0 8 8' fill='%23818181' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M5.55594 3.72867C5.70356 3.87852 5.70356 4.12148 5.55594 4.27133L2.97862 6.88761C2.831 7.03746 2.59166 7.03746 2.44404 6.88761C2.29642 6.73776 2.29642 6.4948 2.44404 6.34495L4.75407 4L2.44404 1.65505C2.29642 1.5052 2.29642 1.26224 2.44404 1.11239C2.59166 0.962537 2.831 0.962537 2.97862 1.11239L5.55594 3.72867Z' /%3E%3C/svg%3E");
+  --ds-breadcrumb-separator-icon: url("data:image/svg+xml,%3Csvg viewBox='0 0 5 10' fill='%23FEFEFE' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M.966 9.18L0 8.212 3.62 4.59 0 .968.968 0l3.617 3.622a1.369 1.369 0 010 1.936L.965 9.18z' /%3E%3C/svg%3E");
   position: relative;
   color: var(--ds-breadcrumb-item-color);
   @include transition('color');
 
   &:not(:first-child) {
     position: relative;
-    padding-left: 12px;
+    padding-left: 16px;
 
     &::before {
       content: '';
@@ -44,11 +44,12 @@ withDefaults(defineProps<IBaseBreadcrumbsItem>(), {
       left: 0;
       transform: translateY(-50%);
 
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
 
       background-image: var(--ds-breadcrumb-separator-icon);
-      background-size: 8px 8px;
+      background-size: 10px 10px;
+      background-repeat: no-repeat;
     }
   }
 

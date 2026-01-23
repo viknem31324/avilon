@@ -15,7 +15,7 @@
 
 .container {
   width: 100%;
-  max-width: 1264px;
+  max-width: 1325px;
   margin-right: auto;
   margin-left: auto;
   padding-right: var(--ds-container-gutter);

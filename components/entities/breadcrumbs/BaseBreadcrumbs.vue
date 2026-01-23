@@ -28,7 +28,7 @@ const lastElement = computed(() => props.items.length - 1);
   ol {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
+    gap: 9px;
     align-items: center;
   }
 }

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { BREADCRUMBS_MODEL_LINE } from '~/assets/constants/general';
-
 </script>
 
 <template>
