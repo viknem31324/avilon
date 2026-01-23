@@ -1,11 +1,21 @@
+<!-- eslint-disable vue/html-self-closing -->
+<!-- eslint-disable vue/no-v-html -->
 <template>
   <svg
-    :class="`ds-icon ds-icon--name-${props.icon}`"
-    viewBox="0 0 24 24"
+    v-if="isCustomPath"
+    :class="iconClasses"
+    :viewBox="viewBox"
     xmlns="http://www.w3.org/2000/svg"
-    role="img"
     aria-hidden="true"
-    :aria-label="props.icon"
+    v-html="iconPaths"
+  ></svg>
+
+  <svg
+    v-else
+    :class="iconClasses"
+    :viewBox="viewBox"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
   >
     <template v-if="Array.isArray(iconPaths)">
       <path
@@ -26,18 +36,38 @@
 </template>
 
 <script lang="ts" setup>
-import { PATHS, type IBaseIcon } from './icon';
+import { ICONS_DATA, type IBaseIcon } from './icon';
 
 const props = defineProps<IBaseIcon>();
 
-const iconPaths = computed(() => PATHS[props.icon]);
+const iconData = computed(() => ICONS_DATA[props.icon]);
+
+const iconPaths = computed(() => iconData.value[0]);
+const viewBox = computed(() => iconData.value[1] ?? '0 0 20 20');
+const fillType = computed(() => iconData.value[2] ?? 'fill');
+
+const iconClasses = computed(() => ([
+  'base-icon',
+  `base-icon--name-${props.icon}`,
+  `base-icon--${fillType.value}`,
+]));
+
+const isCustomPath = computed(() => !Array.isArray(iconPaths.value) && String(iconPaths.value).includes('<'));
 </script>
 
 <style lang="scss">
-.ds-icon {
-  display: flex;
-  width: var(--ds-icon-size, 20px);
-  height: var(--ds-icon-size, 20px);
-  fill: currentcolor;
+.base-icon {
+  display: inline-block;
+  width: var(--base-icon-size, 20px);
+  height: var(--base-icon-size, 20px);
+
+  &--fill {
+    fill: currentcolor;
+  }
+
+  &--stroke {
+    fill: none;
+    stroke: currentcolor;
+  }
 }
 </style>
