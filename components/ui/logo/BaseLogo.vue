@@ -23,15 +23,28 @@ defineProps<IBaseLogoProps>();
   gap: 24px;
 
   &__first {
-    width: 94px;
+    width: 67px;
+    padding-right: 8px;
+    border-right: 1px solid color('main-white');
     flex-shrink: 0;
     object-fit: contain;
+
+    @include media-min("wideTablet") {
+      width: 94px;
+      padding: 0;
+      border: none;
+    }
   }
 
   &__second {
-    width: 134px;
-    flex-shrink: 0;
-    object-fit: contain;
+    display: none;
+
+    @include media-min("wideTablet") {
+      display: block;
+      width: 134px;
+      flex-shrink: 0;
+      object-fit: contain;
+    }
   }
 }
 </style>

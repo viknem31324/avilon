@@ -17,6 +17,7 @@ $color-black-95: #313131;
 $color-orange-1: #F68E57;
 $color-main-white :#FEFEFE;
 $color-main-gray: #222;
+$color-main-black: #181818;
 
 $bg-gradient-1: radial-gradient(54.48% 119.51% at 51.53% 102.5%, #D6551F 0%, #9E431D 1.08%, #67321B 43.62%, #46271A 62.34%, #181818 87.51%);
 
@@ -40,4 +41,5 @@ $theme-colors: (
   'orange-1': $color-orange-1,
   'main-white': $color-main-white,
   'main-gray': $color-main-gray,
+  'main-black': $color-main-black,
 );

@@ -2,24 +2,29 @@
   <header class="header">
     <AppContainer>
       <div class="header__top">
-        <BaseLogo
-          first-logo="/img/firs-logo.webp"
-          first-logo-alt="Avilon"
-          second-logo="/img/second-logo.webp"
-          second-logo-alt="Автодилер года 2024"
-        />
-        <img class="header__logo-tank" src="/img/logo-tank.webp" alt="Tank" />
-        <div class="header__info">
-          <address class="header__address">
-            <BaseIcon icon="geo" />
-            <BaseText size="xs" weight="light">
-              Москва, Волгоградский проспект, 41, к. 1
-            </BaseText>
-          </address>
-          <a class="header__phone" href="tel:+74951213568" target="_blank">
-            <BaseIcon icon="phone" />
-            <BaseText size="xs">+7 (495) 121-35-68</BaseText>
-          </a>
+        <div class="header__top-wrapper">
+          <BaseLogo
+            first-logo="/img/firs-logo.webp"
+            first-logo-alt="Avilon"
+            second-logo="/img/second-logo.webp"
+            second-logo-alt="Автодилер года 2024"
+          />
+          <img class="header__logo-tank" src="/img/logo-tank.webp" alt="Tank" />
+          <div class="header__info">
+            <address class="header__address">
+              <BaseIcon icon="geo" />
+              <BaseText size="xs" weight="light">
+                Москва, Волгоградский проспект, 41, к. 1
+              </BaseText>
+            </address>
+            <a class="header__phone" href="tel:+74951213568" target="_blank">
+              <BaseIcon icon="phone" />
+              <BaseText size="xs">+7 (495) 121-35-68</BaseText>
+            </a>
+          </div>
+        </div>
+        <div class="header__top-block">
+          <BaseIcon icon="phone" />
         </div>
       </div>
       <nav class="header__nav">
@@ -38,6 +43,10 @@
             </BaseRouteLink>
           </BaseText>
         </ul>
+        <a class="header__nav-calback" href="tel:+74951213568" target="_blank">
+          <BaseIcon icon="phone" />
+          <BaseText size="xs">Заказать звонок</BaseText>
+        </a>
       </nav>
     </AppContainer>
   </header>
@@ -70,17 +79,65 @@ const navList = ref<NavItem[]>([...HEADER_NAV]);
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include media-min("wideTablet") {
+      display: block;
+    }
+  }
+
+  &__top-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    @include media-min("wideTablet") {
+      justify-content: space-between;
+      gap: 0;
+    }
+  }
+
+  &__top-block {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    svg {
+      --base-icon-size: 16px;
+      flex-shrink: 0;
+      color: color('orange-1');
+    }
+
+    @include media-min("wideTablet") {
+      display: none;
+    }
+  }
+
+  &__burger {
+    width: 20px;
+    height: 20px;
+    
+    span {
+
+    }
   }
 
   &__logo-tank {
-    width: 36px;
+    width: 18px;
     flex-shrink: 0;
+
+    @include media-min("wideTablet") {
+      width: 36px;
+    }
   }
 
   &__info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+    display: none;
+
+    @include media-min("wideTablet") {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
   }
 
   &__address {
@@ -115,15 +172,57 @@ const navList = ref<NavItem[]>([...HEADER_NAV]);
   }
 
   &__nav {
-    max-width: 828px;
-    margin: 12px auto 0;
+    position: fixed;
+    top: 52px;
+    right: 0;
+    z-index: 1100;
+    width: 100%;
+    height: 100%;
+    padding: 20px 24px;
+    background-color: color('main-black');
+
+    @include media-min("wideTablet") {
+      position: static;
+      max-width: 828px;
+      margin: 12px auto 0;
+      padding: 0;
+      background-color: transparent;
+    }
+  }
+
+  &__nav-calback {
+    display: flex;
+    width: max-content;
+    padding: 5px 20px;
+    margin-top: 28px;
+    align-items: center;
+    gap: 4px;
+    color: color('main-white');
+    background-color: color('orange-1');
+    border-radius: 4px;
+
+    svg {
+      --base-icon-size: 12px;
+      flex-shrink: 0;
+    }
+
+    @include media-min("wideTablet") {
+      display: none;
+    }
   }
 
   &__nav-list {
     display: flex;
-    gap: 24px;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: start;
+    gap: 28px;
+
+    @include media-min("wideTablet") {
+      display: flex;
+      flex-direction: row;
+      gap: 24px;
+      align-items: center;
+    }
   }
 
   &__nav-item {
@@ -131,10 +230,13 @@ const navList = ref<NavItem[]>([...HEADER_NAV]);
     text-transform: uppercase;
     color: color('main-white');
     @include transition('color');
-    opacity: .8;
 
-    &:hover {
-      color: color('orange-1');
+    @include media-min("wideTablet") {
+      opacity: .8;
+
+      &:hover {
+        color: color('orange-1');
+      }
     }
 
     &--accent {
