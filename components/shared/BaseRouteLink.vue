@@ -53,7 +53,7 @@ const checkIfExternalLink = (link: string) => {
   return regularExternalLink.test(link);
 };
 
-const onClick = () => {
-  emits('click');
+const onClick = (event?: Event) => {
+  emits('click', event);
 };
 </script>

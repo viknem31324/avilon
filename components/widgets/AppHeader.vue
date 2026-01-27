@@ -17,17 +17,24 @@
                 Москва, Волгоградский проспект, 41, к. 1
               </BaseText>
             </address>
-            <a class="header__phone" href="tel:+74951213568" target="_blank">
+            <BaseRouteLink class="header__phone" href="tel:+74951213568" target="_blank">
               <BaseIcon icon="phone" />
-              <BaseText size="xs">+7 (495) 121-35-68</BaseText>
-            </a>
+              <BaseText size="xs">
+                +7 (495) 121-35-68
+              </BaseText>
+            </BaseRouteLink>
           </div>
         </div>
         <div class="header__top-block">
-          <BaseIcon icon="phone" />
+          <BaseRouteLink href="tel:+74951213568" target="_blank">
+            <BaseIcon icon="phone" />
+          </BaseRouteLink>
+          <div class="header__burger" :class="{ 'header__burger--open': isOpenHeaderMenu }" @click="changeMenu">
+            <span />
+          </div>
         </div>
       </div>
-      <nav class="header__nav">
+      <nav class="header__nav" :class="{ 'header__nav--open': isOpenHeaderMenu }">
         <ul class="header__nav-list">
           <BaseText
             v-for="(item, idx) in navList"
@@ -38,15 +45,17 @@
             tag="li"
             weight="bold"
           >
-            <BaseRouteLink :href="item.href">
+            <BaseRouteLink :href="item.href" @click.prevent="navigate(item)">
               {{ item.label }}
             </BaseRouteLink>
           </BaseText>
         </ul>
-        <a class="header__nav-calback" href="tel:+74951213568" target="_blank">
+        <BaseRouteLink class="header__nav-calback" href="tel:+74951213568" target="_blank">
           <BaseIcon icon="phone" />
-          <BaseText size="xs">Заказать звонок</BaseText>
-        </a>
+          <BaseText size="xs">
+            Заказать звонок
+          </BaseText>
+        </BaseRouteLink>
       </nav>
     </AppContainer>
   </header>
@@ -55,6 +64,7 @@
 <script lang="ts" setup>
 import BaseRouteLink from '../shared/BaseRouteLink.vue';
 import { HEADER_NAV } from '~/assets/constants/general';
+import useWindowWidth from '~/hooks/useWindowWidth';
 
 interface NavItem {
   label: string;
@@ -62,11 +72,25 @@ interface NavItem {
   isAccent?: boolean;
 };
 
+const { isLaptop } = useWindowWidth();
+const isOpenHeaderMenu = useState('headerMenu');
 const navList = ref<NavItem[]>([...HEADER_NAV]);
+
+const changeMenu = () => {
+  isOpenHeaderMenu.value = !isOpenHeaderMenu.value;
+};
+
+const navigate = (item: NavItem) => {
+  if (!isLaptop.value) {
+    navigateTo(item.href);
+    isOpenHeaderMenu.value = false;
+  }
+};
 </script>
 
 <style lang="scss">
 .header {
+  $self: &;
   position: fixed;
   top: 0;
   left: 0;
@@ -113,11 +137,53 @@ const navList = ref<NavItem[]>([...HEADER_NAV]);
   }
 
   &__burger {
+    position: relative;
+    display: flex;
     width: 20px;
-    height: 20px;
-    
-    span {
+    height: 13px;
+    align-items: center;
 
+    @include media-min("wideTablet") {
+      display: none;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: color('main-white');
+    }
+
+    &::before {
+      top: 0;
+    }
+
+    &::after {
+      bottom: 0;
+    }
+
+    &--open {
+      &::before,
+      &::after {
+        top: 6px;
+        bottom: auto;
+        transform: rotate(-45deg);
+      }
+
+      span {
+        transform: rotate(45deg);
+      }
+    }
+
+    span {
+      position: relative;
+      width: 100%;
+      height: 1px;
+      background-color: color('main-white');
+      @include transition(transform);
     }
   }
 
@@ -180,6 +246,8 @@ const navList = ref<NavItem[]>([...HEADER_NAV]);
     height: 100%;
     padding: 20px 24px;
     background-color: color('main-black');
+    transform: translateX(200%);
+    @include transition('transform');
 
     @include media-min("wideTablet") {
       position: static;
@@ -187,6 +255,11 @@ const navList = ref<NavItem[]>([...HEADER_NAV]);
       margin: 12px auto 0;
       padding: 0;
       background-color: transparent;
+      transform: none;
+    }
+
+    &--open {
+      transform: translateX(0);
     }
   }
 

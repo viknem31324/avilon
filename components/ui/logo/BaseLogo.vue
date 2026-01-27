@@ -1,6 +1,8 @@
 <template>
   <div class="logo">
-    <img class="logo__first" :src="firstLogo" :alt="firstLogoAlt" />
+    <BaseRouteLink href="/">
+      <img class="logo__first" :src="firstLogo" :alt="firstLogoAlt" />
+    </BaseRouteLink>
     <img
       v-if="secondLogo"
       class="logo__second"
@@ -12,6 +14,7 @@
 
 <script lang="ts" setup>
 import type { IBaseLogoProps } from './baseLogo.types';
+import BaseRouteLink from '~/components/shared/BaseRouteLink.vue';
 
 defineProps<IBaseLogoProps>();
 </script>
