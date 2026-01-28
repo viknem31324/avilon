@@ -6,7 +6,11 @@
         Модельный ряд
       </BaseHeading>
       <div class="model-line__grid">
-
+        <AppCardCar
+          v-for="(item, idx) in cars"
+          :key="idx"
+          v-bind="item"
+        />
       </div>
     </AppContainer>
   </div>
@@ -14,16 +18,37 @@
 
 <script lang="ts" setup>
 import { BREADCRUMBS_MODEL_LINE } from '~/assets/constants/general';
+import type { IAppCarCard } from '~/components/entities/card/card-car/appCardCar.types';
+
+export interface CarsResponse {
+  data: IAppCarCard[];
+}
 
 const isOpenHeaderMenu = useState('headerMenu');
+
+const { data, error } = await useFetch<CarsResponse>('/api/cars');
+
+if (error.value) {
+  throw showError({
+    statusCode: error.value.statusCode,
+    statusMessage: error.value.message,
+    message: error.value.message,
+  });
+}
+
+const cars = computed(() => data.value?.data || []);
 </script>
 
 <style lang="scss">
 .model-line {
   min-height: 100vh;
-  padding-top: 101px;
+  padding-top: 60px;
   background: $bg-gradient-1;
   @include transition(all);
+
+  @include media-min("wideTablet") {
+    padding-top: 101px;
+  }
 
   &--open-menu {
     background: none;
@@ -34,21 +59,27 @@ const isOpenHeaderMenu = useState('headerMenu');
   }
 
   &__title {
-    margin: 16px 0 56px;
+    margin: 16px 0 30px;
     text-align: center;
     text-transform: uppercase;
     color: color('main-white');
+
+    @include media-min("wideTablet") {
+      margin: 16px 0 60px;
+    }
   }
 
   &__grid {
     display: grid;
     gap: 16px;
-    grid-template-columns: repeat(2, 1fr);
-    margin-bottom: 40px;
+    max-width: 1104px;
+    margin: 0 auto;
+    padding-bottom: 40px;
 
-    @include media-min("wideTablet") {
+    @include media-min("tabletLarge") {
+      margin: 0 auto;
       grid-template-columns: repeat(2, 1fr);
-      margin-bottom: 80px;
+      padding-bottom: 80px;
     }
   }
 }

@@ -8,6 +8,8 @@ export type SizeM = 'm';
 
 export type SizeL = 'l';
 
+export type SizeXL = 'xl';
+
 export type SizeAdaptive = 'adaptive';
 
 export type SizeDefault = SizeS | SizeM | SizeL;
@@ -15,3 +17,5 @@ export type SizeDefault = SizeS | SizeM | SizeL;
 export type SizeDefaultWithEmpty = SizeEmpty | SizeS | SizeM | SizeL;
 
 export type SizeDefaultWithExtraSmall = SizeXS | SizeDefault;
+
+export type SizeAll = SizeXS | SizeDefault | SizeXL;

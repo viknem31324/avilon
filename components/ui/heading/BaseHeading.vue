@@ -2,7 +2,7 @@
   <component
     :is="props.tag"
     v-if="slots"
-    :class="`ds-heading ds-heading--level-${level}`"
+    :class="classes"
   >
     <slot />
   </component>
@@ -14,15 +14,18 @@ import type { IBaseHeading } from './heading';
 const props = withDefaults(defineProps<IBaseHeading>(), {
   level: '2',
   tag: 'h2',
+  weight: 'medium',
 });
 
 const slots = useSlots();
+
+const classes = computed(() => ({
+  [`ds-heading ds-heading--level-${props.level} ds-heading--weight-${props.weight}`]: true,
+}));
 </script>
 
 <style lang="scss">
 .ds-heading {
-  font-weight: $font-weight-bold;
-
   &--level {
     &-1 {
       @include text-styles("h1");
@@ -46,6 +49,20 @@ const slots = useSlots();
 
     &-6 {
       @include text-styles("h6");
+    }
+  }
+
+  &--weight {
+    &-light {
+      font-weight: $font-weight-light;
+    }
+
+    &-medium {
+      font-weight: $font-weight-medium;
+    }
+
+    &-bold {
+      font-weight: $font-weight-bold;
     }
   }
 }

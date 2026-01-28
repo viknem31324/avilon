@@ -11,6 +11,7 @@ export const BUTTON_TYPES = ['submit', 'button', 'reset'] as const;
 
 export const BUTTON_VARIANTS = {
   ACCENT: 'accent',
+  ACCENT_INVERSE: 'accent-inverse',
   DANGER: 'danger',
   GHOST: 'ghost',
   PRIMARY: 'primary',

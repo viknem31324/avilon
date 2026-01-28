@@ -23,4 +23,5 @@ export type HeadingTags = typeof HEADING_TAGS[number];
 export interface IBaseHeading {
   level?: HeadingLevels;
   tag?: HeadingTags;
+  weight?: 'bold' | 'medium' | 'light';
 }

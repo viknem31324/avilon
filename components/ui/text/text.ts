@@ -1,4 +1,4 @@
-import type { SizeDefaultWithExtraSmall } from '~/assets/types/sizes';
+import type { SizeAll } from '~/assets/types/sizes';
 
 export const TEXT_TAGS = [
   'div',
@@ -19,7 +19,7 @@ export type TextWeights = typeof TEXT_WEIGHTS[number];
 
 export interface IBaseText {
   fluid?: boolean;
-  size?: SizeDefaultWithExtraSmall;
+  size?: SizeAll;
   tag?: TextTags;
   weight?: TextWeights;
 }

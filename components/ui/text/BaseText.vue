@@ -39,6 +39,10 @@ const classes = computed(() => ({
   }
 
   &--size {
+    &-xl {
+      @include text-styles('xl');
+    }
+
     &-l {
       @include text-styles('l');
     }

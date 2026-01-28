@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header" :class="{ 'header--scrolled': isScrolled }">
     <AppContainer>
       <div class="header__top">
         <div class="header__top-wrapper">
@@ -72,6 +72,14 @@ interface NavItem {
   isAccent?: boolean;
 };
 
+interface IAppHeaderProps {
+  isScrolled?: boolean;
+};
+
+withDefaults(defineProps<IAppHeaderProps>(), {
+  isScrolled: false,
+});
+
 const { isLaptop } = useWindowWidth();
 const isOpenHeaderMenu = useState('headerMenu');
 const navList = ref<NavItem[]>([...HEADER_NAV]);
@@ -98,6 +106,12 @@ const navigate = (item: NavItem) => {
   display: flex;
   width: 100%;
   padding-top: 17px;
+  background-color: transparent;
+  @include transition(background-color);
+
+  &--scrolled {
+    background-color: color('main-gray');
+  }
 
   &__top {
     display: flex;
@@ -128,7 +142,7 @@ const navigate = (item: NavItem) => {
     svg {
       --base-icon-size: 16px;
       flex-shrink: 0;
-      color: color('orange-1');
+      color: color('main-orange');
     }
 
     @include media-min("wideTablet") {
@@ -227,13 +241,13 @@ const navigate = (item: NavItem) => {
     @include transition('color');
 
     &:hover {
-      color: color('orange-1');
+      color: color('main-orange');
     }
 
     svg {
       --base-icon-size: 15px;
       flex-shrink: 0;
-      color: color('orange-1');
+      color: color('main-orange');
     }
   }
 
@@ -271,7 +285,7 @@ const navigate = (item: NavItem) => {
     align-items: center;
     gap: 4px;
     color: color('main-white');
-    background-color: color('orange-1');
+    background-color: color('main-orange');
     border-radius: 4px;
 
     svg {
@@ -308,12 +322,12 @@ const navigate = (item: NavItem) => {
       opacity: .8;
 
       &:hover {
-        color: color('orange-1');
+        color: color('main-orange');
       }
     }
 
     &--accent {
-      background-color: color('orange-1');
+      background-color: color('main-orange');
       border-radius: 4px;
 
       &:hover {

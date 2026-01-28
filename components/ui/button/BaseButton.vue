@@ -69,6 +69,7 @@ const isLink = computed(() => (
 
   background-color: var(--ds-button-bg);
   border: 1px solid var(--ds-button-border-color);
+  border-radius: 8px;
   outline: none;
   cursor: pointer;
 
@@ -106,35 +107,35 @@ const isLink = computed(() => (
 
   &--variant {
     &-primary {
-      --ds-button-bg: #{color('black-80')};
-      --ds-button-color: #{color('total-white')};
+      --ds-button-bg: #{color('main-orange')};
+      --ds-button-color: #{color('main-gray')};
       --ds-button-border-color: transparent;
-      --ds-button-hover-bg: #{color('total-black')};
-      --ds-button-hover-color: #{color('total-white')};
+      --ds-button-hover-bg: #{color('main-purple')};
+      --ds-button-hover-color: #{color('main-white')};
       --ds-button-hover-border-color: transparent;
-      --ds-button-active-bg: #{color('total-black')};
-      --ds-button-active-color: #{color('total-white')};
+      --ds-button-active-bg: #{color('main-orange')};
+      --ds-button-active-color: #{color('main-white')};
       --ds-button-active-border-color: transparent;
-      --ds-button-focus-color: #{color('total-black')};
+      --ds-button-focus-color: #{color('main-orange')};
       --ds-button-disabled-bg: #{color('black-20')};
-      --ds-button-disabled-color: #{color('total-white')};
+      --ds-button-disabled-color: #{color('main-white')};
       --ds-button-disabled-border-color: transparent;
     }
 
     &-secondary {
-      --ds-button-bg: transparent;
-      --ds-button-border-color: #{color('total-black')};
-      --ds-button-color: #{color('total-black')};
-      --ds-button-hover-bg: #{color('total-black')};
-      --ds-button-hover-color: #{color('total-white')};
-      --ds-button-hover-border-color: #{color('total-black')};
-      --ds-button-active-bg: #{color('total-black')};
-      --ds-button-active-color: #{color('total-white')};
-      --ds-button-active-border-color: #{color('total-black')};
-      --ds-button-focus-color: #{color('total-black')};
-      --ds-button-disabled-bg: transparent;
+      --ds-button-bg: #{color('main-black')};
+      --ds-button-border-color: #{color('main-black')};
+      --ds-button-color: #{color('main-orange')};
+      --ds-button-hover-bg: transparent;
+      --ds-button-hover-color: #{color('main-white')};
+      --ds-button-hover-border-color: #{color('main-white')};
+      --ds-button-active-bg: transparent;
+      --ds-button-active-color: #{color('main-black')};
+      --ds-button-active-border-color: #{color('main-black')};
+      --ds-button-focus-color: #{color('main-orange')};
+      --ds-button-disabled-bg: #{color('main-black')};
       --ds-button-disabled-color: #{color('black-40')};
-      --ds-button-disabled-border-color: #{color('black-20')};
+      --ds-button-disabled-border-color: #{color('main-black')};
 
       &:focus-visible {
         box-shadow: 0 0 0 1px var(--ds-button-focus-color);
@@ -158,18 +159,34 @@ const isLink = computed(() => (
     }
 
     &-accent {
-      --ds-button-bg: #{color('smart-green')};
-      --ds-button-color: #{color('total-white')};
+      --ds-button-bg: #{color('main-purple')};
+      --ds-button-color: #{color('main-white')};
       --ds-button-border-color: transparent;
-      --ds-button-hover-bg: #{color('green-30')};
-      --ds-button-hover-color: #{color('total-white')};
+      --ds-button-hover-bg: #{color('main-orange')};
+      --ds-button-hover-color: #{color('main-white')};
       --ds-button-hover-border-color: transparent;
-      --ds-button-active-bg: #{color('green-30')};
-      --ds-button-active-color: #{color('total-white')};
+      --ds-button-active-bg: #{color('main-orange')};
+      --ds-button-active-color: #{color('main-white')};
       --ds-button-active-border-color: transparent;
-      --ds-button-focus-color: #{color('green-30')};
+      --ds-button-focus-color: #{color('main-orange')};
       --ds-button-disabled-bg: #{color('black-20')};
-      --ds-button-disabled-color: #{color('total-white')};
+      --ds-button-disabled-color: #{color('main-white')};
+      --ds-button-disabled-border-color: transparent;
+    }
+
+    &-accent-inverse {
+      --ds-button-bg: #{color('main-black')};
+      --ds-button-color: #{color('purple-2')};
+      --ds-button-border-color: transparent;
+      --ds-button-hover-bg: #{color('main-orange')};
+      --ds-button-hover-color: #{color('main-white')};
+      --ds-button-hover-border-color: #{color('main-white')};
+      --ds-button-active-bg: #{color('main-orange')};
+      --ds-button-active-color: #{color('main-black')};
+      --ds-button-active-border-color: #{color('main-black')};
+      --ds-button-focus-color: #{color('main-orange')};
+      --ds-button-disabled-bg: #{color('black-20')};
+      --ds-button-disabled-color: #{color('main-white')};
       --ds-button-disabled-border-color: transparent;
     }
 
@@ -237,21 +254,17 @@ const isLink = computed(() => (
 
       @include text-styles('s');
 
-      --ds-button-icon-size: 12px;
+      --ds-button-icon-size: 16px;
 
       @include media-min('tablet') {
         --ds-button-min-height: 40px;
         --ds-button-padding-y: 7px;
         --ds-button-padding-x: 31px;
-
-        @include text-styles('m');
-
-        --ds-button-icon-size: 16px;
+        --ds-button-icon-size: 20px;
       }
 
       @include media-min('desktop') {
-        --ds-button-min-height: 44px;
-        --ds-button-padding-y: 9px;
+        --ds-button-padding-y: 8px;
         --ds-button-padding-x: 31px;
       }
     }
@@ -313,11 +326,10 @@ const isLink = computed(() => (
 
     &#{$self}--size {
       &-s {
-        --ds-button-inner-gap: 8px;
+        --ds-button-inner-gap: 0;
         --ds-button-padding-x: 15px;
 
         @include media-min('tablet') {
-          --ds-button-inner-gap: 12px;
           --ds-button-padding-x: 19px;
         }
       }
@@ -339,7 +351,7 @@ const isLink = computed(() => (
     }
   }
 
-  .ds-icon {
+  .base-icon {
     width: var(--ds-button-icon-size);
     height: var(--ds-button-icon-size);
   }
