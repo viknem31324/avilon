@@ -14,6 +14,8 @@ export default defineNuxtConfig({
     'nuxt-delay-hydration',
   ],
 
+  ssr: false,
+
   components: [
     {
       path: '@/components',
@@ -42,6 +44,7 @@ export default defineNuxtConfig({
   ],
 
   app: {
+    baseURL: '/tank-tender/',
     head: {
       htmlAttrs: {
         lang: 'ru',
@@ -81,6 +84,10 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: '2024-12-11',
+
+  nitro: {
+    preset: 'static',
+  },
 
   vite: {
     css: {
