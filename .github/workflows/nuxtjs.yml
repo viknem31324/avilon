@@ -1,4 +1,4 @@
-name: Deploy Nuxt SPA to Pages
+name: Deploy Nuxt Static Site to GitHub Pages
 
 on:
   push:
@@ -12,7 +12,6 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
 
 jobs:
   build:
@@ -21,47 +20,50 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          if [ -f "${{ github.workspace }}/yarn.lock" ]; then
-            echo "manager=yarn" >> $GITHUB_OUTPUT
-            echo "command=install" >> $GITHUB_OUTPUT
-          elif [ -f "${{ github.workspace }}/package.json" ]; then
-            echo "manager=npm" >> $GITHUB_OUTPUT
-            echo "command=ci" >> $GITHUB_OUTPUT
-          else
-            echo "Unable to determine package manager"
-            exit 1
-          fi
-      
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          node-version: '20'
+          cache: 'yarn'
       
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        run: yarn install --frozen-lockfile
       
-      - name: Build SPA
-        run: ${{ steps.detect-package-manager.outputs.manager }} run build
+      - name: Generate static site
+        run: yarn generate
       
-      - name: Prepare for GitHub Pages
+      - name: Verify generated files
+        run: |
+          echo "=== Generated files in .output/public ==="
+          ls -la .output/public/
+          echo "=== Looking for HTML files ==="
+          find .output/public -name "*.html" -type f | head -10
+          echo "=== Checking dist directory ==="
+          ls -la dist/ 2>/dev/null || echo "No dist directory"
+      
+      - name: Add .nojekyll file
         run: |
           # Создаем .nojekyll файл
-          mkdir -p .output/public
           touch .output/public/.nojekyll
           
-          # Копируем 404.html если нужно
-          if [ -f ".output/public/index.html" ]; then
+          # Если Nuxt создает 404.html, оставляем его
+          # Если нет - создаем копию index.html
+          if [ ! -f ".output/public/404.html" ]; then
             cp .output/public/index.html .output/public/404.html
+          fi
+      
+      - name: Debug - Check asset paths
+        run: |
+          echo "=== Checking index.html for asset paths ==="
+          if [ -f ".output/public/index.html" ]; then
+            grep -o 'src="[^"]*"' .output/public/index.html | head -10
+            grep -o 'href="[^"]*"' .output/public/index.html | head -10
           fi
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .output/public  # Для Nuxt 3 SPA
+          path: .output/public
 
   deploy:
     environment:
