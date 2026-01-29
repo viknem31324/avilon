@@ -1,29 +1,35 @@
 <template>
   <div id="app">
-    <AppHeader />
+    <AppHeader :is-scrolled="isScrolled" />
 
     <main class="main-layout">
       <slot />
     </main>
 
-    <!-- <LazyAppFooter /> -->
+    <LazyAppFooter />
   </div>
 </template>
 
 <script lang="ts" setup>
 const isOpenHeaderMenu = useState('headerMenu', () => false);
-const isScrolled = ref(false);
+const isScrolled = ref<boolean>(true);
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 0;
 };
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
+  if (typeof window !== 'undefined') {
+    isScrolled.value = window.scrollY > 0;
+
+    window.addEventListener('scroll', handleScroll);
+  }
 });
 
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll);
+onBeforeUnmount(() => {
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('scroll', handleScroll);
+  }
 });
 </script>
 

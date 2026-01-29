@@ -39,3 +39,22 @@ export const HEADER_NAV = [
     label: 'Контакты',
   },
 ];
+
+export const SOCIAL_LINKS = [
+  {
+    icon: 'watsapp',
+    link: '#',
+  },
+  {
+    icon: 'telegram',
+    link: '#',
+  },
+  {
+    icon: 'youtube',
+    link: '#',
+  },
+  {
+    icon: 'dsen',
+    link: '#',
+  },
+];

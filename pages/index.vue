@@ -20,13 +20,13 @@
 import { BREADCRUMBS_MODEL_LINE } from '~/assets/constants/general';
 import type { IAppCarCard } from '~/components/entities/card/card-car/appCardCar.types';
 
-export interface CarsResponse {
+export interface ICarsResponse {
   data: IAppCarCard[];
 }
 
 const isOpenHeaderMenu = useState('headerMenu');
 
-const { data, error } = await useFetch<CarsResponse>('/api/cars');
+const { data, error } = await useFetch<ICarsResponse>('/api/cars');
 
 if (error.value) {
   throw showError({

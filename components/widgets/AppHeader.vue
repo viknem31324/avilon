@@ -86,12 +86,19 @@ const navList = ref<NavItem[]>([...HEADER_NAV]);
 
 const changeMenu = () => {
   isOpenHeaderMenu.value = !isOpenHeaderMenu.value;
+
+  if (isOpenHeaderMenu.value) {
+    document.body.style.overflowY = 'hidden';
+  } else {
+    document.body.style.overflowY = 'auto';
+  }
 };
 
 const navigate = (item: NavItem) => {
   if (!isLaptop.value) {
     navigateTo(item.href);
     isOpenHeaderMenu.value = false;
+    document.body.style.overflowY = 'auto';
   }
 };
 </script>
@@ -105,12 +112,12 @@ const navigate = (item: NavItem) => {
   z-index: 1000;
   display: flex;
   width: 100%;
-  padding-top: 17px;
+  padding: 17px 0 10px;
   background-color: transparent;
   @include transition(background-color);
 
   &--scrolled {
-    background-color: color('main-gray');
+    background-color: color('main-black');
   }
 
   &__top {
