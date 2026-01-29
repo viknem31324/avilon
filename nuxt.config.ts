@@ -1,5 +1,3 @@
-import { createRobots } from './utils/createRobots';
-
 const isProduction = process.env.URL === 'prod URL';
 const isDevelopMode = typeof process !== 'undefined' && process.env.NODE_ENV === 'development';
 // const isGenerateMode = typeof process !== 'undefined' && process?.argv?.includes('generate');
@@ -9,12 +7,10 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/apollo',
     '@nuxt/eslint',
-    '@nuxtjs/sitemap',
-    '@nuxtjs/robots',
     'nuxt-delay-hydration',
   ],
 
-  ssr: false,
+  ssr: true,
 
   components: [
     {
@@ -84,13 +80,28 @@ export default defineNuxtConfig({
       url: process.env.VITE_URL || '',
     },
   },
-  compatibilityDate: '2024-12-11',
+
+  generate: {
+    routes: [
+      '/',
+    ],
+  },
+
+  experimental: {
+    payloadExtraction: true,
+  },
 
   nitro: {
     preset: 'static',
-    output: {
-      publicDir: '.output/public',
+    prerender: {
+      crawlLinks: true, // Автоматически находит ссылки
+      routes: ['/'],
+      failOnError: false, // Не падать при ошибках
     },
+  },
+
+  vite: {
+    base: '/tank-tender/',
   },
 
   vite: {
@@ -134,7 +145,5 @@ export default defineNuxtConfig({
     },
   },
 
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  robots: createRobots(isProduction),
+  target: 'static',
 });
