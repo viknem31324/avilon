@@ -45,6 +45,7 @@ export default defineNuxtConfig({
 
   app: {
     baseURL: '/tank-tender/',
+    buildAssetsDir: '/_nuxt/',
     head: {
       htmlAttrs: {
         lang: 'ru',
@@ -87,6 +88,9 @@ export default defineNuxtConfig({
 
   nitro: {
     preset: 'static',
+    output: {
+      publicDir: '.output/public',
+    },
   },
 
   vite: {
