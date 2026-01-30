@@ -4,12 +4,12 @@
       <div class="header__top">
         <div class="header__top-wrapper">
           <BaseLogo
-            first-logo="/img/firs-logo.webp"
+            :first-logo="getAssetUrl('/img/firs-logo.webp')"
             first-logo-alt="Avilon"
-            second-logo="/img/second-logo.webp"
+            :second-logo="getAssetUrl('/img/second-logo.webp')"
             second-logo-alt="Автодилер года 2024"
           />
-          <img class="header__logo-tank" src="/img/logo-tank.webp" alt="Tank" />
+          <img class="header__logo-tank" :src="getAssetUrl('/img/logo-tank.webp')" alt="Tank" />
           <div class="header__info">
             <address class="header__address">
               <BaseIcon icon="geo" />
@@ -79,6 +79,8 @@ interface IAppHeaderProps {
 withDefaults(defineProps<IAppHeaderProps>(), {
   isScrolled: false,
 });
+
+const { getAssetUrl } = useAssetUrl();
 
 const { isLaptop } = useWindowWidth();
 const isOpenHeaderMenu = useState('headerMenu');

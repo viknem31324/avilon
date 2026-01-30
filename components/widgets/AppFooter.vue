@@ -3,8 +3,8 @@
     <AppContainer class="footer__container">
       <div>
         <div class="footer__logo">
-          <img class="footer__logo-tank" src="/img/logo-tank.webp" alt="Tank" />
-          <img class="footer__avilon" src="/img/firs-logo.webp" alt="Avilon" />
+          <img class="footer__logo-tank" :src="getAssetUrl('/img/logo-tank.webp')" alt="Tank" />
+          <img class="footer__avilon" :src="getAssetUrl('/img/firs-logo.webp')" alt="Avilon" />
         </div>
         <div class="footer__block-wrapper">
           <div class="footer__block">
@@ -61,6 +61,7 @@
 
 <script lang="ts" setup>
 import { SOCIAL_LINKS } from '~/assets/constants/general';
+import { useAssetUrl } from '~/composables/useAssetUrl';
 
 interface INavLink {
   label: string;
@@ -70,6 +71,8 @@ interface INavLink {
 export interface IFooterLinksResponse {
   data: INavLink[][];
 }
+
+const { getAssetUrl } = useAssetUrl();
 
 const socialList = ref([...SOCIAL_LINKS]);
 

@@ -4,7 +4,7 @@
       <BaseHeading class="app-card-car__title" tag="h3" level="1">
         {{ title }}
       </BaseHeading>
-      <img class="app-card-car__image" :src="image" :alt="title" />
+      <img class="app-card-car__image" :src="getAssetUrl(image)" :alt="title" />
       <div class="app-card-car__block">
         <div class="app-card-car__params">
           <div v-for="(item, idx) in params" :key="idx" class="app-card-car__param">
@@ -55,6 +55,8 @@ import type { IAppCarCard } from './appCardCar.types';
 import BaseButton from '~/components/ui/button/BaseButton.vue';
 
 const props = defineProps<IAppCarCard>();
+
+const { getAssetUrl } = useAssetUrl();
 
 const classes = computed(() => ({
   'app-card-car': true,

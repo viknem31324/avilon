@@ -2,6 +2,8 @@ const isProduction = process.env.URL === 'prod URL';
 const isDevelopMode = typeof process !== 'undefined' && process.env.NODE_ENV === 'development';
 // const isGenerateMode = typeof process !== 'undefined' && process?.argv?.includes('generate');
 
+const baseURL = '/avilon/';
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
@@ -40,7 +42,7 @@ export default defineNuxtConfig({
   ],
 
   app: {
-    baseURL: '/tank-tender/',
+    baseURL,
     buildAssetsDir: '/_nuxt/',
     head: {
       htmlAttrs: {
@@ -51,11 +53,11 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'format-detection', content: 'telephone=no' },
-        { name: 'title', content: 'Title' },
-        { hid: 'description', name: 'description', content: 'Description' },
+        { name: 'title', content: 'АВИЛОН TANK Официальный дилер TANK в Москве © 2025' },
+        { hid: 'description', name: 'description', content: 'АВИЛОН TANK Официальный дилер TANK в Москве © 2025' },
       ],
       link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+        { rel: 'icon', type: 'image/x-icon', href: `${baseURL}favicon.webp` },
       ],
     },
   },
@@ -101,10 +103,7 @@ export default defineNuxtConfig({
   },
 
   vite: {
-    base: '/tank-tender/',
-  },
-
-  vite: {
+    base: baseURL,
     css: {
       preprocessorOptions: {
         scss: {
