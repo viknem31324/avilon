@@ -57,7 +57,7 @@ export default defineNuxtConfig({
         { hid: 'description', name: 'description', content: 'АВИЛОН TANK Официальный дилер TANK в Москве © 2025' },
       ],
       link: [
-        { rel: 'icon', type: 'image/webp', href: `${baseURL}favicon.webp` },
+        { rel: 'icon', type: 'image/png', href: `${baseURL}favicon.png` },
       ],
     },
   },
